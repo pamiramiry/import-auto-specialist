@@ -1,0 +1,14 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.idea/
+.vscode/
+
+# Local debug / scratch files
+_debug.*
+*.log
+
+# Dependency dirs (none needed for this static site, but ignored just in case)
+node_modules/
