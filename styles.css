@@ -163,7 +163,7 @@ p { text-wrap: pretty; }
 
 .btn-sm { padding: 10px 18px; font-size: .95rem; }
 .btn-lg { padding: 16px 30px; font-size: 1.06rem; }
-.btn-block { width: 100%; }
+.btn-block { width: 100%; white-space: normal; line-height: 1.3; text-align: center; }
 
 /* ---------------- Header / nav ---------------- */
 .site-header {
@@ -504,14 +504,16 @@ p { text-wrap: pretty; }
 .contact-name { margin-bottom: 20px; }
 .contact-list { display: flex; flex-direction: column; gap: 22px; margin-bottom: 26px; }
 .contact-list li { display: flex; gap: 14px; align-items: flex-start; }
+.contact-list li > span { min-width: 0; }
 .contact-list svg { color: var(--blue); flex-shrink: 0; margin-top: 3px; }
 .contact-list strong { display: block; font-family: var(--font-head); font-size: 1.15rem; color: var(--charcoal); margin-bottom: 4px; letter-spacing: .01em; }
 .contact-inline-link { color: var(--blue); font-weight: 600; }
 .contact-inline-link:hover { text-decoration: underline; }
 
 .hours-table { width: 100%; max-width: 340px; border-collapse: collapse; margin-top: 4px; table-layout: fixed; }
-.hours-table th, .hours-table td { text-align: left; padding: 5px 0; font-weight: 400; color: var(--grey-text); font-size: .96rem; white-space: nowrap; }
-.hours-table th { width: 60%; padding-right: 14px; }
+.hours-table th, .hours-table td { text-align: left; padding: 5px 0; font-weight: 400; color: var(--grey-text); font-size: .96rem; }
+.hours-table th { width: 42%; padding-right: 10px; white-space: nowrap; }
+.hours-table td { white-space: normal; }
 .hours-table td { width: 40%; text-align: right; }
 .hours-table tr.today { color: var(--charcoal); font-weight: 700; }
 .hours-table tr.today th, .hours-table tr.today td { color: var(--charcoal); }
@@ -579,6 +581,7 @@ p { text-wrap: pretty; }
   display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 40px;
   padding: var(--space-5) 24px var(--space-4);
 }
+.footer-grid > * { min-width: 0; }
 .footer-brand .logo-name { display: block; font-size: 1.4rem; margin-bottom: 12px; }
 .footer-brand p { font-size: .95rem; margin-bottom: 20px; max-width: 34ch; }
 .footer-col h2 { font-family: var(--font-head); font-size: 1.05rem; text-transform: uppercase; letter-spacing: .1em; color: var(--white); margin-bottom: 16px; }
@@ -661,16 +664,24 @@ p { text-wrap: pretty; }
 @media (max-width: 640px) {
   :root { --header-h: 64px; --space-6: 64px; --space-5: 48px; }
   .container { padding: 0 18px; }
+  .hero { padding: 8px 0 40px; }
+  .eyebrow { font-size: .78rem; letter-spacing: .09em; padding: 5px 12px; margin-bottom: 14px; white-space: nowrap; }
+  .hero h1 { font-size: 2.15rem; margin-bottom: 14px; }
+  .hero-sub { font-size: 1.02rem; margin-bottom: var(--space-2); }
+  .hero-trust { flex-direction: column; gap: 8px; margin-bottom: var(--space-3); }
   .hero-actions .btn, .cta-actions .btn, .why-actions .btn, .about-actions .btn { width: 100%; }
   .hero-actions, .cta-actions { flex-direction: column; }
   .services-grid, .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .contact-form-wrap { padding: 24px 20px; }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-  .mobile-bar { display: flex; }
+  .footer-brand .btn { white-space: normal; max-width: 100%; text-align: center; }
+  .mobile-bar { display: flex; padding: 5px 6px calc(5px + env(safe-area-inset-bottom, 0px)); }
+  .mobile-bar-btn { padding: 6px 4px; font-size: .74rem; }
+  .mobile-bar-btn svg { width: 18px; height: 18px; }
   /* keep sticky bar from covering the last content / back-to-top */
-  body { padding-bottom: 72px; }
-  .back-to-top { bottom: 80px; right: 16px; }
+  body { padding-bottom: 64px; }
+  .back-to-top { bottom: 72px; right: 16px; }
 }
 
 /* ---------------- Reduced motion ---------------- */
