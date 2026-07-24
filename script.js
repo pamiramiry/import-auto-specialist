@@ -46,6 +46,37 @@
     });
   }
 
+  /* ---------------- Services dropdown (accessible disclosure) ---------------- */
+  // The toggle is a real <button aria-expanded>; JS drives open/close for
+  // keyboard, touch, and click. Pointer devices also get hover-to-open via CSS.
+  var dropdowns = Array.prototype.slice.call(document.querySelectorAll('.has-dropdown'));
+  var closeDropdown = function (dd) {
+    dd.classList.remove('open');
+    var t = dd.querySelector('.nav-dropdown-toggle');
+    if (t) t.setAttribute('aria-expanded', 'false');
+  };
+  dropdowns.forEach(function (dd) {
+    var toggle = dd.querySelector('.nav-dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', function () {
+      var open = !dd.classList.contains('open');
+      dd.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    // Close when focus leaves the menu entirely (keyboard tab-out)
+    dd.addEventListener('focusout', function (e) {
+      if (!dd.contains(e.relatedTarget)) closeDropdown(dd);
+    });
+  });
+  if (dropdowns.length) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') dropdowns.forEach(closeDropdown);
+    });
+    document.addEventListener('click', function (e) {
+      dropdowns.forEach(function (dd) { if (!dd.contains(e.target)) closeDropdown(dd); });
+    });
+  }
+
   /* ---------------- Sticky header shadow ---------------- */
   var header = document.getElementById('site-header');
   if (header) {
@@ -97,8 +128,14 @@
     sections.forEach(function (s) { navObserver.observe(s.section); });
   }
 
-  /* ---------------- FAQ accordion (single open) ---------------- */
+  /* ---------------- FAQ accordion (single open, animated) ---------------- */
   var faqButtons = document.querySelectorAll('.faq-question');
+  // Drop the no-JS `hidden` fallback so panels can animate open/closed via CSS
+  // (styles.css collapses them with max-height; JS just toggles the .open class).
+  faqButtons.forEach(function (btn) {
+    var p = document.getElementById(btn.getAttribute('aria-controls'));
+    if (p) { p.hidden = false; p.classList.remove('open'); }
+  });
   faqButtons.forEach(function (btn) {
     btn.addEventListener('click', function () {
       var expanded = btn.getAttribute('aria-expanded') === 'true';
@@ -109,12 +146,12 @@
         if (other !== btn) {
           other.setAttribute('aria-expanded', 'false');
           var op = document.getElementById(other.getAttribute('aria-controls'));
-          if (op) op.hidden = true;
+          if (op) op.classList.remove('open');
         }
       });
 
       btn.setAttribute('aria-expanded', String(!expanded));
-      if (panel) panel.hidden = expanded;
+      if (panel) panel.classList.toggle('open', !expanded);
     });
   });
 
@@ -135,23 +172,98 @@
     if (row) row.classList.add('today');
   }
 
+  /* ---------------- Live "Open now / Closed" status ---------------- */
+  // Business hours: Monday–Friday, 09:00–17:00 (America/Toronto). Weekends closed.
+  // The pill stays hidden until JS runs, so no stale/wrong status is ever shown without JS.
+  var statusPills = document.querySelectorAll('[data-open-status]');
+  if (statusPills.length) {
+    var OPEN_MIN = 9 * 60;    // 09:00
+    var CLOSE_MIN = 17 * 60;  // 17:00
+    var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+    // Toronto-local weekday + time (falls back to the visitor's local clock if Intl/timeZone is unavailable)
+    var wd, minsNow;
+    try {
+      var parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Toronto', weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      var p = {};
+      parts.forEach(function (part) { p[part.type] = part.value; });
+      var wmap = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+      wd = wmap[p.weekday];
+      minsNow = (parseInt(p.hour, 10) % 24) * 60 + parseInt(p.minute, 10);
+    } catch (err) {
+      var now = new Date();
+      wd = now.getDay();
+      minsNow = now.getHours() * 60 + now.getMinutes();
+    }
+
+    var fmtTime = function (mins) {
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12; if (h12 === 0) h12 = 12;
+      return h12 + (m ? ':' + (m < 10 ? '0' + m : m) : '') + ' ' + ampm;
+    };
+
+    var isWeekday = function (d) { return d >= 1 && d <= 5; };
+    var isOpen = isWeekday(wd) && minsNow >= OPEN_MIN && minsNow < CLOSE_MIN;
+
+    var label, cls;
+    if (isOpen) {
+      cls = 'is-open';
+      label = 'Open now · until ' + fmtTime(CLOSE_MIN);
+    } else {
+      cls = 'is-closed';
+      // Find the next day the shop opens
+      var when;
+      if (isWeekday(wd) && minsNow < OPEN_MIN) {
+        when = 'today at ' + fmtTime(OPEN_MIN);
+      } else {
+        var offset = 1;
+        while (!isWeekday((wd + offset) % 7)) { offset++; }
+        when = (offset === 1 ? 'tomorrow' : dayNames[(wd + offset) % 7]) + ' at ' + fmtTime(OPEN_MIN);
+      }
+      label = 'Closed · opens ' + when;
+    }
+
+    statusPills.forEach(function (pill) {
+      pill.classList.add(cls);
+      pill.innerHTML = '<span class="status-dot" aria-hidden="true"></span><span class="status-text"></span>';
+      pill.querySelector('.status-text').textContent = label;
+      pill.hidden = false;
+    });
+  }
+
   /* ---------------- Reviews carousel dots (progressive enhancement) ---------------- */
   // Works without JS too: .reviews-track is a native CSS scroll-snap strip, swipeable by touch.
   var reviewsTrack = document.getElementById('reviews-track');
   var reviewsDots = document.getElementById('reviews-dots');
   if (reviewsTrack && reviewsDots) {
     var reviewCards = Array.prototype.slice.call(reviewsTrack.querySelectorAll('.review-card'));
+    var currentReview = 0;
+
+    var goToReview = function (i) {
+      if (i < 0) i = reviewCards.length - 1;          // wrap
+      else if (i >= reviewCards.length) i = 0;
+      var card = reviewCards[i];
+      if (card) card.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
+    };
+
     reviewCards.forEach(function (card, i) {
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', 'Show review ' + (i + 1) + ' of ' + reviewCards.length);
       dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-      dot.addEventListener('click', function () {
-        card.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', inline: 'center', block: 'nearest' });
-      });
+      dot.addEventListener('click', function () { goToReview(i); });
       reviewsDots.appendChild(dot);
     });
+
+    // Manual prev / next arrows (visible on phone & tablet; hidden on the desktop grid)
+    var reviewsPrev = document.getElementById('reviews-prev');
+    var reviewsNext = document.getElementById('reviews-next');
+    if (reviewsPrev) reviewsPrev.addEventListener('click', function () { goToReview(currentReview - 1); });
+    if (reviewsNext) reviewsNext.addEventListener('click', function () { goToReview(currentReview + 1); });
 
     var reviewDotEls = Array.prototype.slice.call(reviewsDots.children);
     if ('IntersectionObserver' in window && reviewDotEls.length) {
@@ -160,6 +272,7 @@
           if (entry.isIntersecting) {
             var idx = reviewCards.indexOf(entry.target);
             if (idx !== -1) {
+              currentReview = idx;
               reviewDotEls.forEach(function (d, di) { d.setAttribute('aria-current', di === idx ? 'true' : 'false'); });
             }
           }

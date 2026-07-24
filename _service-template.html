@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  SERVICE PAGE TEMPLATE  (dev scaffold — not linked, not in sitemap, noindex)
+  ----------------------------------------------------------------------------
+  Copy this file to  <slug>.html  and replace every {{TOKEN}}:
+    {{TITLE}}        <60 chars, e.g. "Oil Change in Scarborough | Import Auto Specialist"
+    {{DESC}}         <155 chars meta description, include the phone number
+    {{SLUG}}         file name, e.g. oil-change-scarborough.html
+    {{CRUMB}}        breadcrumb + <h1> label, e.g. "Oil Change"
+    {{H1}}           full <h1>, e.g. "Oil Change in Scarborough"
+    {{EYEBROW}}      e.g. "Oil & Maintenance · Scarborough"
+    {{LEDE}}         one-line subhead
+    {{SERVICE_TYPE}} schema.org serviceType, e.g. "Oil Change"
+    {{OG_TITLE}}     may be longer than the <title>
+    {{FAQ_PREFIX}}   unique id prefix for this page's FAQ buttons, e.g. "of"
+  Fill the body sections (symptoms optional on standard pages), the checklist,
+  ONE matched testimonial, the mini-FAQ (mirror it in the FAQ JSON-LD), and the
+  two related-service cards. Chrome (header/footer/mobile-bar) is copied verbatim
+  from index.html with nav links repointed to index.html#... — do not change it.
+  Never invent prices, turnaround times, years, warranties, or certifications;
+  use [PLACEHOLDER: ask owner] instead.
+  ============================================================================
+-->
+<html lang="en-CA" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESC}}">
+  <meta name="robots" content="noindex, follow"><!-- SCAFFOLD ONLY: change to "index, follow, max-image-preview:large" on real pages -->
+  <meta name="theme-color" content="#14171C">
+  <link rel="canonical" href="https://importautospecialist.ca/{{SLUG}}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{OG_TITLE}}">
+  <meta property="og:description" content="{{DESC}}">
+  <meta property="og:url" content="https://importautospecialist.ca/{{SLUG}}">
+  <meta property="og:image" content="https://importautospecialist.ca/images/og-image.jpg">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:site_name" content="Import Auto Specialist">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{OG_TITLE}}">
+  <meta name="twitter:description" content="{{DESC}}">
+  <meta name="twitter:image" content="https://importautospecialist.ca/images/og-image.jpg">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Breadcrumb schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://importautospecialist.ca/" },
+      { "@type": "ListItem", "position": 2, "name": "{{CRUMB}}", "item": "https://importautospecialist.ca/{{SLUG}}" }
+    ]
+  }
+  </script>
+
+  <!-- Service schema (provider = the AutoRepair entity defined on the homepage, referenced by @id) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "{{SERVICE_TYPE}}",
+    "name": "{{H1}}",
+    "url": "https://importautospecialist.ca/{{SLUG}}",
+    "areaServed": [
+      { "@type": "City", "name": "Scarborough" },
+      { "@type": "City", "name": "Toronto" }
+    ],
+    "provider": {
+      "@type": "AutoRepair",
+      "@id": "https://importautospecialist.ca/#business",
+      "name": "Import Auto Specialist",
+      "image": "https://importautospecialist.ca/images/og-image.jpg",
+      "telephone": "+1-416-913-2394",
+      "priceRange": "$$",
+      "url": "https://importautospecialist.ca/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "777 Warden Ave.",
+        "addressLocality": "Scarborough",
+        "addressRegion": "ON",
+        "postalCode": "M1L 4C2",
+        "addressCountry": "CA"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 43.724377, "longitude": -79.2847419 },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "112" }
+    }
+  }
+  </script>
+
+  <!-- FAQPage schema — MUST mirror the visible mini-FAQ word-for-word -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "{{Q1}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A1}}" } }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="star-icon" viewBox="0 0 20 20"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></symbol>
+    <linearGradient id="half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="transparent"/></linearGradient>
+  </svg>
+
+  <!-- ===== HEADER / MOBILE MENU: copy verbatim from any built service page (nav → index.html#...) ===== -->
+  <!-- {{PASTE HEADER + MOBILE MENU HERE}} -->
+
+  <main id="main">
+    <!-- ===== SERVICE HERO ===== -->
+    <section class="service-hero">
+      <div class="container">
+        <div class="svc-col">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="sep" aria-hidden="true">›</span>
+            <span aria-current="page">{{CRUMB}}</span>
+          </nav>
+          <p class="eyebrow">{{EYEBROW}}</p>
+          <h1>{{H1}}</h1>
+          <p class="svc-lede">{{LEDE}}</p>
+          <div class="svc-cta-row">
+            <a href="tel:+14169132394" class="btn btn-blue btn-lg">Call (416) 913-2394</a>
+            <a href="index.html#contact" class="btn btn-outline-light btn-lg">Request an Appointment</a>
+            <span class="status-pill status-pill--ondark" data-open-status aria-live="polite" hidden></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BODY (priority pages: <h2> "Signs you need…" symptom-list FIRST) ===== -->
+    <section class="section svc-body">
+      <div class="svc-col svc-prose">
+        <h2>{{FIRST_H2}}</h2>
+        <p>{{PARAGRAPH}}</p>
+        <!-- symptom-list (priority pages): repeat <li> with the alert-triangle icon
+             <ul class="symptom-list"><li><svg …alert…></svg><span>Symptom</span></li></ul> -->
+      </div>
+    </section>
+
+    <!-- ===== WHAT'S INCLUDED ===== -->
+    <section class="section why">
+      <div class="svc-col svc-prose">
+        <p class="section-label">What's Included</p>
+        <h2>Every {{SERVICE_TYPE}} Covers</h2>
+        <ul class="why-list check-list">
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>{{Checklist item — repeat 6–8×}}</strong></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== TESTIMONIAL: one matched review (see index.html reviews for verbatim quotes) ===== -->
+    <!-- ===== MINI-FAQ: <section class="faq section" style="background:var(--grey-light)"> with .faq-question buttons; ids use {{FAQ_PREFIX}}-q1/a1 … mirror the FAQ JSON-LD ===== -->
+    <!-- ===== TRUST STRIP: copy the .trust-strip block verbatim from any built service page ===== -->
+    <!-- ===== FINAL CTA: .cta-band with Call + Get Directions ===== -->
+    <!-- ===== RELATED: two .related-card links to sibling service pages ===== -->
+  </main>
+
+  <!-- ===== FOOTER + MOBILE BAR + BACK-TO-TOP: copy verbatim from any built service page ===== -->
+  <!-- {{PASTE FOOTER + MOBILE BAR + BACK-TO-TOP HERE}} -->
+
+  <script src="script.js" defer></script>
+</body>
+</html>

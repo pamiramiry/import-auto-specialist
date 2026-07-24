@@ -9,7 +9,7 @@
 
   <!-- ============ PRIMARY SEO ============ -->
   <title>Import Auto Specialist | Auto Repair in Scarborough, ON</title>
-  <meta name="description" content="Looking for dependable auto repair in Scarborough? Contact Import Auto Specialist at 777 Warden Ave. for professional car repair and maintenance. Call (416) 913-2394.">
+  <meta name="description" content="Dependable auto repair in Scarborough at 777 Warden Ave. Professional car repair and maintenance for all makes and models. Call (416) 913-2394.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#14171C">
   <meta name="author" content="Import Auto Specialist">
@@ -19,17 +19,18 @@
   <meta name="geo.placename" content="Scarborough, Ontario">
   <meta name="geo.position" content="43.724377;-79.2847419">
   <meta name="ICBM" content="43.724377, -79.2847419">
-  <!-- TODO: replace https://www.example.com/ with the real production domain across this file, robots.txt and sitemap.xml -->
-  <link rel="canonical" href="https://www.example.com/">
+  <!-- Production origin lives in ONE place: set-site-url.js (run it after changing the domain). -->
+  <link rel="canonical" href="https://importautospecialist.ca/">
 
   <!-- ============ OPEN GRAPH ============ -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Import Auto Specialist | Auto Repair in Scarborough, ON">
   <meta property="og:description" content="Professional car repair and maintenance in Scarborough at 777 Warden Ave. 4.5★ from 112 Google reviews. Call (416) 913-2394.">
-  <meta property="og:url" content="https://www.example.com/">
-  <!-- TODO: add a real 1200x630 share image at images/og-image.jpg (see images/README.md) -->
-  <meta property="og:image" content="https://www.example.com/images/og-image.jpg">
-  <meta property="og:image:alt" content="Import Auto Specialist — auto repair and maintenance in Scarborough">
+  <meta property="og:url" content="https://importautospecialist.ca/">
+  <meta property="og:image" content="https://importautospecialist.ca/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Import Auto Specialist, auto repair and maintenance in Scarborough">
   <meta property="og:locale" content="en_CA">
   <meta property="og:site_name" content="Import Auto Specialist">
 
@@ -37,11 +38,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Import Auto Specialist | Auto Repair in Scarborough, ON">
   <meta name="twitter:description" content="Professional car repair and maintenance in Scarborough. Call (416) 913-2394.">
-  <meta name="twitter:image" content="https://www.example.com/images/og-image.jpg">
+  <meta name="twitter:image" content="https://importautospecialist.ca/images/og-image.jpg">
 
-  <!-- ============ FAVICON ============ -->
+  <!-- ============ FAVICON / PWA ============ -->
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- ============ PERFORMANCE ============ -->
   <!-- Preload the above-the-fold hero image so it paints as early as possible (better LCP) -->
@@ -59,9 +62,13 @@
   {
     "@context": "https://schema.org",
     "@type": "AutoRepair",
+    "@id": "https://importautospecialist.ca/#business",
     "name": "Import Auto Specialist",
+    "url": "https://importautospecialist.ca/",
+    "image": "https://importautospecialist.ca/images/og-image.jpg",
     "description": "Local automotive repair and maintenance shop serving drivers in Scarborough and surrounding areas.",
     "telephone": "+1-416-913-2394",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "777 Warden Ave.",
@@ -96,6 +103,9 @@
       "longitude": -79.2847419
     },
     "hasMap": "https://www.google.com/maps/place/Import+Auto+Specialist/@43.724377,-79.2847419,17z",
+    "sameAs": [
+      "https://www.google.com/maps?cid=11650676435894463387"
+    ],
     "review": [
       {
         "@type": "Review",
@@ -130,10 +140,19 @@
     ]
   }
   </script>
-  <!-- NOTE: once confirmed, add "url", "image", "email", and "priceRange" to the AutoRepair block
-       above. These are intentionally omitted rather than invented. (geo/hasMap are set using the
-       exact coordinates from the shop's own Google Maps embed further down this page.) -->
+  <!-- NOTE: "email" is intentionally still omitted (not yet confirmed) rather than invented.
+       url/image/priceRange/sameAs are now set; geo/hasMap use the exact coordinates from the
+       shop's own Google Maps embed further down this page. -->
 
+  <!-- ================= STRUCTURED DATA: WebSite ================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Import Auto Specialist",
+    "url": "https://importautospecialist.ca/"
+  }
+  </script>
 
   <!-- ================= STRUCTURED DATA: Breadcrumb ================= -->
   <script type="application/ld+json">
@@ -141,7 +160,7 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/" }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://importautospecialist.ca/" }
     ]
   }
   </script>
@@ -169,8 +188,8 @@
       },
       {
         "@type": "Question",
-        "name": "Do you service import vehicles?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Import Auto Specialist focuses on repair and maintenance for import vehicles. Call the shop to confirm service for your specific make and model." }
+        "name": "Do you service all makes and models?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We repair and maintain import and domestic vehicles alike, with particular expertise in imports. Call the shop to confirm service for your specific make and model." }
       },
       {
         "@type": "Question",
@@ -197,7 +216,7 @@
   <!-- ======================= HEADER / NAV ======================= -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="#home" class="logo" aria-label="Import Auto Specialist — home">
+      <a href="#home" class="logo" aria-label="Import Auto Specialist home">
         <span class="logo-mark" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M22.7 19 13.6 9.9c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6l-3 3-4.4-4.3C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
         </span>
@@ -210,7 +229,21 @@
       <nav class="main-nav" aria-label="Primary">
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
+          <li class="has-dropdown">
+            <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services
+              <svg class="nav-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <ul class="dropdown">
+              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+              <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
+              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
+              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+              <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
+              <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
+              <li><a href="#services" class="dropdown-all">All Services →</a></li>
+            </ul>
+          </li>
           <li><a href="#why" class="nav-link">Why Us</a></li>
           <li><a href="#reviews" class="nav-link">Reviews</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
@@ -238,6 +271,13 @@
       <ul>
         <li><a href="#home" class="mobile-link">Home</a></li>
         <li><a href="#services" class="mobile-link">Services</a></li>
+        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
+        <li><a href="/vehicle-diagnostics-scarborough" class="mobile-link mobile-sublink">Vehicle Diagnostics</a></li>
+        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
+        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/engine-repair-scarborough" class="mobile-link mobile-sublink">Engine Repair</a></li>
+        <li><a href="/electrical-diagnostics-scarborough" class="mobile-link mobile-sublink">Electrical Diagnostics</a></li>
+        <li><a href="/heating-air-conditioning-scarborough" class="mobile-link mobile-sublink">Heating &amp; A/C</a></li>
         <li><a href="#why" class="mobile-link">Why Choose Us</a></li>
         <li><a href="#reviews" class="mobile-link">Reviews</a></li>
         <li><a href="#about" class="mobile-link">About</a></li>
@@ -256,9 +296,9 @@
     <section class="hero" id="home">
       <div class="container hero-inner">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Scarborough Import Auto Repair</p>
-          <h1>Expert Care for Your Import Vehicle</h1>
-          <p class="hero-sub">Reliable repairs, honest communication and experienced service for your import vehicle.</p>
+          <p class="eyebrow">Scarborough Auto Repair &amp; Maintenance</p>
+          <h1>Expert Auto Repair for Every Vehicle</h1>
+          <p class="hero-sub">Reliable repairs, honest communication, and experienced service for all makes and models, import and domestic.</p>
 
           <ul class="hero-trust" aria-label="Highlights">
             <li>
@@ -283,6 +323,8 @@
           <!-- Stand-in stock photo (CC-licensed, see images/README.md for source/credit). Swap for a
                real photo of this shop when available. Production tip: also export a WebP/AVIF version. -->
           <img src="images/hero-auto-repair.jpg" alt="Mechanic's hand holding lug nuts with a car's brake disc in the background" width="1024" height="683" loading="eager" fetchpriority="high">
+          <!-- Live open/closed status — filled by script.js from the shop's Mon–Fri 9–5 hours (Toronto time). -->
+          <span class="status-pill status-pill--hero" data-open-status aria-live="polite" hidden></span>
         </div>
       </div>
     </section>
@@ -306,8 +348,8 @@
           <span class="cred-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v5h-3a2 2 0 0 1-4 0H10a2 2 0 0 1-4 0H3zM6 13h12"/></svg>
           </span>
-          <p class="cred-title">Import Vehicle Focus</p>
-          <p class="cred-label">Experienced with import makes &amp; models</p>
+          <p class="cred-title">All Makes &amp; Models</p>
+          <p class="cred-label">Import and domestic, with deep import expertise</p>
         </div>
 
         <div class="cred-card reveal">
@@ -336,7 +378,7 @@
         <div class="section-header reveal">
           <p class="section-label">Our Services</p>
           <h2>Complete Auto Repair and Maintenance</h2>
-          <p class="section-sub">Practical, dependable service to keep your import vehicle running the way it should. Editable service list — call to confirm availability for your vehicle.</p>
+          <p class="section-sub">Practical, dependable service to keep your vehicle running the way it should.</p>
         </div>
 
         <div class="services-grid">
@@ -346,7 +388,10 @@
             </span>
             <h3>Vehicle Diagnostics</h3>
             <p>Computerized diagnostics to pinpoint warning lights and running issues before they get worse.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/vehicle-diagnostics-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -355,7 +400,10 @@
             </span>
             <h3>Oil Changes &amp; Maintenance</h3>
             <p>Routine oil and fluid changes with a maintenance check to help protect your engine over the long term.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/oil-change-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -364,7 +412,10 @@
             </span>
             <h3>Brake Service</h3>
             <p>Brake inspections, pad and rotor service, and adjustments to keep your stopping power reliable.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/brake-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -373,7 +424,10 @@
             </span>
             <h3>Engine Repair</h3>
             <p>Engine diagnostics and repair to address performance concerns and unusual noises or leaks.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/engine-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -382,7 +436,10 @@
             </span>
             <h3>Suspension &amp; Steering</h3>
             <p>Suspension and steering service to help smooth out the ride and keep handling predictable.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/suspension-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -391,7 +448,10 @@
             </span>
             <h3>Electrical Diagnostics</h3>
             <p>Battery, charging, and electrical fault diagnostics to track down issues that leave you stranded.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/electrical-diagnostics-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
           <article class="service-card reveal">
@@ -400,10 +460,14 @@
             </span>
             <h3>Heating &amp; Air Conditioning</h3>
             <p>Heating and A/C service so your cabin stays comfortable through Scarborough winters and summers.</p>
-            <a href="#contact" class="card-link">Request service <span aria-hidden="true">→</span></a>
+            <div class="card-links">
+              <a href="/heating-air-conditioning-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
           </article>
 
-          <article class="service-card reveal">
+          <article class="service-card service-card--featured reveal">
+            <span class="service-tag">Our specialty</span>
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 13l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v5h-3a2 2 0 0 1-4 0H10a2 2 0 0 1-4 0H3zM6 13h12"/></svg>
             </span>
@@ -414,7 +478,7 @@
         </div>
 
         <!-- Local SEO supporting copy (natural, not keyword-stuffed) -->
-        <p class="services-local reveal">Serving drivers across Scarborough and nearby neighbourhoods — the Golden Mile, Clairlea, and into East York — Import Auto Specialist provides car repair and auto maintenance from a convenient location near Warden Avenue at 777 Warden Ave. Not sure which service you need? <a href="tel:+14169132394">Call (416) 913-2394</a> and we'll help you sort out the next step.</p>
+        <p class="services-local reveal">Serving drivers across Scarborough and nearby neighbourhoods like the Golden Mile, Clairlea, and East York, Import Auto Specialist provides car repair and auto maintenance from a convenient location near Warden Avenue at 777 Warden Ave. Not sure which service you need? <a href="tel:+14169132394">Call (416) 913-2394</a> and we'll help you sort out the next step.</p>
       </div>
     </section>
 
@@ -430,12 +494,12 @@
           <p class="section-label">Why Choose Us</p>
           <h2>Why Scarborough Drivers Choose Import Auto Specialist</h2>
           <ul class="why-list">
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Professional vehicle inspections</strong> — a careful look at your vehicle before work begins.</span></li>
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Clear communication</strong> — straightforward updates on what your vehicle needs and why.</span></li>
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Careful workmanship</strong> — attention to detail on every job, big or small.</span></li>
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Convenient local service</strong> — an easy-to-reach shop at 777 Warden Ave. in Scarborough.</span></li>
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Long-term vehicle performance</strong> — maintenance focused on keeping your car dependable.</span></li>
-            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Experience with import vehicles</strong> — experienced attention for import makes and models.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Professional vehicle inspections</strong>: a careful look at your vehicle before work begins.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Clear communication</strong>: straightforward updates on what your vehicle needs and why.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Careful workmanship</strong>: attention to detail on every job, big or small.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Convenient local service</strong>: an easy-to-reach shop at 777 Warden Ave. in Scarborough.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Long-term vehicle performance</strong>: maintenance focused on keeping your car dependable.</span></li>
+            <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Experience across makes</strong>: from European and Japanese imports to domestic vehicles, expertly serviced.</span></li>
           </ul>
           <div class="why-actions">
             <a href="tel:+14169132394" class="btn btn-blue btn-lg">Call (416) 913-2394</a>
@@ -456,6 +520,25 @@
                certifications, and team information. Keep claims accurate and verifiable. -->
           <p>Import Auto Specialist is a local automotive repair and maintenance shop serving drivers in Scarborough and surrounding areas. The team is focused on providing dependable service, careful vehicle inspections, and straightforward communication.</p>
           <p>Conveniently located at 777 Warden Ave. in the Golden Mile area, the shop makes it easy for drivers across Scarborough and East York to get professional attention for their vehicles Monday through Friday.</p>
+
+          <!-- TRUST MARKERS — PLACEHOLDERS: owner to confirm real figures before launch, then
+               replace the bracketed text (e.g. "15+", "Licensed & Certified", "12-Month"). Keep
+               claims accurate and verifiable. -->
+          <ul class="about-stats" aria-label="Shop credentials">
+            <li class="about-stat">
+              <span class="about-stat-num">[YEARS IN BUSINESS]</span>
+              <span class="about-stat-label">Years Serving Scarborough</span>
+            </li>
+            <li class="about-stat">
+              <span class="about-stat-num">[CERTIFICATIONS]</span>
+              <span class="about-stat-label">Licensed / Certified Technicians</span>
+            </li>
+            <li class="about-stat">
+              <span class="about-stat-num">[WARRANTY ON WORK]</span>
+              <span class="about-stat-label">Warranty-Backed Repairs</span>
+            </li>
+          </ul>
+
           <div class="about-actions">
             <a href="#contact" class="btn btn-blue">Request an Appointment</a>
             <a href="#services" class="btn btn-outline-dark">View Services</a>
@@ -508,16 +591,31 @@
         <div class="section-header reveal">
           <p class="section-label">Reviews</p>
           <h2>Trusted by Scarborough Drivers</h2>
-          <p class="reviews-rating">
-            <span class="reviews-stars" role="img" aria-label="4.5 out of 5 stars">
-              <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
-              <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
-              <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
-              <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
-              <svg viewBox="0 0 20 20" width="20" height="20" class="star-half" aria-hidden="true"><path fill="url(#half)" stroke="currentColor" stroke-width="0.5" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
-            </span>
-            <strong>4.5 out of 5 stars</strong> — based on 112 Google reviews
-          </p>
+          <div class="reviews-summary reveal">
+            <div class="reviews-summary-score">
+              <span class="reviews-summary-num">4.5</span>
+              <span class="reviews-stars" role="img" aria-label="4.5 out of 5 stars">
+                <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
+                <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
+                <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
+                <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><path fill="currentColor" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
+                <svg viewBox="0 0 20 20" width="17" height="17" class="star-half" aria-hidden="true"><path fill="url(#half)" stroke="currentColor" stroke-width="0.5" d="M10 15.3 4.6 18l1-6-4.4-4.3 6-.9L10 .5l2.8 6.3 6 .9L14.4 12l1 6z"/></svg>
+              </span>
+              <span class="reviews-summary-out">out of 5</span>
+            </div>
+            <div class="reviews-summary-meta">
+              <span class="reviews-summary-count">Based on <strong>112</strong> reviews</span>
+              <span class="reviews-summary-google">
+                <svg class="google-g" viewBox="0 0 48 48" width="18" height="18" aria-hidden="true">
+                  <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                  <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                  <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+                  <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                </svg>
+                Reviews from Google
+              </span>
+            </div>
+          </div>
         </div>
 
         <!-- Real reviews, excerpted from Import Auto Specialist's public Google Business Profile.
@@ -527,13 +625,13 @@
              to drop a detail that conflicts with the confirmed Mon–Fri hours (e.g. weekend mentions);
              wording within kept segments is verbatim. -->
         <div class="reviews-carousel">
-          <div class="reviews-track" id="reviews-track" tabindex="0" aria-label="Customer reviews — swipe or scroll to see more">
+          <div class="reviews-track" id="reviews-track" tabindex="0" aria-label="Customer reviews, swipe or scroll to see more">
             <figure class="review-card reveal">
               <span class="review-stars" role="img" aria-label="5 out of 5 stars">
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“I have been taking my car here for years. Tom, my technician, is always able to diagnose what's wrong and repair it quickly. I like this place because it's close and cost effective. Thanks for always taking good care of my cars here.”</blockquote>
-              <figcaption>— JK, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>JK <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -541,7 +639,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“I had a great experience working with Jaan. I originally brought my BMW X6 in with an air suspension issue, and he took the time to explain everything clearly and make sure it was handled properly. … He was honest, professional, and very communicative throughout the entire process. Highly recommend.”</blockquote>
-              <figcaption>— Akash Kygo, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Akash Kygo <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -549,7 +647,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“My husband has been bringing our Lexus cars here for the past 10 years. Jaan always has the best and most honest advice, and we value his service excellence. He ensures everything is carried out with integrity. He just made our 2010 RX 350 look like the accident never happened!”</blockquote>
-              <figcaption>— Cherry Gorst, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Cherry Gorst <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -557,7 +655,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“This is my go-to place for everything Range Rover and any import car you have. Jaan and his team are the most honest mechanics in the city, so helpful and will always do their best to save you on cost on parts and labour. My Range Rover has come back to life thanks to Jaan and his team.”</blockquote>
-              <figcaption>— Bill Kourbetis, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Bill Kourbetis <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -565,7 +663,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“If you're looking for a top-tier mechanic for your import vehicle, look no further than Import Auto Specialist. … They took the time to explain exactly what my vehicle needed, without pushing unnecessary services. … Whether you drive a German, Japanese, or any other import, this is the place to trust.”</blockquote>
-              <figcaption>— Christina Gitzias, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Christina Gitzias <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -573,7 +671,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“I can't say enough good things about Import Auto Specialist! … They took the time to explain exactly what was going on with my car, showed me the worn parts, and gave me a fair, transparent quote before doing any work. … No upselling, no pressure, just honest advice and solid craftsmanship.”</blockquote>
-              <figcaption>— Cindy Karakolis, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Cindy Karakolis <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -581,7 +679,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“I've been a loyal customer of Import Auto Specialist for over 15 years, and I couldn't be happier with their service. … Their pricing is fair and reasonable, which is refreshing in today's market. … I wholeheartedly recommend them to anyone looking for reliable, top-tier service.”</blockquote>
-              <figcaption>— William Tavares, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>William Tavares <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -589,7 +687,7 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“I came in for a routine oil change and was really impressed by how professional and efficient the team was. They got me in and out quickly, explained everything clearly, and didn't try to upsell me on anything I didn't need. … I'll definitely be coming back for future maintenance. Highly recommend!”</blockquote>
-              <figcaption>— Lisa Spillman, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Lisa Spillman <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
 
             <figure class="review-card reveal">
@@ -597,16 +695,29 @@
                 <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
               </span>
               <blockquote>“Good shop! Jaan is a very good technician and can get parts for a cheaper price! Definitely recommended!”</blockquote>
-              <figcaption>— Rey Zhou, <span class="review-source">Google Review</span></figcaption>
+              <figcaption>Rey Zhou <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
             </figure>
           </div>
 
-          <div class="reviews-dots" id="reviews-dots" role="tablist" aria-label="Review pagination"></div>
+          <div class="reviews-controls">
+            <button class="reviews-arrow" id="reviews-prev" type="button" aria-label="Previous review" aria-controls="reviews-track">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></svg>
+            </button>
+            <div class="reviews-dots" id="reviews-dots" role="tablist" aria-label="Review pagination"></div>
+            <button class="reviews-arrow" id="reviews-next" type="button" aria-label="Next review" aria-controls="reviews-track">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
         </div>
 
         <div class="reviews-cta reveal">
-          <!-- TODO: replace with the shop's real Google reviews URL (from its Google Business Profile). -->
-          <a href="https://www.google.com/maps/search/?api=1&query=Import+Auto+Specialist+777+Warden+Ave+Scarborough" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg">Read More Reviews</a>
+          <!-- Google "write a review" deep link. placeid is derived from this shop's own map-embed
+               feature ID (0x89d4ce748cf0d309:0xa1af847d9280eb9b) and round-trip verified. -->
+          <a href="https://search.google.com/local/writereview?placeid=ChIJCdPwjHTO1IkRm-uAkn2Er6E" target="_blank" rel="noopener" class="btn btn-blue btn-lg">
+            <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><use href="#star-icon"/></svg>
+            Leave Us a Review
+          </a>
+          <a href="https://www.google.com/maps?cid=11650676435894463387" target="_blank" rel="noopener" class="btn btn-outline-dark btn-lg">Read More Reviews</a>
         </div>
       </div>
     </section>
@@ -672,12 +783,12 @@
           <div class="faq-item reveal">
             <h3>
               <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
-                Do you service import vehicles?
+                Do you service all makes and models?
                 <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
               </button>
             </h3>
             <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
-              <p>Yes — we focus on repair and maintenance for import vehicles. Call the shop to confirm service for your specific make and model.</p>
+              <p>Yes. We repair and maintain import and domestic vehicles alike, with particular expertise in imports. Call the shop to confirm service for your specific make and model.</p>
             </div>
           </div>
 
@@ -701,7 +812,7 @@
               </button>
             </h3>
             <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6" hidden>
-              <p>No — we're open Monday to Friday and closed on Saturday and Sunday. Please call during weekday hours to arrange service.</p>
+              <p>No, we're open Monday to Friday and closed on Saturday and Sunday. Please call during weekday hours to arrange service.</p>
             </div>
           </div>
         </div>
@@ -742,6 +853,7 @@
                 <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 7v5l3 2"/></svg>
                 <span>
                   <strong>Hours</strong>
+                  <span class="status-pill" data-open-status aria-live="polite" hidden></span>
                   <table class="hours-table" id="hours-table">
                     <tbody>
                       <tr data-day="1"><th scope="row">Monday</th><td>9:00 a.m. – 5:00 p.m.</td></tr>
@@ -836,7 +948,7 @@
               <p class="form-confirm" id="form-confirm" role="status" hidden>
                 Thanks! Your appointment request has been prepared. We'll be in touch soon. Prefer to talk now? Call <a href="tel:+14169132394">(416) 913-2394</a>.
               </p>
-              <p class="form-note">Fields marked <span aria-hidden="true">*</span> <span class="sr-only">asterisk</span> are required. This form needs a form service connected before requests reach the shop — until then, please call to confirm your appointment.</p>
+              <p class="form-note">Fields marked <span aria-hidden="true">*</span> <span class="sr-only">asterisk</span> are required. This form needs a form service connected before requests reach the shop. Until then, please call to confirm your appointment.</p>
             </form>
           </div>
         </div>
@@ -869,12 +981,13 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="#services">Vehicle Diagnostics</a></li>
-          <li><a href="#services">Oil &amp; Maintenance</a></li>
-          <li><a href="#services">Brake Service</a></li>
-          <li><a href="#services">Engine Repair</a></li>
-          <li><a href="#services">Suspension &amp; Steering</a></li>
-          <li><a href="#services">Import Vehicle Service</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+          <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
+          <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
         </ul>
       </nav>
 
@@ -893,12 +1006,10 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <!-- TODO: link a real Privacy Policy page before launch. -->
-          <a href="#" aria-label="Privacy Policy (placeholder — add a real page)">Privacy Policy</a>
+          <a href="/privacy">Privacy Policy</a>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
-        <p class="photo-credits">Stand-in photos: <a href="https://www.flickr.com/photos/26344495@N05/49963716608" target="_blank" rel="noopener">Ivan Radic</a> (Flickr, CC BY 2.0), <a href="https://commons.wikimedia.org/wiki/File:Wheel_alignment_on_a_Ford_Focus_3.jpg" target="_blank" rel="noopener">Mike Peel</a> (Wikimedia Commons, CC BY-SA 4.0), <a href="https://commons.wikimedia.org/wiki/File:Young_mechanic_with_modern_laptop_doing_car_diagnostic_at_automobile_repair.jpg" target="_blank" rel="noopener">Nenad Stojković</a> (Wikimedia Commons, CC BY 2.0) — see images/README.md for real shop photos to swap in.</p>
       </div>
     </div>
   </footer>

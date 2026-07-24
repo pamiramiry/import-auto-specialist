@@ -1,0 +1,15 @@
+{
+  "name": "Import Auto Specialist",
+  "short_name": "Import Auto",
+  "description": "Auto repair and maintenance in Scarborough, ON.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#14171C",
+  "background_color": "#14171C",
+  "icons": [
+    { "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
