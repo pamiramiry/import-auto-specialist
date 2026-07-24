@@ -859,7 +859,12 @@ p { text-wrap: pretty; }
 
 /* Body prose */
 .svc-body { background: var(--white); }
-.svc-prose { max-width: 780px; margin-left: auto; margin-right: auto; }
+.svc-prose { max-width: 780px; margin-left: auto; margin-right: auto; padding-left: 24px; padding-right: 24px; }
+/* Priority pages wrap prose/quote in .container (no .svc-col); the gutter above
+   gives them the same inset as .svc-col, and these drop the outer container's
+   padding so the left edge lines up with the hero and "What's Included". */
+.svc-body > .container,
+section[aria-label="Customer review"] > .container { padding-left: 0; padding-right: 0; }
 .svc-prose > h2 { margin: 42px 0 14px; }
 .svc-prose > h2:first-child { margin-top: 0; }
 .svc-prose h3 { margin: 26px 0 8px; font-size: 1.2rem; }
@@ -884,7 +889,7 @@ p { text-wrap: pretty; }
 .check-list svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; background: var(--blue-light); border-radius: 50%; padding: 3px; }
 
 /* Single testimonial callout (reuses .review-card visuals) */
-.svc-quote { max-width: 780px; margin: 10px auto 0; }
+.svc-quote { max-width: 780px; margin: 10px auto 0; padding-left: 24px; padding-right: 24px; }
 
 /* Trust strip */
 .trust-strip { background: var(--charcoal); color: #fff; padding: 30px 0; }
@@ -910,7 +915,7 @@ p { text-wrap: pretty; }
 
 @media (max-width: 640px) {
   .symptom-list, .check-list { grid-template-columns: 1fr; }
-  .svc-col { padding: 0 18px; }
+  .svc-col, .svc-prose, .svc-quote { padding-left: 18px; padding-right: 18px; }
 }
 
 /* ---------------- Legal page (privacy) ---------------- */
