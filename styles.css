@@ -836,9 +836,11 @@ p { text-wrap: pretty; }
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: radial-gradient(120% 120% at 50% 40%, transparent 60%, rgba(0, 0, 0, .32) 100%);
 }
-.service-hero > .container { position: relative; z-index: 1; }
-/* One shared reading column so hero, body, checklist and quote all line up */
-.svc-col { max-width: 780px; margin: 0 auto; }
+/* Hero uses .container only for max-width/centering; .svc-col supplies the gutter */
+.service-hero > .container { position: relative; z-index: 1; padding-left: 0; padding-right: 0; }
+/* One shared reading column with its own side gutter so hero, body, checklist,
+   and quote all line up AND never touch the screen edge on mobile. */
+.svc-col { max-width: 780px; margin: 0 auto; padding: 0 24px; }
 .service-hero .eyebrow { margin-top: 18px; }
 .service-hero h1 { color: var(--white); max-width: 20ch; margin: 6px 0 16px; }
 .svc-lede { font-size: 1.15rem; color: #DCE0E7; max-width: 62ch; margin-bottom: 26px; }
@@ -908,6 +910,7 @@ p { text-wrap: pretty; }
 
 @media (max-width: 640px) {
   .symptom-list, .check-list { grid-template-columns: 1fr; }
+  .svc-col { padding: 0 18px; }
 }
 
 /* ---------------- Legal page (privacy) ---------------- */
