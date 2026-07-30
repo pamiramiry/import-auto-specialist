@@ -843,11 +843,10 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
 .contact-inline-link { color: var(--blue); font-weight: 600; }
 .contact-inline-link:hover { text-decoration: underline; }
 
-.hours-table { width: 100%; max-width: 340px; border-collapse: collapse; margin-top: 4px; table-layout: fixed; }
-.hours-table th, .hours-table td { text-align: left; padding: 5px 0; font-weight: 400; color: var(--grey-text); font-size: .96rem; }
-.hours-table th { width: 42%; padding-right: 10px; white-space: nowrap; }
-.hours-table td { white-space: normal; }
-.hours-table td { width: 40%; text-align: right; }
+.hours-table { width: 100%; max-width: 340px; border-collapse: collapse; margin-top: 4px; }
+.hours-table th, .hours-table td { padding: 5px 0; font-weight: 400; color: var(--grey-text); font-size: .96rem; vertical-align: baseline; }
+.hours-table th { text-align: left; padding-right: 12px; white-space: nowrap; }
+.hours-table td { text-align: right; white-space: nowrap; }
 .hours-table tr.today { color: var(--charcoal); font-weight: 700; }
 .hours-table tr.today th, .hours-table tr.today td { color: var(--charcoal); }
 .hours-table tr.today th::after {
@@ -1182,7 +1181,10 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 
   /* ---- Mobile hero fine-tuning (layout/scrim live in the ≤1023 block above) ----
      Extra bottom padding adds ~12px of clearance between the microcopy and the sticky bar (item 5). */
-  .hero { min-height: 88vh; padding: calc(var(--header-h) + 28px) 0 56px; }   /* ~88vh so a sliver of the next section shows (mobile 5) */
+  /* svh (not vh) so the hero matches the VISIBLE viewport on mobile — vh overshoots behind the browser
+     chrome and pushed the CTA off-screen. Bottom padding clears the fixed sticky bar (~92px) so the
+     primary CTA + trust line stay visible above it. */
+  .hero { min-height: 82vh; min-height: 82svh; padding: calc(var(--header-h) + 22px) 0 calc(86px + env(safe-area-inset-bottom, 0px)); }
   .hero-copy { gap: 18px; }
   .hero h1 { font-size: 2.15rem; line-height: 1.08; color: #FFFFFF; }   /* louder than the CTA, tighter leading (mobile 4); pure white */
   .hero-sub { font-size: 1.02rem; max-width: 42ch; }
