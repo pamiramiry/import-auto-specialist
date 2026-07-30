@@ -36,7 +36,8 @@
 
   /* Layout */
   --max-w: 1200px;
-  --header-h: 74px;
+  --header-h: 74px;            /* header height at rest (used for hero pull-up + mobile-menu top) */
+  --header-h-scrolled: 58px;   /* ~22% shorter once scrolled */
   --radius: 12px;
   --radius-sm: 8px;
 
@@ -60,9 +61,15 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-h);
+  /* Anchors land clear of the SCROLLED header (that's the state the page is in after a jump). */
+  scroll-padding-top: calc(var(--header-h-scrolled) + 10px);
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;   /* belt-and-suspenders against any stray horizontal scroll (clip keeps sticky working) */
+  /* Root/canvas colour = charcoal (the hero + footer are both charcoal). Prevents the WHITE band that
+     showed above the sticky header on overscroll/rubber-band — that area is the root background, and
+     <body> is white, so without this it painted white. Both page ends are dark, so this blends. */
+  background: var(--charcoal);
 }
 
 body {
@@ -70,7 +77,9 @@ body {
   color: var(--ink);
   background: var(--white);
   line-height: 1.65;
-  overflow-x: hidden;
+  /* MUST be `clip`, not `hidden`: `overflow-x: hidden` makes <body> a scroll container and breaks
+     `position: sticky` on the header (it scrolls away). `clip` contains overflow without that. */
+  overflow-x: clip;
 }
 
 img { display: block; max-width: 100%; height: auto; }
@@ -174,18 +183,43 @@ p { text-wrap: pretty; }
 
 /* ---------------- Header / nav ---------------- */
 .site-header {
-  position: sticky; top: 0; z-index: 1000;
-  background: rgba(20, 23, 28, .92);
-  backdrop-filter: saturate(140%) blur(10px);
-  border-bottom: 1px solid var(--charcoal-line);
-  transition: box-shadow var(--trans), background var(--trans);
+  /* Sticky (not fixed) so there's no layout shift / hero-padding hack. z-50 keeps it above the
+     hero (whose layers top out at z-2); the mobile menu (z-999) still renders above it. */
+  position: sticky; top: 0; z-index: 50;
+  /* At rest (over the hero) the header is TRANSPARENT with no border, and the hero's background is
+     pulled up behind it (see the min-width:901px rule) — so header and hero share one continuous
+     background and there is no seam. Mobile overrides this to solid charcoal (≤900px). */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
 }
-.site-header.scrolled { box-shadow: 0 6px 24px rgba(0, 0, 0, .28); }
+/* Top gradient band behind the nav so it stays legible over the photo while the header is
+   transparent at rest. ~120px tall, only where the header is transparent (≥901px); fades out on
+   scroll (the solid bar takes over). See rule 44. */
+@media (min-width: 901px) {
+  .site-header::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 120px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .75), transparent);
+    pointer-events: none;
+    transition: opacity 200ms ease-out;
+  }
+  .site-header.scrolled::before { opacity: 0; }
+}
+/* Scrolled state (>80px, set by JS): SOLID dark bar with a subtle bottom border (no blur). */
+.site-header.scrolled {
+  background: rgba(20, 23, 28, .97);
+  border-bottom-color: rgba(255, 255, 255, .08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+}
 
 .header-inner {
+  position: relative; z-index: 1;   /* sit ABOVE the top gradient band (.site-header::before) */
   display: flex; align-items: center; gap: 16px;
   height: var(--header-h);
+  transition: height 200ms ease-out;
 }
+/* Slightly shorter once scrolled (transitions together with the background/shadow). */
+.site-header.scrolled .header-inner { height: var(--header-h-scrolled); }
 
 .logo { display: flex; align-items: center; gap: 12px; margin-right: auto; }
 .logo-mark {
@@ -193,21 +227,31 @@ p { text-wrap: pretty; }
   width: 42px; height: 42px; flex-shrink: 0;
   background: var(--blue); color: var(--white);
   border-radius: 9px;
+  filter: none;                 /* never inherit a filter/tint from an ancestor */
+  isolation: isolate;           /* own stacking context — can't be dimmed by the hero overlay */
 }
+/* Belt-and-suspenders: force the wrench white-on-brand-blue regardless of currentColor inheritance */
+.logo-mark svg { color: var(--white); }
+.logo-mark svg path { fill: #FFFFFF; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
 .logo-name { font-family: var(--font-head); font-weight: 700; font-size: 1.28rem; color: var(--white); letter-spacing: .01em; }
 .logo-sub { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #9AA3B2; }
 
 .main-nav > ul { display: flex; gap: 2px; }
+/* Every nav item — anchors AND the Services <button> — uses this exact box so they share one
+   baseline: inline-flex, identical padding-block and line-height, no button UA quirks. */
 .nav-link {
   position: relative;
-  display: block;
-  padding: 10px 12px;
+  display: inline-flex; align-items: center;
+  line-height: 1;
+  padding: 10px 12px; margin: 0;
+  font-family: inherit;
   color: #D4D9E2; font-weight: 500; font-size: .96rem;
   border-radius: 6px;
   white-space: nowrap;
   transition: color var(--trans), background var(--trans);
 }
+button.nav-link { background: none; border: 0; cursor: pointer; }
 .nav-link:hover { color: var(--white); background: rgba(255, 255, 255, .06); }
 .nav-link.active { color: var(--white); }
 .nav-link.active::after {
@@ -218,8 +262,9 @@ p { text-wrap: pretty; }
 /* Services dropdown (accessible disclosure: <button aria-expanded> toggled by JS;
    pointer devices also get hover-to-open as an enhancement). */
 .has-dropdown { position: relative; }
-.has-dropdown > .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: 5px; }
-.nav-caret { transition: transform var(--trans); }
+/* The Services toggle inherits the .nav-link box above, so it aligns with the anchors. The caret is
+   a fixed-size flex child that never affects the text baseline. */
+.nav-caret { width: 14px; height: 14px; flex-shrink: 0; margin-left: 4px; transition: transform var(--trans); }
 .dropdown {
   position: absolute; top: 100%; left: 0; min-width: 232px;
   list-style: none; margin: 8px 0 0; padding: 8px;
@@ -260,13 +305,35 @@ p { text-wrap: pretty; }
 .card-link--muted:hover { color: var(--blue); }
 
 .header-cta { display: flex; align-items: center; gap: 14px; }
+/* Nav phone: interactive (hover underline + colour shift), and LIGHTER weight than the filled
+   Estimate button so the button stays visually primary. */
 .header-phone {
   display: inline-flex; align-items: center; gap: 8px;
-  color: var(--white); font-weight: 600; font-size: .98rem;
+  color: #E8EDF3; font-weight: 500; font-size: .98rem;
+  text-decoration-color: rgba(255, 255, 255, .5); text-underline-offset: 3px;
   transition: color var(--trans);
 }
-.header-phone svg { color: var(--blue); }
-.header-phone:hover { color: #8FB6E6; }
+.header-phone svg { color: var(--blue); transition: color var(--trans); }
+.header-phone:hover, .header-phone:focus-visible { color: #FFFFFF; text-decoration: underline; }
+.header-phone:hover svg, .header-phone:focus-visible svg { color: #8FB6E6; }
+
+/* Mobile-only tap-to-call in the header (left of the hamburger). Hidden ≥901 (desktop nav phone
+   handles it). ≥44px tap target. Shows the number by default; collapses to icon + "Call" ≤440px. */
+.header-call-mobile { display: none; }
+.header-call-mobile .hcm-word { display: none; }
+@media (max-width: 900px) {
+  .header-call-mobile {
+    display: inline-flex; align-items: center; gap: 7px;
+    min-height: 44px; min-width: 44px; padding: 0 10px;
+    color: var(--white); font-weight: 600; font-size: .95rem; white-space: nowrap;
+  }
+  .header-call-mobile svg { color: var(--blue); flex-shrink: 0; }
+}
+@media (max-width: 500px) {
+  /* Narrow phones: collapse to icon + "Call" so the number never wraps or pushes the hamburger off. */
+  .header-call-mobile .hcm-num { display: none; }
+  .header-call-mobile .hcm-word { display: inline; }
+}
 
 /* Hamburger */
 .hamburger {
@@ -308,7 +375,6 @@ p { text-wrap: pretty; }
 /* ---------------- Placeholder / media images ---------------- */
 /* Stand-in stock photos fill these slots until real shop photos replace them — see images/README.md.
    Reserved aspect ratios prevent layout shift either way. */
-.why-media img,
 .about-media img {
   width: 100%;
   aspect-ratio: 3 / 2;
@@ -318,27 +384,24 @@ p { text-wrap: pretty; }
 }
 
 /* ---------------- Hero (split layout: copy + photo side by side) ---------------- */
+/* Full-bleed photo hero on ALL viewports (unified 2026-07-29 — desktop no longer a two-column split).
+   Three layers: .hero-media (z-0 background photo + scrim) · .hero-copy (z-2 content). The content
+   sits in the max-width .container (.hero-inner), left-aligned, vertically centred over the photo. */
 .hero {
   position: relative;
   color: var(--white);
-  padding: var(--space-6) 0;
+  display: flex;
+  align-items: center;            /* vertically centre the content column (desktop/tablet) */
+  min-height: 85vh;
+  padding: calc(var(--header-h) + 40px) 0 48px;
   overflow: hidden;
-  background:
-    radial-gradient(1100px 520px at 12% -15%, rgba(30, 90, 168, .30), transparent 60%),
-    radial-gradient(900px 620px at 112% 15%, rgba(30, 90, 168, .16), transparent 55%),
-    var(--charcoal);
+  background: var(--charcoal);    /* fallback behind the photo */
 }
-/* Soft vignette so the composition reads as one deliberate frame */
-.hero::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(120% 120% at 50% 40%, transparent 55%, rgba(0, 0, 0, .35) 100%);
-}
+/* .hero-inner = the centred .container. MUST stay position:static so the absolutely-positioned
+   .hero-media resolves to .hero (full-bleed), not to the container. */
 .hero-inner {
-  position: relative; z-index: 1;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-5);
-  align-items: center;
+  position: static;
+  display: block;
 }
 .eyebrow {
   display: inline-block;
@@ -350,52 +413,97 @@ p { text-wrap: pretty; }
   border-radius: 40px;
   margin-bottom: 22px;
 }
-.hero h1 { color: var(--white); margin-bottom: 20px; }
-.hero-sub { font-size: 1.15rem; color: #DCE0E7; max-width: 52ch; margin-bottom: var(--space-3); }
+/* One consistent vertical rhythm for the whole copy stack — a single gap, no per-child margins.
+   Capped content column (~620px) so text never runs the full viewport width; z-2 above the scrim.
+   NO text-shadow — legibility comes entirely from the .hero-overlay gradient scrim (rule 43). */
+.hero-copy {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 22px;
+  max-width: 620px;
+}
+.hero-copy > * { margin: 0; }
+.hero h1 { color: var(--white); text-wrap: balance; }
+.hero-sub { font-size: 1.15rem; color: #ECF1F7; max-width: 46ch; }   /* light body copy: ≥7:1 on the left scrim */
 
-.hero-trust {
-  display: flex; flex-wrap: wrap; gap: 12px 14px;
-  margin-bottom: var(--space-4);
-  font-size: .95rem; color: #DCE0E7;
-}
-/* Glass-morphism pills — rating badge reads premium against the dark hero */
-.hero-trust li {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 9px 16px; border-radius: 40px;
-  background: rgba(255, 255, 255, .07);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border: 1px solid rgba(255, 255, 255, .15);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .22);
-}
-.hero-trust strong { color: var(--white); font-weight: 700; }
 .trust-stars { color: var(--amber); display: inline-flex; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); }
 .trust-stars svg { width: 18px; height: 18px; }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+/* ---------------- GoogleRating (shared component: hero + credibility card) ----------------
+   One block, one look everywhere. Both usages sit on a dark background, so a single colour set
+   works. `--center` centres it inside cards; default is left-aligned for the hero. */
+/* Hero rating is now a single INLINE row (rule 50): G · stars · score · count — so it sits on one
+   line with the live status. It's a real link to the Google reviews page (count underlines on hover).
+   Padding+negative margin expands the tap target to ≥44px without shifting the visual position. */
+.google-rating { display: inline-flex; flex-direction: row; align-items: center; gap: 8px; flex-wrap: wrap; }
+.google-rating--center { align-items: center; text-align: center; }
+a.google-rating { border-radius: 8px; padding: 6px 8px; margin: -6px -8px; transition: opacity var(--trans); }
+a.google-rating:hover, a.google-rating:focus-visible { opacity: .92; }
+a.google-rating:hover .gr-count, a.google-rating:focus-visible .gr-count { text-decoration: underline; text-underline-offset: 2px; }
+.gr-g { display: inline-flex; align-items: center; }
+.gr-stars { display: inline-flex; align-items: center; gap: 2px; color: var(--amber); filter: drop-shadow(0 1px 2px rgba(0,0,0,.4)); }
+.gr-star { width: 17px; height: 17px; }
+/* Half star: a muted base star with an amber copy clipped to its left half on top */
+.gr-star--half { position: relative; display: inline-block; width: 17px; height: 17px; }
+.gr-star--half svg { position: absolute; inset: 0; width: 17px; height: 17px; }
+.gr-star--half svg:first-child { color: rgba(255, 255, 255, .30); }
+.gr-star--half svg:last-child { color: var(--amber); clip-path: inset(0 50% 0 0); }
+.gr-score { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: var(--white); line-height: 1; }
+.gr-count { font-size: .9rem; font-weight: 500; color: #d1d5db; }
 
-.hero-media { position: relative; }
+/* Meta ROW (rule 50): rating + live status on one line; wraps on narrow viewports. */
+.hero-meta { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+/* Inline live status — plain text (no pill chrome) with a STATE-DRIVEN dot (green=open, amber=closed,
+   rule 9 updated). Hidden until script.js adds .is-open/.is-closed; that class also reveals the leading
+   "·" separator, so there is never a dangling middot when JS is off. */
+.hero-status-inline { display: none; align-items: center; gap: 8px; font-size: .9rem; font-weight: 600; color: #E4E8EF; }
+.hero-status-inline.is-open, .hero-status-inline.is-closed { display: inline-flex; }
+.hero-status-inline::before { content: "·"; color: rgba(255, 255, 255, .5); font-weight: 700; }
+.hero-status-inline .status-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.hero-status-inline.is-open .status-dot { background: var(--success); box-shadow: 0 0 0 3px rgba(46, 125, 82, .20); }
+.hero-status-inline.is-closed .status-dot { background: var(--amber); box-shadow: 0 0 0 3px rgba(214, 158, 46, .18); }
+/* CTA stack: a row of buttons (primary Estimate + secondary Call on desktop), one trust line beneath. */
+.hero-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+.hero-cta-row { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 14px; }
+/* Secondary hero Call button — high-contrast GHOST so it reads clearly on the dark photo.
+   Matches the primary's height/padding/radius (both are .btn.btn-lg). */
+.btn-hero-call { background: rgba(255, 255, 255, .08); color: var(--white); border: 1.5px solid rgba(255, 255, 255, .85); }
+.btn-hero-call:hover, .btn-hero-call:focus-visible { background: #FFFFFF; color: var(--charcoal); border-color: #FFFFFF; }
+.btn-hero-call svg { color: currentColor; }
+/* ONE trust line (rule 51), three items on desktop, colour raised to #d1d5db. The third item is
+   wrapped in .hero-proof-last so it can be dropped ≤640 (two items, wraps clean — no dangling "·"). */
+.hero-proof { font-size: .85rem; color: #d1d5db; letter-spacing: .01em; max-width: 62ch; }
+/* Estimate-form lead line under the form heading */
+.form-lead { color: var(--grey-text); margin: -6px 0 18px; max-width: 46ch; }
+
+/* Full-bleed background layer (z-0). Absolute inset:0 resolves to .hero (its inner .container is
+   position:static), so the photo fills the whole hero on every viewport. isolation:isolate keeps
+   the nested overlay dimming ONLY the photo (see DESIGN-RULES rule 0). */
+.hero-media { position: absolute; inset: 0; z-index: 0; isolation: isolate; }
 .hero-media img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  /* Desktop landscape: keep the lifted vehicle + brake rotor in frame and crop the ceiling joists. */
+  object-position: center 60%;
+  /* Slight overall knock-down (§ desktop 1) so the subhead never loses legibility where it crosses
+     the car body/bumper — works together with the strengthened scrim below. */
+  filter: brightness(0.92);
 }
-/* Offset accent panel behind the photo — quiet sense of depth, not decoration for its own sake */
-.hero-media::before {
-  content: ""; position: absolute; z-index: -1;
-  inset: 20px -20px -20px 20px;
-  border-radius: var(--radius);
-  background: rgba(30, 90, 168, .16);
-}
-/* Subtle inner frame + vignette on the hero photo */
-.hero-media::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  border-radius: var(--radius);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .10),
-              inset 0 -70px 90px -40px rgba(0, 0, 0, .6);
+/* Scrim = TWO stacked full-bleed gradients (rule 43) — NO blurred box, NO backdrop-filter, NO
+   detectable edges. Horizontal protects the left-aligned copy; vertical seats the content and blends
+   top/bottom. Mobile (<1024) switches to a vertical-only scrim (stronger at the bottom). */
+.hero-overlay {
+  display: block; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    /* (desktop 5) radial vignette over the right third — mutes the bright red taillight so it
+       stops out-competing the primary CTA. Soft falloff → no visible edge (rule 52). */
+    radial-gradient(120% 135% at 100% 45%, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .40) 26%, rgba(0, 0, 0, .12) 46%, rgba(0, 0, 0, 0) 62%),
+    /* (desktop 1) strengthened horizontal scrim for the left-aligned copy: ~0.80 at the left edge,
+       clearing to transparent by ~58% so the photo still reads on the right. */
+    linear-gradient(90deg, rgba(0, 0, 0, .80) 0%, rgba(0, 0, 0, .60) 28%, rgba(0, 0, 0, .30) 46%, rgba(0, 0, 0, 0) 58%),
+    /* vertical seat: blends the top (under the nav band) and the bottom into the charcoal trust strip. */
+    linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, .10) 30%, rgba(0, 0, 0, .28) 72%, rgba(0, 0, 0, .82) 100%);
 }
 
 /* ---------------- Live open/closed status pill ---------------- */
@@ -406,48 +514,48 @@ p { text-wrap: pretty; }
   border: 1px solid transparent;
 }
 .status-pill .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+/* Status line = dot + text on one row (keeps the dot/text gap). The hero pill is single-line now. */
+.status-line { display: inline-flex; align-items: center; gap: 7px; }
 .status-pill.is-open { color: #1E5B3A; background: rgba(46, 125, 82, .12); border-color: rgba(46, 125, 82, .30); }
 .status-pill.is-open .status-dot { background: var(--success); box-shadow: 0 0 0 3px rgba(46, 125, 82, .18); }
-.status-pill.is-closed { color: #8A5A2B; background: rgba(199, 123, 40, .12); border-color: rgba(199, 123, 40, .30); }
-.status-pill.is-closed .status-dot { background: #C77B28; }
-/* Floating variant on the hero photo — dark glass chip, dot keeps the open/closed colour */
-.status-pill--hero {
-  position: absolute; left: 16px; bottom: 16px; z-index: 2;
-  color: var(--white);
-  background: rgba(20, 23, 28, .72);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border-color: rgba(255, 255, 255, .18);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, .30);
-}
-.status-pill--hero.is-open,
-.status-pill--hero.is-closed { color: var(--white); background: rgba(20, 23, 28, .72); border-color: rgba(255, 255, 255, .18); }
+/* Closed: NEUTRAL grey (never amber, never the bare word "Closed" — see script.js copy) */
+.status-pill.is-closed { color: #4A515E; background: rgba(120, 130, 145, .14); border-color: rgba(120, 130, 145, .32); }
+.status-pill.is-closed .status-dot { background: #9AA3B2; }
 /* Contact-block pill sits under the Hours label */
 .contact-list .status-pill { margin: 2px 0 8px; }
 
-@media (max-width: 640px) { .hero-media::before { display: none; } }
-
-/* ---------------- Credibility strip ---------------- */
-.credibility { background: var(--charcoal); padding: 34px 0; }
-.cred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+/* ---------------- Credibility strip (2 real cards: a review + the location) ---------------- */
+.credibility { background: var(--charcoal); padding: 28px 0 44px; }   /* pulled up so the trust row sits within the fold */
+/* 2 columns on desktop, stacked on mobile. To restore 4 columns when the scaffolded cards are
+   filled: change to `repeat(4, 1fr)` AND remove the max-width cap below. */
+.cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1040px; margin-inline: auto; }
 .cred-card {
-  text-align: center; padding: 24px 18px;
+  text-align: center; padding: 28px 24px;
   background: var(--charcoal-soft);
-  border: 1px solid var(--charcoal-line);
+  border: 1px solid var(--charcoal-line);      /* consistent subtle border on ALL cards (no blue "active" outline) */
   border-radius: var(--radius);
-  display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;  /* vertically centred */
+  min-height: 184px;
 }
-.cred-card--rating { border-color: rgba(30, 90, 168, .5); background: linear-gradient(160deg, rgba(30, 90, 168, .18), var(--charcoal-soft) 70%); }
-.cred-stars { display: inline-flex; gap: 2px; color: var(--amber); margin-bottom: 8px; }
-.star-half { color: var(--amber); }
-.cred-num { font-family: var(--font-head); font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1; }
 .cred-icon {
   display: grid; place-items: center;
-  width: 46px; height: 46px; margin-bottom: 12px;
+  width: 46px; height: 46px; margin-bottom: 14px;
   background: var(--blue-light); color: #8FB6E6;
   border-radius: 12px;
 }
-.cred-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 600; color: var(--white); line-height: 1.15; letter-spacing: .01em; }
-.cred-label { color: #9AA3B2; font-size: .9rem; margin-top: 6px; max-width: 24ch; }
+.cred-icon--google { background: rgba(255, 255, 255, .06); }   /* neutral chip so the 4-colour G reads true */
+.cred-title { font-family: var(--font-head); font-size: 1.2rem; font-weight: 600; color: var(--white); line-height: 1.15; letter-spacing: .01em; }
+.cred-label { color: #AEB6C2; font-size: .92rem; margin-top: 6px; max-width: 30ch; }   /* AA on charcoal-soft */
+
+/* Review-quote card */
+.cred-quote { color: #E8EBF0; font-size: 1.04rem; line-height: 1.5; max-width: 40ch; }
+.cred-quote-author { color: #AEB6C2; font-size: .88rem; font-weight: 600; margin-top: 12px; }
+
+/* Location card is a whole-card link */
+a.cred-card { transition: border-color var(--trans), background var(--trans), transform var(--trans); }
+a.cred-card:hover, a.cred-card:focus-visible { border-color: rgba(30, 90, 168, .55); background: #232833; transform: translateY(-2px); }
+.cred-link-cue { color: #8FB6E6; font-weight: 600; font-size: .9rem; margin-top: 12px; }
+a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { color: var(--white); }
 
 /* ---------------- Services ---------------- */
 .services { background: var(--grey-light); }
@@ -484,21 +592,6 @@ p { text-wrap: pretty; }
 }
 .card-link:hover { gap: 11px; color: var(--blue-dark); }
 
-/* Flagship service — the shop's core specialty, given a quiet highlight */
-.service-card--featured {
-  position: relative;
-  border-color: rgba(30, 90, 168, .45);
-  background: linear-gradient(180deg, var(--blue-tint) 0%, var(--white) 58%);
-}
-.service-tag {
-  position: absolute; top: 16px; right: 16px;
-  font-family: var(--font-head); font-size: .68rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: var(--blue); background: var(--white);
-  border: 1px solid rgba(30, 90, 168, .30);
-  padding: 4px 10px; border-radius: 20px;
-}
-
 .services-local {
   margin-top: var(--space-4); text-align: center;
   color: var(--grey-text); max-width: 760px; margin-left: auto; margin-right: auto;
@@ -506,15 +599,11 @@ p { text-wrap: pretty; }
 .services-local a { color: var(--blue); font-weight: 600; }
 .services-local a:hover { text-decoration: underline; }
 
-/* ---------------- Why choose us ---------------- */
-.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: center; }
-.why-text .section-label { text-align: left; }
-.why-text h2 { margin-bottom: 22px; }
+/* ---------------- Check-list (reused by the service pages' "What's Included") ---------------- */
 .why-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px; }
 .why-list li { display: flex; gap: 13px; align-items: flex-start; color: var(--ink); }
 .why-list svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; background: var(--blue-light); border-radius: 50%; padding: 3px; }
 .why-list strong { font-weight: 700; }
-.why-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 /* ---------------- About ---------------- */
 .about { background: var(--grey-light); }
@@ -817,6 +906,15 @@ p { text-wrap: pretty; }
   padding: 16px 18px; margin-top: 8px; font-weight: 500;
 }
 .form-confirm a { color: var(--success); font-weight: 700; text-decoration: underline; }
+/* Shown if the request could not be sent — same shape as the confirmation, danger tone. */
+.form-error {
+  background: rgba(192, 57, 43, .08);
+  border: 1px solid rgba(192, 57, 43, .35);
+  color: #8E2C21;
+  border-radius: var(--radius-sm);
+  padding: 16px 18px; margin-top: 8px; font-weight: 500;
+}
+.form-error a { color: var(--danger); font-weight: 700; text-decoration: underline; }
 .form-note { font-size: .85rem; color: var(--grey-text); margin-top: 14px; }
 
 /* =========================================================================
@@ -974,12 +1072,13 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   flex: 1;
   display: flex; flex-direction: column; align-items: center; gap: 3px;
   padding: 8px 4px;
-  color: #D4D9E2; font-size: .78rem; font-weight: 600;
+  color: #EDF0F4; font-size: .78rem; font-weight: 600;   /* all three labels: identical near-white */
   border-radius: 8px;
 }
-.mobile-bar-btn svg { color: var(--blue); }
-.mobile-bar-primary { background: var(--blue); color: var(--white); }
-.mobile-bar-primary svg { color: var(--white); }
+.mobile-bar-btn svg { color: var(--blue); }               /* all three icons: blue */
+/* Estimate tile matches Call/Directions exactly: no filled blue tile, no blue label — just the
+   neutral label (inherited above) + a blue icon. Keeps the hero Call button the single solid blue. */
+.mobile-bar-primary { background: transparent; }
 
 /* ---------------- Back to top ---------------- */
 .back-to-top {
@@ -1010,6 +1109,47 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 .js .process-grid > .reveal:nth-child(4n+4) { transition-delay: .18s; }
 
 /* ---------------- Responsive ---------------- */
+/* Desktop only: pull the hero's background up behind the transparent header so the two share one
+   continuous background (no seam), and keep the hero compact so the trust row sits within the fold
+   at 1440x900. Content is padded down to clear the header. */
+@media (min-width: 901px) {
+  /* Over-pull the hero 2px past the header height and add the 2px back to top padding, so under
+     fractional display scaling (125%/150%) the hero ALWAYS covers device-pixel row 0. Without the
+     over-pull, the sticky header (its own compositor layer) and the hero's pull-up can round to
+     different device rows, exposing a 1px sliver of the white <body> as a hairline under the address
+     bar. Net content position is unchanged (margin -2px + padding +2px = 0). */
+  .hero { margin-top: calc(-1 * var(--header-h) - 2px); padding: calc(var(--header-h) + 42px) 0 48px; }
+  .credibility { padding-top: 18px; }
+  /* Service / 404 heroes get the SAME desktop pull-up as the homepage hero (rule 54) so the dark hero
+     background fills behind the transparent header. Without it the white <body> shows through the
+     transparent nav as a washed-out silver band and the nav links lose contrast — the exact mismatch
+     the homepage avoids. Content position is unchanged (the +header-h in padding cancels the margin). */
+  .service-hero { margin-top: calc(-1 * var(--header-h) - 2px); padding-top: calc(var(--space-5) + var(--header-h) + 2px); }
+}
+
+/* Desktop only: lift the (vertically-centred) copy block up so it optically centres against the
+   nav bar and kills the dead gap under it. Left-alignment is untouched. */
+@media (min-width: 1024px) {
+  .hero-copy { transform: translateY(-64px); }
+}
+
+/* ---- Hero: tablet + mobile treatment (<1024px) ----
+   Copy anchored LOW (not centred), VERTICAL scrim (dark bottom → transparent top) so the photo
+   dissolves into the charcoal trust strip, portrait-friendly focal point, CTAs stacked full-width.
+   Matches the user's 1024px scrim/layout breakpoint. Finer typography/spacing is in the ≤640 block. */
+@media (max-width: 1023px) {
+  .hero { align-items: flex-end; min-height: 82vh; }
+  .hero-media img { object-position: center 42%; }   /* portrait subject; keep taillight above the copy */
+  /* Vertical-only scrim (<1024): the horizontal one does nothing useful here. Stronger at the
+     bottom where the low-anchored copy sits; light in the middle so the vehicle stays visible. */
+  .hero-overlay {
+    background: linear-gradient(180deg, rgba(9, 12, 16, .55) 0%, rgba(9, 12, 16, .20) 30%, rgba(9, 12, 16, .55) 62%, rgba(9, 12, 16, .90) 100%);
+  }
+  .hero-actions { align-self: stretch; width: 100%; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; width: 100%; }
+  .hero-cta-row .btn { width: 100%; }
+}
+
 /* Shed the least-essential header elements before the nav has to fight for space. */
 @media (max-width: 1220px) {
   .logo-sub { display: none; }
@@ -1026,27 +1166,53 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 @media (max-width: 900px) {
   .main-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
-  .why-grid, .about-grid, .contact-grid, .hero-inner { grid-template-columns: 1fr; gap: var(--space-4); }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-4); }
   .about-media { order: -1; }
-  .cred-grid { grid-template-columns: repeat(2, 1fr); }
+  /* .cred-grid stays 3-col here (base rule); it stacks to 1 column at ≤640 (see below). */
+  /* Solid charcoal (= the hero overlay's top colour) so the header→hero seam reads as one band,
+     rather than looking lighter than the hero because its translucency reveals the white body. */
+  .site-header { background: var(--charcoal); }
 }
 
 @media (max-width: 640px) {
-  :root { --header-h: 64px; --space-6: 64px; --space-5: 48px; }
-  .container { padding: 0 18px; }
-  .hero { padding: 8px 0 40px; }
+  :root { --header-h: 64px; --header-h-scrolled: 52px; --space-6: 64px; --space-5: 48px; }
+  .container { padding: 0 22px; }   /* wider side gutters so the headline doesn't touch the edges (item 5) */
+  /* Service-page heroes still use .eyebrow (the homepage hero no longer does) — keep its mobile sizing. */
   .eyebrow { font-size: .78rem; letter-spacing: .09em; padding: 5px 12px; margin-bottom: 14px; white-space: nowrap; }
-  .hero h1 { font-size: 2.15rem; margin-bottom: 14px; }
-  .hero-sub { font-size: 1.02rem; margin-bottom: var(--space-2); }
-  .hero-trust { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: var(--space-3); }
-  .hero-actions .btn, .cta-actions .btn, .why-actions .btn, .about-actions .btn { width: 100%; }
-  .hero-actions, .cta-actions { flex-direction: column; }
+
+  /* ---- Mobile hero fine-tuning (layout/scrim live in the ≤1023 block above) ----
+     Extra bottom padding adds ~12px of clearance between the microcopy and the sticky bar (item 5). */
+  .hero { min-height: 88vh; padding: calc(var(--header-h) + 28px) 0 56px; }   /* ~88vh so a sliver of the next section shows (mobile 5) */
+  .hero-copy { gap: 18px; }
+  .hero h1 { font-size: 2.15rem; line-height: 1.08; color: #FFFFFF; }   /* louder than the CTA, tighter leading (mobile 4); pure white */
+  .hero-sub { font-size: 1.02rem; max-width: 42ch; }
+  .hero-meta { gap: 12px; }
+  .hero-actions { gap: 10px; }
+  /* Mobile DROPS the in-hero Call button (mobile 2): calling is already covered by the header phone
+     number and the sticky bottom bar. Only the primary Estimate button remains in the hero. */
+  .btn-hero-call { display: none; }
+  /* Two trust items on mobile (mobile 1): hide the third so the line wraps cleanly with no dangling "·". */
+  .hero-proof-last { display: none; }
+  /* Portrait crop: bias toward the lifted vehicle / brake rotor so it never lands on blank body panel
+     (mobile 3). object-fit stays cover — nothing cropped into the file. */
+  .hero-media img { object-position: center 55%; }
+  /* The rating + status wrap onto separate lines here, so the leading "·" before the status dot is
+     redundant — drop it (the coloured dot already delimits the status). */
+  .hero-status-inline::before { display: none; }
+
+  /* Trust strip sits immediately below the hero; keep the gap consistent with the hero rhythm. */
+  .credibility { padding: 22px 0 28px; }
+  .cred-grid { grid-template-columns: 1fr; max-width: none; gap: 12px; }   /* stacked on mobile */
+  .cred-card { min-height: 0; padding: 24px 22px; }
+
+  .cta-actions .btn, .about-actions .btn { width: 100%; }
+  .cta-actions { flex-direction: column; }
   .services-grid, .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .contact-form-wrap { padding: 24px 20px; }
   .footer-grid { grid-template-columns: 1fr; gap: 30px; }
   .footer-brand .btn { white-space: normal; max-width: 100%; text-align: center; }
-  .mobile-bar { display: flex; padding: 5px 6px calc(5px + env(safe-area-inset-bottom, 0px)); }
+  .mobile-bar { display: flex; padding: 6px 6px calc(8px + env(safe-area-inset-bottom, 0px)); }   /* extra bottom pad so labels aren't clipped (mobile 6) */
   .mobile-bar-btn { padding: 6px 4px; font-size: .74rem; }
   .mobile-bar-btn svg { width: 18px; height: 18px; }
   /* keep sticky bar (incl. iPhone safe-area) from covering the last content / back-to-top */

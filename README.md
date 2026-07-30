@@ -31,7 +31,7 @@ npx serve .
 ## Before launch — replace the placeholders
 
 - **Domain:** swap `https://www.example.com/` in `index.html` (canonical + Open Graph + Twitter), `robots.txt`, and `sitemap.xml` for the real domain.
-- **Appointment form:** replace `YOUR_FORM_ID` in the form `action` with a real [Formspree](https://formspree.io) form ID (or another backend) so submissions are delivered. Until then the form validates and shows a confirmation but nothing is sent.
+- **Estimate form:** the form is wired to [Web3Forms](https://web3forms.com) and submits via AJAX. Get a free access key (enter the destination email at web3forms.com) and replace `YOUR_WEB3FORMS_ACCESS_KEY` in the hidden `access_key` field in `index.html`. Until a real key is set, the form validates and shows a confirmation but nothing is sent. To change the destination email later, swap in a new key for the new address.
 - **Photos:** the hero/why/about images are CC-licensed stand-ins (credited in the footer) — replace with real shop photos per `images/README.md`.
 - **Social image:** add a 1200×630 `images/og-image.jpg` and reference it (currently a documented TODO).
 

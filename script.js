@@ -80,10 +80,19 @@
   /* ---------------- Sticky header shadow ---------------- */
   var header = document.getElementById('site-header');
   if (header) {
-    var onHeaderScroll = function () {
-      header.classList.toggle('scrolled', window.scrollY > 20);
+    // rAF-throttled: the scroll listener only schedules a frame; state is applied once per frame.
+    var headerTicking = false;
+    var applyHeaderState = function () {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+      headerTicking = false;
     };
-    onHeaderScroll();
+    var onHeaderScroll = function () {
+      if (!headerTicking) {
+        headerTicking = true;
+        window.requestAnimationFrame(applyHeaderState);
+      }
+    };
+    applyHeaderState();
     window.addEventListener('scroll', onHeaderScroll, { passive: true });
   }
 
@@ -198,11 +207,18 @@
       minsNow = now.getHours() * 60 + now.getMinutes();
     }
 
+    // "5 PM" style (drops :00) for the closing time; "9:00 AM" style (keeps minutes) for opening.
     var fmtTime = function (mins) {
       var h = Math.floor(mins / 60), m = mins % 60;
       var ampm = h >= 12 ? 'PM' : 'AM';
       var h12 = h % 12; if (h12 === 0) h12 = 12;
       return h12 + (m ? ':' + (m < 10 ? '0' + m : m) : '') + ' ' + ampm;
+    };
+    var fmtOpen = function (mins) {
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var ampm = h >= 12 ? 'PM' : 'AM';
+      var h12 = h % 12; if (h12 === 0) h12 = 12;
+      return h12 + ':' + (m < 10 ? '0' + m : m) + ' ' + ampm;
     };
 
     var isWeekday = function (d) { return d >= 1 && d <= 5; };
@@ -211,24 +227,28 @@
     var label, cls;
     if (isOpen) {
       cls = 'is-open';
-      label = 'Open now · until ' + fmtTime(CLOSE_MIN);
+      label = 'Open now · closes ' + fmtTime(CLOSE_MIN);
     } else {
+      // Never show the bare word "Closed": lead with when the shop next opens.
       cls = 'is-closed';
-      // Find the next day the shop opens
       var when;
       if (isWeekday(wd) && minsNow < OPEN_MIN) {
-        when = 'today at ' + fmtTime(OPEN_MIN);
+        when = 'today at ' + fmtOpen(OPEN_MIN);
       } else {
         var offset = 1;
         while (!isWeekday((wd + offset) % 7)) { offset++; }
-        when = (offset === 1 ? 'tomorrow' : dayNames[(wd + offset) % 7]) + ' at ' + fmtTime(OPEN_MIN);
+        when = dayNames[(wd + offset) % 7] + ' at ' + fmtOpen(OPEN_MIN);
       }
-      label = 'Closed · opens ' + when;
+      label = 'Opens ' + when;
     }
 
     statusPills.forEach(function (pill) {
+      pill.classList.remove('is-open', 'is-closed');
       pill.classList.add(cls);
-      pill.innerHTML = '<span class="status-dot" aria-hidden="true"></span><span class="status-text"></span>';
+      // Single-line pill everywhere: dot + status text (the estimate CTA is the hero button now).
+      pill.innerHTML =
+        '<span class="status-line"><span class="status-dot" aria-hidden="true"></span>' +
+        '<span class="status-text"></span></span>';
       pill.querySelector('.status-text').textContent = label;
       pill.hidden = false;
     });
@@ -315,20 +335,24 @@
     }, { passive: true });
   }
 
-  /* ---------------- Appointment form validation ---------------- */
+  /* ---------------- Estimate form: validate + send via Web3Forms ---------------- */
   /*
-     NOTE: This form posts to a Formspree action with a placeholder ID
-     (YOUR_FORM_ID in index.html). Until a real form ID (or other backend /
-     email API) is connected, submissions are NOT delivered anywhere. The code
-     below validates the fields client-side and shows a confirmation message,
-     but it does not guarantee the request reached the shop. We call
-     preventDefault() so nothing is falsely "sent" while the placeholder ID is
-     in place. Once a real Formspree ID is set, remove the preventDefault()
-     block marked below so the browser submits to Formspree normally.
+     The form is delivered by Web3Forms (https://web3forms.com). We validate
+     client-side, then submit via fetch (AJAX) so the visitor stays on the page
+     and sees the on-page confirmation. The plain action= on the <form> is a
+     no-JS fallback (a normal POST to the same endpoint).
+
+     DEV GUARD: while the hidden access_key is still the placeholder
+     (YOUR_WEB3FORMS_ACCESS_KEY in index.html), we DON'T hit the network — we
+     just show the confirmation — so testing before the real key is set doesn't
+     produce confusing failures. Paste a real key and it sends for real.
   */
-  var form = document.getElementById('appointment-form');
+  var form = document.getElementById('estimate-form');
   if (form) {
     var confirmEl = document.getElementById('form-confirm');
+    var errorEl = document.getElementById('form-error');
+    var ACCESS_KEY_PLACEHOLDER = 'YOUR_WEB3FORMS_ACCESS_KEY';
+    var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
     var setError = function (fieldId, message) {
       var input = document.getElementById(fieldId);
@@ -357,47 +381,82 @@
       else if (phoneDigits.length < 10) { setError('phone', 'Please enter a valid phone number.'); ok = false; firstInvalid = firstInvalid || phone; }
       else setError('phone', '');
 
-      var email = document.getElementById('email');
-      var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email.value.trim()) { setError('email', 'Please enter your email.'); ok = false; firstInvalid = firstInvalid || email; }
-      else if (!emailRe.test(email.value.trim())) { setError('email', 'Please enter a valid email address.'); ok = false; firstInvalid = firstInvalid || email; }
-      else setError('email', '');
+      var vehicle = document.getElementById('vehicle');
+      if (!vehicle.value.trim()) { setError('vehicle', 'Please add your vehicle (year, make & model).'); ok = false; firstInvalid = firstInvalid || vehicle; }
+      else setError('vehicle', '');
 
       var message = document.getElementById('message');
-      if (!message.value.trim()) { setError('message', 'Please add a short message.'); ok = false; firstInvalid = firstInvalid || message; }
+      if (!message.value.trim()) { setError('message', 'Please describe the issue.'); ok = false; firstInvalid = firstInvalid || message; }
       else setError('message', '');
 
       if (firstInvalid) firstInvalid.focus();
       return ok;
     };
 
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    // Reveal the confirmation, hide the error, reset the form, move focus to the message.
+    var showConfirm = function () {
+      if (errorEl) errorEl.hidden = true;
+      form.reset();
+      if (confirmEl) {
+        confirmEl.hidden = false;
+        confirmEl.focus && confirmEl.focus();
+        confirmEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+      }
+    };
+
+    // Reveal the error (send failed), hide any stale confirmation.
+    var showError = function () {
+      if (confirmEl) confirmEl.hidden = true;
+      if (errorEl) {
+        errorEl.hidden = false;
+        errorEl.focus && errorEl.focus();
+        errorEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
+      }
+    };
+
     form.addEventListener('submit', function (e) {
+      e.preventDefault();               // always AJAX; the action= is only a no-JS fallback
+
       if (!validate()) {
-        e.preventDefault();
         if (confirmEl) confirmEl.hidden = true;
+        if (errorEl) errorEl.hidden = true;
         return;
       }
 
-      /* ---- PLACEHOLDER GUARD ----
-         Remove this block once a real Formspree ID replaces YOUR_FORM_ID so the
-         browser actually submits the form. While the placeholder is present we
-         stop the network request and show a confirmation instead of pretending
-         the message was delivered. */
-      if (form.getAttribute('action').indexOf('YOUR_FORM_ID') !== -1) {
-        e.preventDefault();
-        if (confirmEl) {
-          confirmEl.hidden = false;
-          confirmEl.focus && confirmEl.focus();
-          confirmEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'center' });
-        }
-        form.reset();
+      // DEV GUARD: no real key yet → confirm without sending (see note above).
+      var keyField = form.querySelector('input[name="access_key"]');
+      if (!keyField || keyField.value === ACCESS_KEY_PLACEHOLDER) {
+        showConfirm();
+        return;
       }
-      /* If a real action ID is set, the code above is skipped and the form
-         submits to Formspree normally (which then handles the confirmation). */
+
+      // No fetch (ancient browser)? Fall back to a native POST to the action= endpoint.
+      if (typeof fetch !== 'function') { form.submit(); return; }
+
+      // Real send: disable the button, POST the form to Web3Forms, handle the JSON result.
+      var btnLabel = submitBtn ? submitBtn.textContent : '';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending…'; }
+
+      fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      })
+        .then(function (res) { return res.json().catch(function () { return {}; }); })
+        .then(function (data) {
+          if (data && data.success) { showConfirm(); }
+          else { showError(); }
+        })
+        .catch(function () { showError(); })
+        .then(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnLabel; }
+        });
     });
 
     // Clear a field's error as the user corrects it
-    ['name', 'phone', 'email', 'message'].forEach(function (id) {
+    ['name', 'phone', 'vehicle', 'message'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.addEventListener('input', function () {
         var errEl = document.getElementById('err-' + id);
