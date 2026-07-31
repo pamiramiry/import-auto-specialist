@@ -807,28 +807,29 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
 .cta-band .btn-blue:hover { background: #F1F5FB; color: var(--blue-dark); }
 
 /* ---------------- FAQ ---------------- */
+/* Native <details>/<summary> accordion — answers live in the DOM and work with JS disabled. */
 .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
 .faq-item { border: 1px solid var(--grey-mid); border-radius: var(--radius); background: var(--white); overflow: hidden; }
+/* <summary> is the click target; hide the native disclosure marker (Firefox uses list-style, WebKit the pseudo) */
+.faq-item > summary { display: block; list-style: none; cursor: pointer; padding: 20px 22px; transition: background var(--trans); }
+.faq-item > summary::-webkit-details-marker { display: none; }
+.faq-item > summary:hover { background: var(--blue-light); }
+.faq-item > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+/* the question heading fills the summary row: text ↔ chevron */
 .faq-question {
-  width: 100%; text-align: left;
+  margin: 0; line-height: 1.35;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 20px 22px;
   font-family: var(--font-body); font-weight: 600; font-size: 1.06rem;
   color: var(--charcoal);
-  transition: background var(--trans);
 }
-.faq-question:hover { background: var(--blue-light); }
 .faq-chevron { color: var(--blue); flex-shrink: 0; transition: transform var(--trans); }
-.faq-question[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
-.faq-answer {
-  overflow: hidden;
-  max-height: 0;
-  padding: 0 22px;
-  color: var(--grey-text);
-  transition: max-height .32s var(--ease), padding-bottom .32s var(--ease);
-}
-.faq-answer.open { max-height: 480px; padding-bottom: 20px; }
+.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+.faq-answer { padding: 0 22px 20px; color: var(--grey-text); }
 .faq-answer p { max-width: 68ch; }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-item[open] > .faq-answer { animation: faqReveal .28s var(--ease); }
+}
+@keyframes faqReveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
 /* ---------------- Contact / form ---------------- */
 .contact { background: var(--grey-light); }
@@ -1236,5 +1237,4 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 
 /* ---------------- No-JS fallback ---------------- */
 .no-js .reveal { opacity: 1; transform: none; }
-.no-js .faq-answer { display: block !important; max-height: none; padding-bottom: 20px; }
 .no-js .back-to-top { display: none; }

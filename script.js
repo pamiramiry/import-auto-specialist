@@ -137,32 +137,9 @@
     sections.forEach(function (s) { navObserver.observe(s.section); });
   }
 
-  /* ---------------- FAQ accordion (single open, animated) ---------------- */
-  var faqButtons = document.querySelectorAll('.faq-question');
-  // Drop the no-JS `hidden` fallback so panels can animate open/closed via CSS
-  // (styles.css collapses them with max-height; JS just toggles the .open class).
-  faqButtons.forEach(function (btn) {
-    var p = document.getElementById(btn.getAttribute('aria-controls'));
-    if (p) { p.hidden = false; p.classList.remove('open'); }
-  });
-  faqButtons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      var panel = document.getElementById(btn.getAttribute('aria-controls'));
-
-      // Close others
-      faqButtons.forEach(function (other) {
-        if (other !== btn) {
-          other.setAttribute('aria-expanded', 'false');
-          var op = document.getElementById(other.getAttribute('aria-controls'));
-          if (op) op.classList.remove('open');
-        }
-      });
-
-      btn.setAttribute('aria-expanded', String(!expanded));
-      if (panel) panel.classList.toggle('open', !expanded);
-    });
-  });
+  /* FAQ uses native <details>/<summary> (see index.html + styles.css) — no JS needed.
+     The `name` attribute gives a single-open accordion in modern browsers, and it degrades to
+     independent toggles elsewhere. Nothing to wire up here. */
 
   /* ---------------- Today's hours highlight ---------------- */
   // Uses the browser's local day. The shop is in America/Toronto; for a precise

@@ -13,7 +13,7 @@
     {{LEDE}}         one-line subhead
     {{SERVICE_TYPE}} schema.org serviceType, e.g. "Oil Change"
     {{OG_TITLE}}     may be longer than the <title>
-    {{FAQ_PREFIX}}   unique id prefix for this page's FAQ buttons, e.g. "of"
+    {{FAQ_PREFIX}}   (no longer needed — native <details> FAQ needs no ids/aria)
   Fill the body sections (symptoms optional on standard pages), the checklist,
   ONE matched testimonial, the mini-FAQ (mirror it in the FAQ JSON-LD), and the
   two related-service cards. Chrome (header/footer/mobile-bar) is copied verbatim
@@ -170,7 +170,10 @@
     </section>
 
     <!-- ===== TESTIMONIAL: one matched review (see index.html reviews for verbatim quotes) ===== -->
-    <!-- ===== MINI-FAQ: <section class="faq section" style="background:var(--grey-light)"> with .faq-question buttons; ids use {{FAQ_PREFIX}}-q1/a1 … mirror the FAQ JSON-LD ===== -->
+    <!-- ===== MINI-FAQ: <section class="faq section" style="background:var(--grey-light)">, then a
+         .faq-list of NATIVE <details class="faq-item" name="faq"><summary><h3 class="faq-question">Q
+         <svg class="faq-chevron">…</svg></h3></summary><div class="faq-answer"><p>A</p></div></details>
+         items (no buttons/JS/hidden — answers stay in the served HTML). Mirror them in the FAQ JSON-LD. ===== -->
     <!-- ===== TRUST STRIP: copy the .trust-strip block verbatim from any built service page ===== -->
     <!-- ===== FINAL CTA: .cta-band with Call + Get Directions ===== -->
     <!-- ===== RELATED: two .related-card links to sibling service pages ===== -->
