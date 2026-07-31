@@ -433,3 +433,13 @@ shared markup block + CSS class, not a JS component.
     the lifted vehicle / brake rotor, not a blank body panel (object-fit:cover only — nothing baked into
     the file); scroll cue removed (rule 48). Sticky bar bottom padding bumped to
     `calc(8px + env(safe-area-inset-bottom))` so the labels aren't clipped.
+
+## No warranty language — anywhere on the site (2026-07-30) — LOCKED
+56. **NEVER mention "warranty" (or warrantied/guaranteed-work) anywhere** — homepage, service pages,
+    FAQs, JSON-LD, meta, trust cards, or scaffolds. Owner's explicit instruction: **some parts aren't
+    warrantied and he doesn't want customers pointing it out.** This is a business fact, not a style
+    choice. Removed 2026-07-30: the hero proof-line "Warranty on parts and labour" item (→ "Import &
+    domestic"), the oil-change "your warranty stays intact" line, the commented credibility-scaffold
+    warranty card, and the auto-body placeholder's "paint/refinish warranty" mention. Do NOT reintroduce
+    it when filling other placeholders (the certifications/trust-card TODOs must stay warranty-free). The
+    only remaining "warranty" strings are code comments that enforce this rule.
