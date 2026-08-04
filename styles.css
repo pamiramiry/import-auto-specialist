@@ -607,7 +607,12 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
 
 /* ---------------- About ---------------- */
 .about { background: var(--grey-light); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: center; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-5); row-gap: 26px; align-items: start; }
+/* Left column spans both rows; photo + credentials stack in the right column so the two columns
+   balance in height (keeps the About section compact). Reset to auto when stacked (≤900, below). */
+.about-text  { grid-column: 1; grid-row: 1 / span 2; }
+.about-media { grid-column: 2; grid-row: 1; }
+.about-creds { grid-column: 2; grid-row: 2; margin-top: 0; }
 .about-text .section-label { text-align: left; }
 .about-text h2 { margin-bottom: 18px; }
 .about-text p { color: var(--grey-text); margin-bottom: 16px; }
@@ -642,8 +647,7 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
   .about-stat-num { font-size: 1.3rem; }
 }
 
-/* About credentials (owner's confirmed certifications) */
-.about-creds { margin-top: 30px; }
+/* About credentials (owner's confirmed certifications) — placement handled by .about-grid above */
 .about-creds-title {
   font-family: var(--font-head); text-transform: uppercase;
   letter-spacing: .16em; font-weight: 600; font-size: .8rem;
@@ -1175,6 +1179,9 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   .main-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+  /* Clear the desktop row/column placement so items flow in one column; photo first, then text,
+     then credentials at the bottom. */
+  .about-text, .about-media, .about-creds { grid-column: auto; grid-row: auto; }
   .about-media { order: -1; }
   /* .cred-grid stays 3-col here (base rule); it stacks to 1 column at ≤640 (see below). */
   /* Solid charcoal (= the hero overlay's top colour) so the header→hero seam reads as one band,
