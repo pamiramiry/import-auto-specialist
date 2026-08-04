@@ -382,6 +382,11 @@ button.nav-link { background: none; border: 0; cursor: pointer; }
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
 }
+/* Mobile storefront photo is portrait (about-shopfront-mobile.webp ~4:5) — let it show
+   near-uncropped instead of being squeezed into the desktop 3:2 landscape box. */
+@media (max-width: 640px) {
+  .about-media img { aspect-ratio: 4 / 5; }
+}
 
 /* ---------------- Hero (split layout: copy + photo side by side) ---------------- */
 /* Full-bleed photo hero on ALL viewports (unified 2026-07-29 — desktop no longer a two-column split).
@@ -640,6 +645,14 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
   .about-stats { grid-template-columns: 1fr; gap: 10px; }
   .about-stat { flex-direction: row; align-items: baseline; gap: 12px; }
   .about-stat-num { font-size: 1.3rem; }
+}
+
+/* About credentials (owner's confirmed certifications) */
+.about-creds { margin-top: 30px; }
+.about-creds-title {
+  font-family: var(--font-head); text-transform: uppercase;
+  letter-spacing: .16em; font-weight: 600; font-size: .8rem;
+  color: var(--charcoal); margin-bottom: 14px;
 }
 
 /* ---------------- Process (dark feature section) ---------------- */

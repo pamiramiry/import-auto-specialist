@@ -353,9 +353,9 @@
                  same day") is wrapped so it can be hidden ≤640 — mobile shows two items and wraps
                  cleanly with no dangling "·". "Serving Scarborough" (already in the subhead) and
                  "Free estimates" (already the button label) were removed to avoid repetition.
-                 TODO: confirm with client — any certifications (e.g. "310S Licensed"), then update.
+                 "310S Licensed" = the owner's confirmed Ontario Certificate of Qualification.
                  NO warranty language anywhere on the site — owner's rule (some parts aren't warrantied). -->
-            <p class="hero-proof">Licensed technicians · Import &amp; domestic<span class="hero-proof-last"> · Most repairs same day</span></p>
+            <p class="hero-proof">310S Licensed · Import &amp; domestic<span class="hero-proof-last"> · Most repairs same day</span></p>
           </div>
         </div>
 
@@ -584,15 +584,30 @@
             </li>
           </ul>
 
+          <div class="about-creds">
+            <p class="about-creds-title">Certified &amp; Qualified</p>
+            <ul class="check-list">
+              <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span>Licensed <strong>310S</strong> Technician — Ontario Certificate of Qualification</span></li>
+              <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span>Centennial College apprenticeship, 2003</span></li>
+              <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span>Mercedes-Benz engine training — WORLDPAC Technical Training Institute</span></li>
+              <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span>HRAI-certified refrigerant handling</span></li>
+              <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span>Ontario Vehicle Storage Certificate &amp; Toronto Municipal Licensing</span></li>
+            </ul>
+          </div>
+
           <div class="about-actions">
             <a href="tel:+14169132394" class="btn btn-blue btn-lg">Call (416) 913-2394</a>
             <a href="#estimate" class="btn btn-outline-dark btn-lg">Get a Free Estimate</a>
           </div>
         </div>
         <div class="about-media reveal">
-          <!-- Stand-in stock photo (CC-licensed, see images/README.md). Swap for a real photo of
-               this shop's own technicians when available. -->
-          <img src="images/technician-diagnostic.jpg" alt="Technician running a computerized diagnostic on a vehicle's engine" width="1200" height="800" loading="lazy">
+          <!-- Real storefront photos of the shop on Warden Ave. Breakpoint-swapped: portrait on
+               mobile (≤640), landscape on desktop. The <img> is the sole styled element
+               (.about-media img); mobile aspect-ratio override in styles.css keeps the portrait uncropped. -->
+          <picture>
+            <source media="(max-width: 640px)" srcset="images/about-shopfront-mobile.webp" width="669" height="836">
+            <img src="images/about-shopfront-desktop.webp" alt="Import Auto Specialist storefront on Warden Ave, with the shop sign and an open service bay" width="941" height="706" loading="lazy">
+          </picture>
         </div>
       </div>
     </section>

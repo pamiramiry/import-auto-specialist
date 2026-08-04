@@ -395,7 +395,9 @@ shared markup block + CSS class, not a JS component.
     wrapped in `.hero-proof-last`, hidden ≤640 so **mobile shows two items and wraps cleanly (no dangling
     "·")** — this fixes the mobile truncation bug. "Serving Scarborough" (already in the subhead) and
     "Free estimates" (already the button label) were removed to kill repetition. The separate
-    `.hero-microcopy` element is deleted. TODO comment (confirm warranty term / certs with client) stays.
+    `.hero-microcopy` element is deleted. UPDATE 2026-08-04: line now reads **"310S Licensed · Import &
+    domestic · Most repairs same day"** (warranty item removed per rule 56; cert confirmed per rule 57 —
+    the cert TODO is resolved and its comment removed).
 52. **Strengthened scrim + right-third vignette + image brightness (desktop scrim, supersedes rule 40's
     desktop gradient).** `.hero-overlay` desktop background is now THREE layers, all `rgba(0,0,0,…)`:
     (a) a **radial vignette over the right third** — `radial-gradient(120% 135% at 100% 45%, .72 → .40 @26%
@@ -443,3 +445,23 @@ shared markup block + CSS class, not a JS component.
     warranty card, and the auto-body placeholder's "paint/refinish warranty" mention. Do NOT reintroduce
     it when filling other placeholders (the certifications/trust-card TODOs must stay warranty-free). The
     only remaining "warranty" strings are code comments that enforce this rule.
+
+## Owner's confirmed credentials + placement (2026-08-04) — LOCKED
+57. **Six credentials confirmed by the owner. Present them accurately, mapped to the service each one
+    backs — not dumped in one list.** Placements built 2026-08-04:
+    - **Licensed 310S Technician (Ontario Certificate of Qualification)** → hero trust line now reads
+      **"310S Licensed"** (replaced generic "Licensed technicians"; the rule-51 cert TODO is now
+      RESOLVED) + first item in the About `.about-creds` check-list.
+    - **Centennial College apprenticeship, 2003** → About credentials list (backs "since 2004 / 20+ yrs").
+    - **Mercedes-Benz engine training (WORLDPAC Technical Training Institute)** → About list + engine-repair
+      body prose.
+    - **HRAI-certified refrigerant handling** → About list + heating-air-conditioning body prose.
+    - **Ontario Vehicle Storage Certificate + Toronto Municipal Licensing** → About list + auto-body body prose.
+    - **First Aid & CPR Level C** → intentionally OMITTED (not a repair-competence signal; user's call).
+    - **PHRASING GUARDRAIL (LOCKED):** the Benz item is always **"Mercedes-Benz engine training"** — NEVER
+      "Mercedes-Benz certified / factory-authorized / dealer." WORLDPAC training ≠ factory certification;
+      over-claiming there is a real perception/liability risk.
+    - Credentials copy lives in **About + body prose only, never inside a FAQ answer**, so each page's
+      `FAQPage` JSON-LD stays mirrored word-for-word without schema edits.
+    - New markup: `.about-creds` block reusing the existing `.check-list` component; new CSS
+      `.about-creds` / `.about-creds-title` only.
