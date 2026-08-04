@@ -382,11 +382,6 @@ button.nav-link { background: none; border: 0; cursor: pointer; }
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
 }
-/* Mobile storefront photo is portrait (about-shopfront-mobile.webp ~4:5) — let it show
-   near-uncropped instead of being squeezed into the desktop 3:2 landscape box. */
-@media (max-width: 640px) {
-  .about-media img { aspect-ratio: 4 / 5; }
-}
 
 /* ---------------- Hero (split layout: copy + photo side by side) ---------------- */
 /* Full-bleed photo hero on ALL viewports (unified 2026-07-29 — desktop no longer a two-column split).
