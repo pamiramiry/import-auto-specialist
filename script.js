@@ -441,4 +441,34 @@
       });
     });
   }
+
+  /* ---------------- Phone-click analytics (GA4) ---------------- */
+  /*
+     One delegated listener sends a `phone_call_click` GA4 event whenever any
+     `a[href^="tel:"]` is clicked, tagged with a `button_location` so we can
+     tell where the call started. Detection is by DOM ancestry (not per-link
+     markup) so it covers every tel: link — current and future — without
+     touching the HTML. We never preventDefault or delay, so the call still
+     dials exactly as before; gtag queues the hit even if analytics.js is still
+     loading, and GA4 sends it via sendBeacon so navigation doesn't drop it.
+  */
+  var phoneClickLocation = function (link) {
+    if (link.closest('#mobile-bar, .mobile-bar')) return 'mobile_sticky';
+    if (link.closest('#site-header, .site-header')) return 'header';
+    if (link.closest('.hero, .service-hero')) return 'hero';
+    if (link.closest('#contact, .contact')) return 'contact';
+    if (link.closest('.cta-band')) return 'cta_band';
+    if (link.closest('footer, .site-footer')) return 'footer';
+    return 'other';
+  };
+
+  document.addEventListener('click', function (e) {
+    if (!e.target || typeof e.target.closest !== 'function') return;
+    var link = e.target.closest('a[href^="tel:"]');
+    if (!link) return;
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'phone_call_click', {
+      button_location: phoneClickLocation(link)
+    });
+  }, true);
 })();
