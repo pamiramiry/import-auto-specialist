@@ -363,6 +363,14 @@ button.nav-link { background: none; border: 0; cursor: pointer; }
   transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
 }
 .mobile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+/* The sticky header shrinks to --header-h-scrolled once the page is scrolled.
+   The panel is pinned to the header's bottom, so its top must follow — otherwise
+   a strip of page content shows through the gap between the shrunk header and the
+   panel when the menu is opened mid-page. */
+.site-header.scrolled ~ .mobile-menu {
+  top: var(--header-h-scrolled);
+  max-height: calc(100vh - var(--header-h-scrolled));
+}
 .mobile-menu ul { display: flex; flex-direction: column; }
 .mobile-link {
   display: block; padding: 14px 6px;
