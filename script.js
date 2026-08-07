@@ -18,6 +18,7 @@
     hamburger.setAttribute('aria-label', 'Open menu');
     mobileMenu.classList.remove('open');
     mobileMenu.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('menu-open');
     document.body.style.overflow = '';
   }
 
@@ -31,6 +32,7 @@
         hamburger.setAttribute('aria-label', 'Close menu');
         mobileMenu.classList.add('open');
         mobileMenu.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('menu-open');
         document.body.style.overflow = 'hidden';
       }
     });

@@ -351,25 +351,27 @@ button.nav-link { background: none; border: 0; cursor: pointer; }
 .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* ---------------- Mobile menu panel ---------------- */
+/* Full-screen overlay: the charcoal covers the WHOLE viewport (inset:0), so no page
+   content can ever show through — regardless of scroll position or the header's
+   height. Links are padded down below the header so they clear the pinned bar. */
 .mobile-menu {
-  position: fixed; top: var(--header-h); left: 0; right: 0; z-index: 999;
+  position: fixed; inset: 0; z-index: 999;
   background: var(--charcoal);
-  border-bottom: 1px solid var(--charcoal-line);
-  padding: 16px 24px 28px;
+  padding: calc(var(--header-h) + 18px) 24px calc(28px + env(safe-area-inset-bottom, 0px));
   transform: translateY(-12px);
   opacity: 0; visibility: hidden;
-  max-height: calc(100vh - var(--header-h));
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
 }
 .mobile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
-/* The sticky header shrinks to --header-h-scrolled once the page is scrolled.
-   The panel is pinned to the header's bottom, so its top must follow — otherwise
-   a strip of page content shows through the gap between the shrunk header and the
-   panel when the menu is opened mid-page. */
-.site-header.scrolled ~ .mobile-menu {
-  top: var(--header-h-scrolled);
-  max-height: calc(100vh - var(--header-h-scrolled));
+/* While the menu is open, pin the header ABOVE the overlay (z-index 1000 > 999) and
+   force position:fixed. The header is normally position:sticky, which can un-pin on
+   iOS once the menu's scroll-lock engages — dropping the bar out of view and letting
+   page content show in the strip above the panel. Fixing it guarantees the logo and
+   the close (X) button stay put at the top. */
+body.menu-open .site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
 }
 .mobile-menu ul { display: flex; flex-direction: column; }
 .mobile-link {
