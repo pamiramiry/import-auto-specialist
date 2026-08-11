@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <!-- Swap the no-js class for js as early as possible so JS-driven styles apply without a flash -->
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
 
   <!-- ============ PRIMARY SEO ============ -->
   <title>Import Auto Specialist | Auto Repair in Scarborough, ON</title>
@@ -53,15 +56,21 @@
 
   <!-- ============ PERFORMANCE ============ -->
   <!-- Preload the above-the-fold hero image so it paints as early as possible (better LCP) -->
-  <link rel="preload" as="image" href="images/hero-import-auto.webp" media="(min-width: 641px)" fetchpriority="high">
+  <!-- imagesrcset/imagesizes must mirror the <img> below, or the preload fetches the full-size
+       original and the srcset then picks a different width — two downloads for one image. -->
+  <link rel="preload" as="image" href="images/hero-import-auto.webp"
+        imagesrcset="images/hero-import-auto-640.webp 640w,
+                     images/hero-import-auto-1024.webp 1024w,
+                     images/hero-import-auto-1440.webp 1440w,
+                     images/hero-import-auto.webp 1672w"
+        imagesizes="100vw" media="(min-width: 641px)" fetchpriority="high">
   <link rel="preload" as="image" href="images/hero-mobile.webp" media="(max-width: 640px)" fetchpriority="high">
 
   <!-- ============ FONTS (single request, display=swap for fast paint) ============ -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <!-- ================= STRUCTURED DATA: AutoRepair (LocalBusiness) ================= -->
   <script type="application/ld+json">
@@ -113,6 +122,24 @@
     "sameAs": [
       "https://www.google.com/maps?cid=11650676435894463387"
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Auto Repair and Maintenance Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vehicle Diagnostics", "url": "https://importautospecialist.ca/vehicle-diagnostics-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mercedes-Benz Repair", "url": "https://importautospecialist.ca/mercedes-benz-repair-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brake Repair", "url": "https://importautospecialist.ca/brake-repair-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Engine Repair", "url": "https://importautospecialist.ca/engine-repair-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suspension & Steering Repair", "url": "https://importautospecialist.ca/suspension-repair-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Electrical Diagnostics & Repair", "url": "https://importautospecialist.ca/electrical-diagnostics-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heating & Air Conditioning Repair", "url": "https://importautospecialist.ca/heating-air-conditioning-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Auto Body & Collision Repair", "url": "https://importautospecialist.ca/auto-body-repair-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Oil Change", "url": "https://importautospecialist.ca/oil-change-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tire Service & Wheel Alignment", "url": "https://importautospecialist.ca/tire-alignment-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Safety Standards Certificate", "url": "https://importautospecialist.ca/safety-certificate-scarborough" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pre-Purchase Inspection", "url": "https://importautospecialist.ca/pre-purchase-inspection-scarborough" } }
+      ]
+    },
     "review": [
       {
         "@type": "Review",
@@ -230,16 +257,20 @@
             <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services
               <svg class="nav-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
             </button>
-            <ul class="dropdown">
-              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+            <ul class="dropdown dropdown--cols">
               <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
               <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
               <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
               <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
               <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
-              <li><a href="#services" class="dropdown-all">All Services →</a></li>
+              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+              <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+              <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
+              <li><a href="/#services" class="dropdown-all">All Services →</a></li>
             </ul>
           </li>
           <li><a href="#reviews" class="nav-link">Reviews</a></li>
@@ -275,14 +306,18 @@
       <ul>
         <li><a href="#home" class="mobile-link">Home</a></li>
         <li><a href="#services" class="mobile-link">Services</a></li>
-        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/vehicle-diagnostics-scarborough" class="mobile-link mobile-sublink">Vehicle Diagnostics</a></li>
-        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
-        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/mercedes-benz-repair-scarborough" class="mobile-link mobile-sublink">Mercedes-Benz Repair</a></li>
+        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/engine-repair-scarborough" class="mobile-link mobile-sublink">Engine Repair</a></li>
+        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
         <li><a href="/electrical-diagnostics-scarborough" class="mobile-link mobile-sublink">Electrical Diagnostics</a></li>
         <li><a href="/heating-air-conditioning-scarborough" class="mobile-link mobile-sublink">Heating &amp; A/C</a></li>
         <li><a href="/auto-body-repair-scarborough" class="mobile-link mobile-sublink">Auto Body &amp; Collision</a></li>
+        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/tire-alignment-scarborough" class="mobile-link mobile-sublink">Tires &amp; Alignment</a></li>
+        <li><a href="/safety-certificate-scarborough" class="mobile-link mobile-sublink">Safety Certificate</a></li>
+        <li><a href="/pre-purchase-inspection-scarborough" class="mobile-link mobile-sublink">Pre-Purchase Inspection</a></li>
         <li><a href="#reviews" class="mobile-link">Reviews</a></li>
         <li><a href="#about" class="mobile-link">About</a></li>
         <li><a href="#faq" class="mobile-link">FAQ</a></li>
@@ -303,8 +338,8 @@
     <section class="hero" id="home">
       <div class="container hero-inner">
         <div class="hero-copy reveal">
-          <h1 class="hero-title">Expert Auto Repair for Every Vehicle</h1>
-          <p class="hero-sub">Diagnostics, maintenance and repairs in Scarborough — with a clear estimate before any work starts.</p>
+          <h1 class="hero-title">Expert Auto Repair in Scarborough</h1>
+          <p class="hero-sub">Diagnostics, maintenance, mechanical and collision repair for every make — with a clear estimate before any work starts.</p>
 
           <!-- Meta block: rating + live status grouped tightly (no loose floating elements). -->
           <div class="hero-meta">
@@ -371,12 +406,15 @@
           <picture>
             <!-- MOBILE (≤640): portrait photo — unchanged. -->
             <source media="(max-width: 640px)" srcset="images/hero-mobile.webp">
-            <!-- DESKTOP/TABLET (≥641): new landscape shop photo. Single source for now; when the
-                 resized variants are added to images/, uncomment the srcset+sizes below (acceptance #2):
-                 srcset="images/hero-import-auto-640.webp 640w, images/hero-import-auto-1024.webp 1024w,
-                         images/hero-import-auto-1440.webp 1440w, images/hero-import-auto.webp 1672w"
-                 sizes="100vw" -->
+            <!-- DESKTOP/TABLET (≥641): landscape shop photo at four widths. A 1440px laptop no
+                 longer downloads the full 1672px/246KB original — it takes the 1440 variant, and a
+                 tablet takes the 1024. Regenerate the variants with sharp if the source changes. -->
             <img class="hero-photo" src="images/hero-import-auto.webp"
+                 srcset="images/hero-import-auto-640.webp 640w,
+                         images/hero-import-auto-1024.webp 1024w,
+                         images/hero-import-auto-1440.webp 1440w,
+                         images/hero-import-auto.webp 1672w"
+                 sizes="100vw"
                  alt="Vehicle raised on a lift at Import Auto Specialist in Scarborough"
                  width="1672" height="941" fetchpriority="high" decoding="async">
           </picture>
@@ -451,8 +489,9 @@
     </section>
 
     <!-- ======================= SERVICES ======================= -->
-    <!-- EDITABLE PLACEHOLDERS: confirm the exact services offered with the business, then update
-         titles/descriptions below. These are common auto services listed as a starting point. -->
+    <!-- All 12 services below are confirmed with the shop and each has its own page. Card <h3> text
+         is the canonical service name — keep it in sync with the nav label, the page <h1>, the
+         <title>, and the hasOfferCatalog entry in the AutoRepair JSON-LD above. -->
     <section class="services section" id="services">
       <div class="container">
         <div class="section-header reveal">
@@ -478,7 +517,7 @@
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8h9l3 3v6H5zM17 12h2l1 2v3h-3M8 17a2 2 0 1 1-4 0M17 8V5H9"/></svg>
             </span>
-            <h3>Oil Changes &amp; Maintenance</h3>
+            <h3>Oil Change</h3>
             <p>Routine oil and fluid changes with a maintenance check to help protect your engine over the long term.</p>
             <div class="card-links">
               <a href="/oil-change-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
@@ -490,7 +529,7 @@
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 4v3M12 17v3M4 12h3M17 12h3"/></svg>
             </span>
-            <h3>Brake Service</h3>
+            <h3>Brake Repair</h3>
             <p>Brake inspections, pad and rotor service, and adjustments to keep your stopping power reliable.</p>
             <div class="card-links">
               <a href="/brake-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
@@ -514,7 +553,7 @@
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 4v6a3 3 0 0 0 6 0V4M9 13v7M6 20h6M18 4l-2 8h4l-2 8"/></svg>
             </span>
-            <h3>Suspension &amp; Steering</h3>
+            <h3>Suspension &amp; Steering Repair</h3>
             <p>Suspension and steering service to help smooth out the ride and keep handling predictable.</p>
             <div class="card-links">
               <a href="/suspension-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
@@ -526,7 +565,7 @@
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>
             </span>
-            <h3>Electrical Diagnostics</h3>
+            <h3>Electrical Diagnostics &amp; Repair</h3>
             <p>Battery, charging, and electrical fault diagnostics to track down issues that leave you stranded.</p>
             <div class="card-links">
               <a href="/electrical-diagnostics-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
@@ -550,10 +589,58 @@
             <span class="service-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 21V10a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v11a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1zM10 8V5.5A1.5 1.5 0 0 1 11.5 4a1.5 1.5 0 0 1 1.5 1.5V8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M16 6h.01M18 5h.01M17 9h.01M19 8h.01"/></svg>
             </span>
-            <h3>Auto Body &amp; Collision</h3>
+            <h3>Auto Body &amp; Collision Repair</h3>
             <p>Dents, bumpers, rust, and collision damage repaired and refinished with colour-matched paint.</p>
             <div class="card-links">
               <a href="/auto-body-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4"/></svg>
+            </span>
+            <h3>Mercedes-Benz Repair</h3>
+            <p>Factory XENTRY and STAR diagnostics, Mercedes engine training, and body work under one roof.</p>
+            <div class="card-links">
+              <a href="/mercedes-benz-repair-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><rect x="3" y="6" width="4" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="6" width="4" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M7 12h10"/></svg>
+            </span>
+            <h3>Tires &amp; Alignment</h3>
+            <p>Seasonal swaps, mounting and balancing, and wheel alignment so your tires wear evenly.</p>
+            <div class="card-links">
+              <a href="/tire-alignment-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1zM8 6H6a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1h-2M9 13l2 2 4-4"/></svg>
+            </span>
+            <h3>Safety Standards Certificate</h3>
+            <p>A licensed inspection station — we inspect, explain every finding, and issue the certificate on site.</p>
+            <div class="card-links">
+              <a href="/safety-certificate-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
+              <a href="#contact" class="card-link card-link--muted">Request service</a>
+            </div>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="m20 20-4.6-4.6"/></svg>
+            </span>
+            <h3>Pre-Purchase Inspection</h3>
+            <p>Buying used? An independent assessment of what the car needs before you hand over the money.</p>
+            <div class="card-links">
+              <a href="/pre-purchase-inspection-scarborough" class="card-link">Learn more <span aria-hidden="true">→</span></a>
               <a href="#contact" class="card-link card-link--muted">Request service</a>
             </div>
           </article>
@@ -887,19 +974,16 @@
             <p class="form-lead">Tell us what's going on and we'll call you back with a price.</p>
             <!--
               ESTIMATE FORM — delivered by Web3Forms (https://web3forms.com), a host-independent
-              form-to-email service. To make it live:
-                1) Go to https://web3forms.com, enter the destination email, and copy the free access key.
-                2) Replace YOUR_WEB3FORMS_ACCESS_KEY in the hidden access_key field below.
+              form-to-email service. A real access key is set below, so the form is live.
               The access key is NOT a secret — Web3Forms keys are meant to live in client-side HTML and
               are rate-limited + spam-filtered on their servers. To change the destination email later,
               get a new key for the new address and replace this one value.
-              While the placeholder key is present, script.js validates + shows the confirmation WITHOUT
-              sending (dev mode). Once a real key is set, it submits via fetch (AJAX) so the visitor stays
-              on the page; the plain action= is a no-JS fallback.
+              Submissions go via fetch (AJAX) so the visitor stays on the page; the plain action= is a
+              no-JS fallback.
               NOTE: intentionally no date/time/scheduling fields — the shop has no online booking.
             -->
             <form id="estimate-form" class="estimate-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-              <!-- Web3Forms control fields. Replace the access_key value with your real key. -->
+              <!-- Web3Forms control fields. Swap access_key to change the destination email. -->
               <input type="hidden" name="access_key" value="97ef0d39-bcc7-439d-8fc6-67b28fa4d672">
               <input type="hidden" name="subject" value="New estimate request — Import Auto Specialist website">
               <input type="hidden" name="from_name" value="Import Auto Specialist Website">
@@ -972,14 +1056,18 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
           <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
           <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
           <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+          <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+          <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
         </ul>
       </nav>
 
@@ -1028,6 +1116,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

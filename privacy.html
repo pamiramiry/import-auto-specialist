@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
 
   <title>Privacy Policy | Import Auto Specialist</title>
   <meta name="description" content="Privacy Policy for Import Auto Specialist: what the estimate request form collects and how that information is used.">
@@ -23,6 +26,10 @@
   <meta property="og:image" content="https://importautospecialist.ca/images/og-image.jpg">
   <meta property="og:locale" content="en_CA">
   <meta property="og:site_name" content="Import Auto Specialist">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy | Import Auto Specialist">
+  <meta name="twitter:description" content="What the estimate request form collects and how that information is used.">
+  <meta name="twitter:image" content="https://importautospecialist.ca/images/og-image.jpg">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
@@ -30,11 +37,10 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=2">
 </head>
 
 <body>
@@ -61,7 +67,7 @@
       <div class="container legal-inner">
         <p class="section-label">Legal</p>
         <h1>Privacy Policy</h1>
-        <p class="legal-updated">Last updated: July 2026</p>
+        <p class="legal-updated">Last updated: August 2026</p>
 
         <p>Import Auto Specialist ("we", "us") respects your privacy. This page explains, in plain
           language, what information this website collects and how we use it. We keep this simple
@@ -92,8 +98,21 @@
           at any time by contacting us.</p>
 
         <h2>Cookies &amp; analytics</h2>
-        <p>This site does not use tracking or advertising cookies. Pages that display a map use an
-          embedded Google Map, which is subject to Google's own privacy terms.</p>
+        <p>This site uses <strong>Google Analytics 4</strong> to understand how visitors find and use
+          the site, so we can improve it. Google Analytics sets cookies in your browser and collects
+          information such as the pages you view, how long you spend on them, the approximate region
+          you are browsing from, and the type of device and browser you use. We also record when a
+          visitor taps one of the phone number links, so we can tell which parts of the site actually
+          help people reach us.</p>
+        <p>This information is used only to measure and improve the website. It is not used for
+          advertising, we do not sell it, and it is not linked to the details you submit through the
+          estimate request form. Google processes this data under
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's own privacy policy</a>.</p>
+        <p>You can opt out at any time by installing
+          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's browser opt-out add-on</a>,
+          or by blocking cookies in your browser settings. The site works normally either way.</p>
+        <p>Pages that display a map use an embedded Google Map, which is also subject to Google's
+          own privacy terms.</p>
 
         <h2>Questions</h2>
         <p>If you have any questions about this Privacy Policy or want to update or remove your
@@ -129,14 +148,18 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
           <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
           <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
           <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+          <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+          <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
         </ul>
       </nav>
 
@@ -163,6 +186,6 @@
     </div>
   </footer>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

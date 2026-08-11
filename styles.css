@@ -8,6 +8,45 @@
    back-to-top · reveal · responsive · reduced-motion
    ========================================================================= */
 
+/* ---------------- Self-hosted fonts ----------------
+   Barlow Condensed and Inter, latin subset only, served from this origin.
+   Replaces the render-blocking https://fonts.googleapis.com stylesheet and
+   removes the third-party connection entirely, which also lets the CSP drop the
+   Google font hosts. Inter is a variable font, so one file covers 400-700.
+   Regenerate with scratchpad/fetch-fonts.js if the weights ever change. */
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-600.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/barlow-condensed-700.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('fonts/inter-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ---------------- Design tokens ---------------- */
 :root {
   /* Brand */
@@ -294,6 +333,18 @@ button.nav-link { background: none; border: 0; cursor: pointer; }
   color: #8FB6E6; font-weight: 600;
   border-top: 1px solid var(--charcoal-line); margin-top: 4px; padding-top: 11px;
 }
+/* 12 services no longer fit a single column without running off shorter laptop
+   viewports, so the menu becomes a two-column grid. "All Services" spans the base
+   so it still reads as the closing row rather than a 13th item in column two. */
+.dropdown--cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(190px, 1fr));
+  gap: 0 4px;
+  min-width: 404px;
+}
+/* The <li> is the grid item, not the <a> inside it — span the li so the
+   dropdown-all border-top runs the full width instead of just column one. */
+.dropdown--cols > li:last-child { grid-column: 1 / -1; }
 
 /* Mobile menu service sub-links */
 .mobile-sublink { padding-left: 22px !important; font-size: 1rem !important; color: #9AA3B2 !important; }

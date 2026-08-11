@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
 
   <title>Vehicle Diagnostics in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Check engine light on? Dealer-level vehicle diagnostics in Scarborough for import & domestic cars: real answers, not guesswork. Call (416) 913-2394.">
@@ -33,10 +36,9 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <!-- ============ STRUCTURED DATA: Breadcrumb ============ -->
   <script type="application/ld+json">
@@ -62,25 +64,7 @@
       { "@type": "City", "name": "Scarborough" },
       { "@type": "City", "name": "Toronto" }
     ],
-    "provider": {
-      "@type": "AutoRepair",
-      "@id": "https://importautospecialist.ca/#business",
-      "name": "Import Auto Specialist",
-      "image": "https://importautospecialist.ca/images/og-image.jpg",
-      "telephone": "+1-416-913-2394",
-      "priceRange": "$$",
-      "url": "https://importautospecialist.ca/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "777 Warden Ave.",
-        "addressLocality": "Scarborough",
-        "addressRegion": "ON",
-        "postalCode": "M1L 4C2",
-        "addressCountry": "CA"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 43.724377, "longitude": -79.2847419 },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "112" }
-    }
+    "provider": { "@id": "https://importautospecialist.ca/#business" }
   }
   </script>
 
@@ -143,15 +127,19 @@
             <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services
               <svg class="nav-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
             </button>
-            <ul class="dropdown">
-              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+            <ul class="dropdown dropdown--cols">
               <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
               <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
               <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
               <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
               <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+              <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+              <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
               <li><a href="/#services" class="dropdown-all">All Services →</a></li>
             </ul>
           </li>
@@ -188,14 +176,18 @@
       <ul>
         <li><a href="/" class="mobile-link">Home</a></li>
         <li><a href="/#services" class="mobile-link">Services</a></li>
-        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/vehicle-diagnostics-scarborough" class="mobile-link mobile-sublink">Vehicle Diagnostics</a></li>
-        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
-        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/mercedes-benz-repair-scarborough" class="mobile-link mobile-sublink">Mercedes-Benz Repair</a></li>
+        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/engine-repair-scarborough" class="mobile-link mobile-sublink">Engine Repair</a></li>
+        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
         <li><a href="/electrical-diagnostics-scarborough" class="mobile-link mobile-sublink">Electrical Diagnostics</a></li>
         <li><a href="/heating-air-conditioning-scarborough" class="mobile-link mobile-sublink">Heating &amp; A/C</a></li>
         <li><a href="/auto-body-repair-scarborough" class="mobile-link mobile-sublink">Auto Body &amp; Collision</a></li>
+        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/tire-alignment-scarborough" class="mobile-link mobile-sublink">Tires &amp; Alignment</a></li>
+        <li><a href="/safety-certificate-scarborough" class="mobile-link mobile-sublink">Safety Certificate</a></li>
+        <li><a href="/pre-purchase-inspection-scarborough" class="mobile-link mobile-sublink">Pre-Purchase Inspection</a></li>
         <li><a href="/#reviews" class="mobile-link">Reviews</a></li>
         <li><a href="/#about" class="mobile-link">About</a></li>
         <li><a href="/#contact" class="mobile-link">Contact</a></li>
@@ -395,14 +387,18 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
           <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
           <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
           <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+          <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+          <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
         </ul>
       </nav>
 
@@ -449,6 +445,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

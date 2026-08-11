@@ -11,7 +11,7 @@
         { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
         { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=(), interest-cohort=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.google.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'sha256-e2g5HkZP+fghbsY1m7moq4GopOo7zRRaAHNyQ2Q7oSI=' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com; frame-src https://www.google.com; form-action 'self' https://api.web3forms.com; upgrade-insecure-requests" }
       ]
     },
     {
@@ -19,7 +19,16 @@
       "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
     },
     {
+      "source": "/fonts/(.*)",
+      "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
+    },
+    {
       "source": "/(favicon.ico|favicon.svg|site.webmanifest)",
+      "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
+    },
+    {
+      "//": "styles.css and script.js are referenced with a ?v= query that is bumped on change, so they can be cached hard. Bump the query in the HTML when either file changes.",
+      "source": "/(styles.css|script.js|ga-init.js)",
       "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
     }
   ]

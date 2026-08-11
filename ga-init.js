@@ -4,9 +4,11 @@
    no 'unsafe-inline'. The gtag.js library itself is loaded from
    https://www.googletagmanager.com (allowed in script-src); GA sends its hits
    to the google-analytics.com / analytics.google.com endpoints allowed in
-   connect-src. This runs synchronously in <head>, right after the async
-   gtag.js tag, so window.gtag exists as early as the old inline snippet did
-   (the phone-click tracking in script.js relies on window.gtag being present). */
+   connect-src. Loaded with `defer` so it does not block first paint. Deferred
+   scripts execute in document order, and this tag sits in <head> while script.js
+   sits at the end of <body>, so window.gtag is defined before the phone-click
+   tracking in script.js runs. gtag.js tolerates dataLayer being populated after
+   it loads — it processes whatever is pushed. */
 window.dataLayer = window.dataLayer || [];
 function gtag() { dataLayer.push(arguments); }
 gtag('js', new Date());

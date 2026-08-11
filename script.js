@@ -321,16 +321,12 @@
      and sees the on-page confirmation. The plain action= on the <form> is a
      no-JS fallback (a normal POST to the same endpoint).
 
-     DEV GUARD: while the hidden access_key is still the placeholder
-     (YOUR_WEB3FORMS_ACCESS_KEY in index.html), we DON'T hit the network — we
-     just show the confirmation — so testing before the real key is set doesn't
-     produce confusing failures. Paste a real key and it sends for real.
+     A real access_key is set in index.html, so submissions send for real.
   */
   var form = document.getElementById('estimate-form');
   if (form) {
     var confirmEl = document.getElementById('form-confirm');
     var errorEl = document.getElementById('form-error');
-    var ACCESS_KEY_PLACEHOLDER = 'YOUR_WEB3FORMS_ACCESS_KEY';
     var WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 
     var setError = function (fieldId, message) {
@@ -404,9 +400,10 @@
         return;
       }
 
-      // DEV GUARD: no real key yet → confirm without sending (see note above).
+      // Safety net: without the access_key field there is nothing to send to, so
+      // confirm locally rather than firing a request Web3Forms would reject.
       var keyField = form.querySelector('input[name="access_key"]');
-      if (!keyField || keyField.value === ACCESS_KEY_PLACEHOLDER) {
+      if (!keyField) {
         showConfirm();
         return;
       }

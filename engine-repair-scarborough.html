@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
+
   <title>Engine Repair in Scarborough | Import Auto Specialist</title>
-  <meta name="description" content="Engine repair &amp; diagnosis in Scarborough for import &amp; domestic cars: noises, leaks, misfires, and overheating. Call (416) 913-2394.">
+  <meta name="description" content="Engine, transmission &amp; exhaust repair in Scarborough for import &amp; domestic cars: misfires, leaks, overheating, slipping shifts. Call (416) 913-2394.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#14171C">
   <link rel="canonical" href="https://importautospecialist.ca/engine-repair-scarborough">
@@ -33,10 +36,9 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <script type="application/ld+json">
   {
@@ -60,25 +62,7 @@
       { "@type": "City", "name": "Scarborough" },
       { "@type": "City", "name": "Toronto" }
     ],
-    "provider": {
-      "@type": "AutoRepair",
-      "@id": "https://importautospecialist.ca/#business",
-      "name": "Import Auto Specialist",
-      "image": "https://importautospecialist.ca/images/og-image.jpg",
-      "telephone": "+1-416-913-2394",
-      "priceRange": "$$",
-      "url": "https://importautospecialist.ca/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "777 Warden Ave.",
-        "addressLocality": "Scarborough",
-        "addressRegion": "ON",
-        "postalCode": "M1L 4C2",
-        "addressCountry": "CA"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 43.724377, "longitude": -79.2847419 },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "112" }
-    }
+    "provider": { "@id": "https://importautospecialist.ca/#business" }
   }
   </script>
 
@@ -96,6 +80,16 @@
         "@type": "Question",
         "name": "Can you work on all makes, including European imports?",
         "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work on import and domestic engines, with dealer-level tools and quality parts matched to your engine. Call with your make and model to confirm." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you repair transmissions and exhaust systems too?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We diagnose and repair transmission concerns such as slipping, harsh or delayed shifts, and shudder, and we handle exhaust work from leaks and rattles through to corroded pipes, hangers, and mufflers. Both start with a diagnosis so you are not paying for parts that were never the problem." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is it worth repairing an older engine?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Often, yes, but it depends on the specific fault and the condition of the rest of the vehicle. We give you the diagnosis and the estimate first so you can make that call with real numbers in front of you rather than a guess. If we think the repair is not worth it on your car, we will tell you that." }
       }
     ]
   }
@@ -129,15 +123,19 @@
             <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services
               <svg class="nav-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
             </button>
-            <ul class="dropdown">
-              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+            <ul class="dropdown dropdown--cols">
               <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
               <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
               <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
               <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
               <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+              <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+              <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
               <li><a href="/#services" class="dropdown-all">All Services →</a></li>
             </ul>
           </li>
@@ -173,14 +171,18 @@
       <ul>
         <li><a href="/" class="mobile-link">Home</a></li>
         <li><a href="/#services" class="mobile-link">Services</a></li>
-        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/vehicle-diagnostics-scarborough" class="mobile-link mobile-sublink">Vehicle Diagnostics</a></li>
-        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
-        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/mercedes-benz-repair-scarborough" class="mobile-link mobile-sublink">Mercedes-Benz Repair</a></li>
+        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/engine-repair-scarborough" class="mobile-link mobile-sublink">Engine Repair</a></li>
+        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
         <li><a href="/electrical-diagnostics-scarborough" class="mobile-link mobile-sublink">Electrical Diagnostics</a></li>
         <li><a href="/heating-air-conditioning-scarborough" class="mobile-link mobile-sublink">Heating &amp; A/C</a></li>
         <li><a href="/auto-body-repair-scarborough" class="mobile-link mobile-sublink">Auto Body &amp; Collision</a></li>
+        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/tire-alignment-scarborough" class="mobile-link mobile-sublink">Tires &amp; Alignment</a></li>
+        <li><a href="/safety-certificate-scarborough" class="mobile-link mobile-sublink">Safety Certificate</a></li>
+        <li><a href="/pre-purchase-inspection-scarborough" class="mobile-link mobile-sublink">Pre-Purchase Inspection</a></li>
         <li><a href="/#reviews" class="mobile-link">Reviews</a></li>
         <li><a href="/#about" class="mobile-link">About</a></li>
         <li><a href="/#contact" class="mobile-link">Contact</a></li>
@@ -218,10 +220,38 @@
 
     <section class="section svc-body">
       <div class="svc-col svc-prose">
+        <h2>Signs Your Engine Needs Attention</h2>
+        <p>Engines rarely fail without warning. Something changes in how the car sounds, feels, or starts first. If you notice any of these, it is worth booking a look sooner rather than later:</p>
+        <ul class="symptom-list">
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>A check engine light, steady or flashing</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Rough idle, hesitation, or a noticeable misfire</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Knocking, ticking, or rattling that changes with revs</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Oil or coolant spots under the car</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>The temperature gauge climbing higher than usual</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Blue, white, or black smoke from the exhaust</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Hard starting, long cranking, or stalling</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>A drop in power or noticeably worse fuel economy</span></li>
+        </ul>
+        <p>A <strong>flashing</strong> check engine light is the one that should not wait. It usually signals an active misfire that can destroy a catalytic converter in a short drive. Pull over when it is safe and <a href="tel:+14169132394">call (416) 913-2394</a>.</p>
+
         <h2>Engine Trouble? Start With a Real Diagnosis</h2>
         <p>From rough idle and misfires to oil leaks, overheating, and unfamiliar noises, engine problems are almost always cheaper to fix when they're caught early. We start with a proper diagnosis to find the root cause rather than guessing, then explain what we found and give you a clear estimate before any work begins.</p>
         <p>We handle a wide range of engine work: diagnostics, leak repair, cooling-system issues, misfire and tune-up work, and more. As an import-focused shop, we use dealer-level tools and quality parts matched to your engine, so European and Japanese vehicles get the attention they need without dealer-level pricing. Our technician has completed Mercedes-Benz engine training through the WORLDPAC Technical Training Institute, which helps on European engine work in particular.</p>
-        <p>Deep GTA cold snaps make hard starts and weak-running engines more noticeable in winter, while summer stop-and-go traffic puts heat and strain on the cooling system. If something has changed in how your engine sounds or runs, it's worth a look.</p>
+
+        <h2>Why a Small Engine Fault Becomes a Big One</h2>
+        <p>Engine problems compound. A single misfiring cylinder pushes unburnt fuel into the exhaust, which overheats the catalytic converter and can turn a spark plug and coil job into a converter replacement costing several times as much. A small oil leak drips onto rubber mounts and belts and degrades them. A slightly weak thermostat runs the engine hot enough to cook the oil early without ever putting the gauge in the red.</p>
+        <p>None of these announce themselves loudly at the start, which is exactly why the cheap window to fix them closes quietly. Diagnosing early is almost always the least expensive version of the repair.</p>
+
+        <h2>Transmission Service and Repair</h2>
+        <p>The transmission is where a lot of drivers first notice something is wrong, and where guesswork gets expensive fastest. Slipping between gears, a harsh or delayed engagement when you put it in drive, shuddering at steady speed, whining that rises with road speed, or a transmission warning on the dash all warrant a proper diagnosis rather than a fluid flush and hope.</p>
+        <p>We check fluid level and condition, read transmission control module fault codes rather than powertrain codes alone, and road test to reproduce what you are describing. Plenty of shift complaints turn out to be a failing sensor, a solenoid, or worn engine and transmission mounts rather than the gearbox itself, and it is worth knowing which before committing to major work. Where a fluid and filter service is genuinely the right call, we use the fluid specification your transmission requires, which on modern imports is rarely a universal product.</p>
+
+        <h2>Exhaust and Emissions Work</h2>
+        <p>Exhaust problems are usually heard before they are seen. A sudden increase in noise, a droning or rasping under acceleration, a rattle from underneath at idle, or a smell of exhaust in the cabin all point to a leak or a failed hanger, and an exhaust leak ahead of the oxygen sensors will also upset the fuel mixture and can trigger a check engine light.</p>
+        <p>Scarborough winters are hard on exhaust systems in particular. Road salt corrodes pipes, flex joints, mufflers, and hangers from the outside in, and short winter trips leave acidic condensation sitting inside the system instead of evaporating. We inspect the full system from manifold to tailpipe, repair or replace the failed section rather than automatically selling a complete system, and check that the oxygen sensors and catalytic converter are actually doing their job.</p>
+
+        <h2>Local Conditions, Local Engines</h2>
+        <p>Deep GTA cold snaps make hard starts and weak-running engines more noticeable in winter, while summer stop-and-go traffic along Warden and Eglinton puts sustained heat and strain on the cooling system. Cars that mostly do short local trips also carry more moisture and fuel dilution in the oil, which shows up as sludge and premature wear well before the odometer suggests it should. If something has changed in how your engine sounds or runs, it's worth a look.</p>
       </div>
     </section>
 
@@ -235,6 +265,8 @@
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Oil-leak &amp; seal inspection</strong></span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Cooling-system check</strong></span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Misfire &amp; tune-up work</strong></span></li>
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Transmission diagnosis &amp; service</strong></span></li>
+          <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Exhaust leak &amp; corrosion repair</strong></span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Quality parts, import and domestic</strong></span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Clear estimate before any work</strong></span></li>
           <li><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg><span><strong>Road test to confirm the fix</strong></span></li>
@@ -271,6 +303,18 @@
             <summary><h3 class="faq-question">Can you work on all makes, including European imports? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
             <div class="faq-answer">
               <p>Yes. We work on import and domestic engines, with dealer-level tools and quality parts matched to your engine. Call with your make and model to confirm.</p>
+            </div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><h3 class="faq-question">Do you repair transmissions and exhaust systems too? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
+            <div class="faq-answer">
+              <p>Yes. We diagnose and repair transmission concerns such as slipping, harsh or delayed shifts, and shudder, and we handle exhaust work from leaks and rattles through to corroded pipes, hangers, and mufflers. Both start with a diagnosis so you are not paying for parts that were never the problem.</p>
+            </div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><h3 class="faq-question">Is it worth repairing an older engine? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
+            <div class="faq-answer">
+              <p>Often, yes, but it depends on the specific fault and the condition of the rest of the vehicle. We give you the diagnosis and the estimate first so you can make that call with real numbers in front of you rather than a guess. If we think the repair is not worth it on your car, we will tell you that.</p>
             </div>
           </details>
         </div>
@@ -340,14 +384,18 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
           <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
           <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
           <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+          <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+          <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
         </ul>
       </nav>
 
@@ -393,6 +441,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

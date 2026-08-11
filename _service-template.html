@@ -24,13 +24,16 @@
 -->
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
 
   <title>{{TITLE}}</title>
   <meta name="description" content="{{DESC}}">
@@ -56,10 +59,9 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <!-- Breadcrumb schema -->
   <script type="application/ld+json">
@@ -186,6 +188,6 @@
   <!-- ===== FOOTER + MOBILE BAR + BACK-TO-TOP: copy verbatim from any built service page ===== -->
   <!-- {{PASTE FOOTER + MOBILE BAR + BACK-TO-TOP HERE}} -->
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>

@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en-CA" class="no-js">
 <head>
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no 'unsafe-inline') -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js"></script>
-
   <meta charset="UTF-8">
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Auto Electrical Repair in Scarborough | Import Auto</title>
+  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
+       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
+       deferred, so neither holds up first paint. Deferred scripts run in document
+       order, so ga-init.js still executes before script.js. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
+  <script src="ga-init.js?v=2" defer></script>
+
+  <title>Electrical Diagnostics &amp; Repair in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Auto electrical diagnostics &amp; repair in Scarborough: batteries, charging, no-starts, and electrical faults on import cars. Call (416) 913-2394.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#14171C">
   <link rel="canonical" href="https://importautospecialist.ca/electrical-diagnostics-scarborough">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Auto Electrical Diagnostics &amp; Repair in Scarborough | Import Auto Specialist">
+  <meta property="og:title" content="Electrical Diagnostics &amp; Repair in Scarborough | Import Auto Specialist">
   <meta property="og:description" content="Auto electrical diagnostics &amp; repair in Scarborough: batteries, charging, no-starts, and electrical faults on import cars. Call (416) 913-2394.">
   <meta property="og:url" content="https://importautospecialist.ca/electrical-diagnostics-scarborough">
   <meta property="og:image" content="https://importautospecialist.ca/images/og-image.jpg">
   <meta property="og:locale" content="en_CA">
   <meta property="og:site_name" content="Import Auto Specialist">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Auto Electrical Diagnostics &amp; Repair in Scarborough | Import Auto Specialist">
+  <meta name="twitter:title" content="Electrical Diagnostics &amp; Repair in Scarborough | Import Auto Specialist">
   <meta name="twitter:description" content="Auto electrical diagnostics &amp; repair in Scarborough: batteries, charging, no-starts, and electrical faults on import cars. Call (416) 913-2394.">
   <meta name="twitter:image" content="https://importautospecialist.ca/images/og-image.jpg">
 
@@ -33,10 +36,9 @@
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2">
 
   <script type="application/ld+json">
   {
@@ -53,32 +55,14 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "serviceType": "Auto Electrical Repair",
-    "name": "Auto Electrical Diagnostics & Repair in Scarborough",
+    "serviceType": "Electrical Diagnostics & Repair",
+    "name": "Electrical Diagnostics & Repair in Scarborough",
     "url": "https://importautospecialist.ca/electrical-diagnostics-scarborough",
     "areaServed": [
       { "@type": "City", "name": "Scarborough" },
       { "@type": "City", "name": "Toronto" }
     ],
-    "provider": {
-      "@type": "AutoRepair",
-      "@id": "https://importautospecialist.ca/#business",
-      "name": "Import Auto Specialist",
-      "image": "https://importautospecialist.ca/images/og-image.jpg",
-      "telephone": "+1-416-913-2394",
-      "priceRange": "$$",
-      "url": "https://importautospecialist.ca/",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "777 Warden Ave.",
-        "addressLocality": "Scarborough",
-        "addressRegion": "ON",
-        "postalCode": "M1L 4C2",
-        "addressCountry": "CA"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 43.724377, "longitude": -79.2847419 },
-      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "112" }
-    }
+    "provider": { "@id": "https://importautospecialist.ca/#business" }
   }
   </script>
 
@@ -96,6 +80,16 @@
         "@type": "Question",
         "name": "Can you fix electrical faults on European cars?",
         "acceptedAnswer": { "@type": "Answer", "text": "Yes. We use dealer-level scan tools that read the manufacturer-specific modules on import makes, which is essential for tracing modern electrical faults. Call with your make and model." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you find a fault that only happens sometimes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Usually, yes, though intermittent faults take longer than a fault we can reproduce on demand. The pattern matters a lot, so tell us whether it happens when the car is cold, in wet weather, over bumps, or after it has been parked a while. Stored fault codes often survive even when the symptom is absent, which gives us somewhere to start." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you replace batteries and alternators?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, but we test before we replace. A flat battery is a symptom, not always the cause, and replacing one without checking the charging system and parasitic draw is how people end up buying two batteries in a year. Many newer vehicles also need the new battery registered to the car electronically, which we handle." }
       }
     ]
   }
@@ -129,15 +123,19 @@
             <button type="button" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Services
               <svg class="nav-caret" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
             </button>
-            <ul class="dropdown">
-              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
+            <ul class="dropdown dropdown--cols">
               <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+              <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
               <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+              <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
               <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
               <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
               <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+              <li><a href="/oil-change-scarborough">Oil Change</a></li>
+              <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+              <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+              <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
               <li><a href="/#services" class="dropdown-all">All Services →</a></li>
             </ul>
           </li>
@@ -173,14 +171,18 @@
       <ul>
         <li><a href="/" class="mobile-link">Home</a></li>
         <li><a href="/#services" class="mobile-link">Services</a></li>
-        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/vehicle-diagnostics-scarborough" class="mobile-link mobile-sublink">Vehicle Diagnostics</a></li>
-        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
-        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/mercedes-benz-repair-scarborough" class="mobile-link mobile-sublink">Mercedes-Benz Repair</a></li>
+        <li><a href="/brake-repair-scarborough" class="mobile-link mobile-sublink">Brake Repair</a></li>
         <li><a href="/engine-repair-scarborough" class="mobile-link mobile-sublink">Engine Repair</a></li>
+        <li><a href="/suspension-repair-scarborough" class="mobile-link mobile-sublink">Suspension &amp; Steering</a></li>
         <li><a href="/electrical-diagnostics-scarborough" class="mobile-link mobile-sublink">Electrical Diagnostics</a></li>
         <li><a href="/heating-air-conditioning-scarborough" class="mobile-link mobile-sublink">Heating &amp; A/C</a></li>
         <li><a href="/auto-body-repair-scarborough" class="mobile-link mobile-sublink">Auto Body &amp; Collision</a></li>
+        <li><a href="/oil-change-scarborough" class="mobile-link mobile-sublink">Oil Change</a></li>
+        <li><a href="/tire-alignment-scarborough" class="mobile-link mobile-sublink">Tires &amp; Alignment</a></li>
+        <li><a href="/safety-certificate-scarborough" class="mobile-link mobile-sublink">Safety Certificate</a></li>
+        <li><a href="/pre-purchase-inspection-scarborough" class="mobile-link mobile-sublink">Pre-Purchase Inspection</a></li>
         <li><a href="/#reviews" class="mobile-link">Reviews</a></li>
         <li><a href="/#about" class="mobile-link">About</a></li>
         <li><a href="/#contact" class="mobile-link">Contact</a></li>
@@ -202,7 +204,7 @@
           <span aria-current="page">Electrical Diagnostics</span>
         </nav>
         <p class="eyebrow">Electrical · Scarborough</p>
-        <h1>Auto Electrical Diagnostics &amp; Repair in Scarborough</h1>
+        <h1>Electrical Diagnostics &amp; Repair in Scarborough</h1>
         <p class="svc-lede">Dead battery, no-start, or gremlins in the electronics? We track down electrical faults and fix them properly.</p>
         <div class="svc-cta-row">
           <a href="tel:+14169132394" class="btn btn-blue btn-lg">
@@ -218,10 +220,34 @@
 
     <section class="section svc-body">
       <div class="svc-col svc-prose">
+        <h2>Signs of an Electrical Fault</h2>
+        <p>Electrical problems are the ones drivers most often live with for months, because they come and go. If any of these sound familiar, they are worth tracing properly:</p>
+        <ul class="symptom-list">
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>A battery that goes flat overnight or over a weekend</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Slow cranking, clicking, or no response at all when starting</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Dash warning lights that appear and disappear on their own</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Windows, mirrors, locks, or seats that have stopped working</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Headlights or dash lights that flicker or dim at idle</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Blown fuses that keep failing after replacement</span></li>
+          <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>A burning or hot-plastic smell from the dash or engine bay</span></li>
+        </ul>
+        <p>An intermittent fault is not a lost cause, but it does need context. When you call, tell us whether it happens cold, when it rains, over bumps, or only after the car has sat. That detail narrows the search considerably.</p>
+
         <h2>Electrical Faults, Found Systematically</h2>
         <p>Electrical problems are some of the hardest to chase: a battery that keeps dying, intermittent warning lights, windows or lights that quit, or a car that simply won't start. Instead of throwing parts at the symptom, we use dealer-level tools and systematic testing to find the actual fault, then explain it and give you an estimate before any repair.</p>
         <p>Common jobs include battery and charging-system (alternator) testing, parasitic-draw testing for a battery that drains overnight, starter faults, and wiring or connector problems. Modern vehicles run dozens of networked modules that talk to each other, so proper scan tools are essential to read them, which is exactly what we use.</p>
-        <p>Local winters are hard on the electrical side of a car: deep cold finishes off weak batteries, and road salt and moisture corrode connectors and grounds, causing the kind of intermittent faults that are easy to miss. If a problem comes and goes, that's worth mentioning.</p>
+
+        <h2>Why Parts-Swapping Costs More Than Diagnosis</h2>
+        <p>Electrical work is where guessing gets expensive fastest, because the symptom and the cause are so often in different places. A battery that keeps dying gets a new battery, then a new alternator, and the real culprit turns out to be a module that never goes to sleep and quietly draws current all night. Each of those replacements was a real bill, and none of them fixed the car.</p>
+        <p>Systematic testing costs something up front and usually saves several times that. Measuring the actual draw, testing the charging system under load, and reading the modules tells you which single part is at fault, and you buy that one part once.</p>
+
+        <h2>Salt, Damp, and Scarborough Winters</h2>
+        <p>Local winters are unusually hard on the electrical side of a car. Deep cold finishes off batteries that were already marginal in October, which is why the first properly cold morning produces so many no-starts across the GTA. Road salt and slush then work on the parts you never see: ground straps, connector pins, and the wiring that runs low along the subframe and inside the wheel wells.</p>
+        <p>Corroded grounds in particular produce exactly the sort of symptom that is easy to dismiss, because a bad ground can make a completely healthy component behave erratically. Faults that appear in wet weather and vanish in dry weather are very often a corrosion problem rather than a failed part.</p>
+
+        <h2>Import Electronics and Manufacturer-Specific Codes</h2>
+        <p>A basic code reader sees powertrain faults and little else. On a modern import, the systems most likely to be causing your problem — body control, comfort and convenience modules, driver assistance, the CAN network itself — report manufacturer-specific codes that a generic tool either cannot see or translates into something too vague to act on.</p>
+        <p>We use dealer-level scan tools that read those manufacturer-specific modules, which is what makes it possible to trace a fault on a European or Japanese car rather than replace parts hopefully. Call with your year, make, and model and we can tell you what we are able to read on your vehicle.</p>
       </div>
     </section>
 
@@ -271,6 +297,18 @@
             <summary><h3 class="faq-question">Can you fix electrical faults on European cars? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
             <div class="faq-answer">
               <p>Yes. We use dealer-level scan tools that read the manufacturer-specific modules on import makes, which is essential for tracing modern electrical faults. Call with your make and model.</p>
+            </div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><h3 class="faq-question">Can you find a fault that only happens sometimes? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
+            <div class="faq-answer">
+              <p>Usually, yes, though intermittent faults take longer than a fault we can reproduce on demand. The pattern matters a lot, so tell us whether it happens when the car is cold, in wet weather, over bumps, or after it has been parked a while. Stored fault codes often survive even when the symptom is absent, which gives us somewhere to start.</p>
+            </div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><h3 class="faq-question">Do you replace batteries and alternators? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
+            <div class="faq-answer">
+              <p>Yes, but we test before we replace. A flat battery is a symptom, not always the cause, and replacing one without checking the charging system and parasitic draw is how people end up buying two batteries in a year. Many newer vehicles also need the new battery registered to the car electronically, which we handle.</p>
             </div>
           </details>
         </div>
@@ -340,14 +378,18 @@
       <nav class="footer-col" aria-label="Services">
         <h2>Services</h2>
         <ul>
-          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/vehicle-diagnostics-scarborough">Vehicle Diagnostics</a></li>
-          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
-          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/mercedes-benz-repair-scarborough">Mercedes-Benz Repair</a></li>
+          <li><a href="/brake-repair-scarborough">Brake Repair</a></li>
           <li><a href="/engine-repair-scarborough">Engine Repair</a></li>
+          <li><a href="/suspension-repair-scarborough">Suspension &amp; Steering</a></li>
           <li><a href="/electrical-diagnostics-scarborough">Electrical Diagnostics</a></li>
           <li><a href="/heating-air-conditioning-scarborough">Heating &amp; A/C</a></li>
           <li><a href="/auto-body-repair-scarborough">Auto Body &amp; Collision</a></li>
+          <li><a href="/oil-change-scarborough">Oil Change</a></li>
+          <li><a href="/tire-alignment-scarborough">Tires &amp; Alignment</a></li>
+          <li><a href="/safety-certificate-scarborough">Safety Certificate</a></li>
+          <li><a href="/pre-purchase-inspection-scarborough">Pre-Purchase Inspection</a></li>
         </ul>
       </nav>
 
@@ -393,6 +435,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js" defer></script>
+  <script src="script.js?v=2" defer></script>
 </body>
 </html>
