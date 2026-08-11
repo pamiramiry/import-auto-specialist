@@ -27,7 +27,6 @@
       "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
     },
     {
-      "//": "styles.css and script.js are referenced with a ?v= query that is bumped on change, so they can be cached hard. Bump the query in the HTML when either file changes.",
       "source": "/(styles.css|script.js|ga-init.js)",
       "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ]
     }
