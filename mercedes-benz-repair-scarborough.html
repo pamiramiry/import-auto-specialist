@@ -281,17 +281,45 @@
       </div>
     </section>
 
-    <!-- ======================= TESTIMONIAL ======================= -->
-    <section class="section" aria-label="Customer review">
+    <!-- ======================= REVIEWS ======================= -->
+    <!-- Real reviews from Mercedes-Benz owners, excerpted from Import Auto Specialist's public
+         Google Business Profile — same editorial policy as the homepage rail: clearly-positive
+         reviews only, trimmed with an ellipsis for length, wording within kept segments verbatim.
+         Reuses the homepage .reviews-carousel component (styles.css) — swipeable scroll-snap strip
+         on mobile, 3-col grid at >=901px. The track id is deliberately NOT "reviews-track": the dot
+         navigation in script.js binds to that id plus "reviews-dots", and this rail is CSS-only.
+         NOTE: no Review/aggregateRating JSON-LD here by design. The 4.5/112 rating lives once, on
+         the AutoRepair #business node in index.html (see c0fe318). -->
+    <section class="section" aria-labelledby="mb-reviews-heading">
       <div class="container">
-        <div class="svc-quote">
-          <figure class="review-card">
-            <span class="review-stars" role="img" aria-label="5 out of 5 stars">
-              <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
-            </span>
-            <blockquote>“If you're looking for a top-tier mechanic for your import vehicle, look no further than Import Auto Specialist. … They took the time to explain exactly what my vehicle needed, without pushing unnecessary services. … Whether you drive a German, Japanese, or any other import, this is the place to trust.”</blockquote>
-            <figcaption>Christina Gitzias <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
-          </figure>
+        <div class="section-header">
+          <p class="section-label">Reviews</p>
+          <h2 id="mb-reviews-heading">What Mercedes-Benz Owners Say</h2>
+        </div>
+        <div class="reviews-carousel">
+          <div class="reviews-track" id="mb-reviews-track" tabindex="0" aria-label="Reviews from Mercedes-Benz owners, swipe or scroll to see more">
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“I wouldn't go anywhere else for my late-model Benz, the attention to detail in this shop is astounding and my car has never sounded and performed better. Basically like new. We are truly lucky the shop is only 5 minutes away. Simply the Best!!”</blockquote>
+              <figcaption>Thomas <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“Had my Mercedes C240 classic fixed by them and it really feels a whole lot better than I even anticipated. Last mechanic I went to said no issues and they helped me figure out every single problems I had and put my car back on the road. … Best place for German car enthusiasts and also other cars.”</blockquote>
+              <figcaption>Nayeem Hossain <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“I had a great experience with this mechanic shop, they are very knowledgeable and honest. The price was fair and the advice saved me over $1500 in money. I will not take my mercedes anywhere else for any kind of service.”</blockquote>
+              <figcaption>PitchTv <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
