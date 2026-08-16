@@ -13,7 +13,7 @@ Plain static site — semantic **HTML5**, modern **CSS3**, and vanilla **JavaScr
 
 ```
 index.html                              # homepage
-<service>-scarborough.html              # 12 service pages (see below)
+<service>-scarborough.html              # 13 service pages (see below)
 privacy.html  404.html
 _service-template.html                  # scaffold for new service pages (not deployed)
 styles.css                              # @font-face + design tokens + all styles
@@ -26,10 +26,10 @@ robots.txt  sitemap.xml  vercel.json
 
 ### Service pages
 
-Twelve, each targeting a service + city query:
+Thirteen, each targeting a service or brand + city query:
 
-`vehicle-diagnostics` · `mercedes-benz-repair` · `brake-repair` · `engine-repair` ·
-`suspension-repair` · `electrical-diagnostics` · `heating-air-conditioning` ·
+`vehicle-diagnostics` · `mercedes-benz-repair` · `bmw-repair` · `brake-repair` ·
+`engine-repair` · `suspension-repair` · `electrical-diagnostics` · `heating-air-conditioning` ·
 `auto-body-repair` · `oil-change` · `tire-alignment` · `safety-certificate` ·
 `pre-purchase-inspection` — all suffixed `-scarborough`.
 
@@ -85,7 +85,20 @@ Structured data (JSON-LD) uses only confirmed business facts — the 4.5★ / 11
 address, real hours, and coordinates from the shop's Google Maps listing. Nothing (awards, prices,
 certifications, email) is invented.
 
-The Mercedes-Benz page rests on two confirmed facts: the shop runs **XENTRY / STAR Diagnosis**, and
-the technician has completed **Mercedes-Benz engine training through the WORLDPAC Technical Training
-Institute**. That is aftermarket training, *not* Mercedes-Benz accreditation — the page must never
-say "Mercedes-Benz certified", "authorised", or "factory-trained by Mercedes-Benz".
+### Brand pages — what each one may claim
+
+Both brand pages exist because they lead with a *confirmed, specific* capability. Neither may be
+softened into a generic "we also fix this brand" page, and neither may borrow the other's claims.
+
+**Mercedes-Benz** — the shop runs **XENTRY / STAR Diagnosis**, and the technician has completed
+**Mercedes-Benz engine training through the WORLDPAC Technical Training Institute**. That is
+aftermarket training, *not* Mercedes-Benz accreditation — the page must never say "Mercedes-Benz
+certified", "authorised", or "factory-trained by Mercedes-Benz".
+
+**BMW** — the shop runs **ISTA** (formerly Rheingold), BMW's factory diagnostic software, and does
+**module coding, retrofits and battery registration**. Air suspension work on the X-series is
+evidenced by a real customer review. Never say "BMW certified", "authorised", or "factory-trained by
+BMW". Coding is **not** performance tuning or ECU remapping — do not imply it.
+
+The WORLDPAC credential is Mercedes-specific and must not appear on the BMW page; XENTRY and ISTA are
+each single-brand tools and must not be described as covering the other.

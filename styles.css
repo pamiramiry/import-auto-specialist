@@ -623,6 +623,30 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
 .services-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
 }
+/* With an odd number of services the final row can leave a single card stranded
+   hard-left under a full row (13 cards = 4+4+4+1). Centre a lone last card across
+   the middle columns, keeping it the same width as every other card. Self-correcting:
+   the rule only applies when the last card actually starts a row. */
+.services-grid > .service-card:last-child:nth-child(4n + 1) {
+  grid-column: 2 / span 2;
+  max-width: calc(50% - 10px);
+  justify-self: center;
+}
+@media (max-width: 1080px) {
+  .services-grid > .service-card:last-child:nth-child(4n + 1) {
+    grid-column: auto; max-width: none; justify-self: stretch;
+  }
+  .services-grid > .service-card:last-child:nth-child(2n + 1) {
+    grid-column: 1 / span 2;
+    max-width: calc(50% - 10px);
+    justify-self: center;
+  }
+}
+@media (max-width: 640px) {
+  .services-grid > .service-card:last-child:nth-child(2n + 1) {
+    grid-column: auto; max-width: none; justify-self: stretch;
+  }
+}
 .service-card {
   background: var(--white);
   border: 1px solid var(--grey-mid);
