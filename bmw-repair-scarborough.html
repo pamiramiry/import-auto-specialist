@@ -258,7 +258,7 @@
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Oil leaks, particularly valve cover and oil filter housing gaskets</span></li>
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Cooling system work — water pumps, thermostats and expansion tanks</span></li>
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Check engine lights, rough running and misfires</span></li>
-            <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>VANOS and timing-related faults</span></li>
+            <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Timing chain, VANOS and Valvetronic faults</span></li>
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Charging, battery drain and module faults</span></li>
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Brakes, including wear-sensor and DSC-related complaints</span></li>
             <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Control arms, bushings and steering components</span></li>
@@ -273,6 +273,7 @@
           <h2>Independent Rates, Factory-Level Tools</h2>
           <p>Once a BMW is past its factory coverage, most owners start weighing dealer pricing against the alternatives. The usual worry is that an independent shop will lack the equipment to diagnose a modern BMW properly and will end up replacing parts by process of elimination.</p>
           <p>That is a reasonable concern, and ISTA is the answer to it. You get the same diagnostic depth and the coding capability, without a franchised dealership's overhead — and you get to speak to the person actually working on the car. Every job starts with a diagnosis and a clear estimate before any work begins.</p>
+          <p>Parts are the other half of it. We source OEM parts where the job calls for them rather than defaulting to whatever is cheapest, and buying them independently is usually where a meaningful part of the saving against dealer pricing comes from. On bigger jobs — a timing chain, a Valvetronic motor — that difference is not marginal.</p>
         </div>
       </div>
     </section>
@@ -295,26 +296,49 @@
       </div>
     </section>
 
-    <!-- ======================= TESTIMONIAL ======================= -->
-    <!-- Real review from Import Auto Specialist's public Google Business Profile — the only
-         BMW-specific one available so far. It is quoted verbatim and describes the exact air
-         suspension work the section above covers.
-         TO ADD MORE BMW REVIEWS: swap the single-card layout for the 3-card rail used on
-         mercedes-benz-repair-scarborough.html — replace <div class="svc-quote"> with
-         <div class="reviews-carousel"><div class="reviews-track" id="bmw-reviews-track" tabindex="0">
-         and add the extra <figure class="review-card"> blocks. Three cards fill the >=901px grid
-         exactly. Do NOT reuse the id "reviews-track" (script.js binds the homepage dots to it),
-         and do NOT add Review/aggregateRating JSON-LD — the rating lives only on index.html. -->
-    <section class="section" aria-label="Customer review">
+    <!-- ======================= REVIEWS ======================= -->
+    <!-- Real reviews from BMW owners, excerpted from Import Auto Specialist's public Google
+         Business Profile. Same editorial policy as the homepage and Mercedes rails: clearly-positive
+         reviews only, trimmed with an ellipsis for length, wording within kept segments verbatim.
+         Deliberately chosen to cover three different capabilities the page claims — timing chain and
+         Valvetronic work, air suspension, and a serious electrical fault.
+         Two obvious single-word misspellings were corrected ("abilty" -> "ability"); informal casing
+         and punctuation are left as the reviewer wrote them.
+         Reuses the homepage .reviews-carousel component — swipeable on mobile, 3-col grid at >=901px.
+         The track id is deliberately NOT "reviews-track": script.js binds the homepage dot navigation
+         to that id plus "reviews-dots", and this rail is CSS-only.
+         NOTE: no Review/aggregateRating JSON-LD here by design — the 4.5/112 rating lives once, on
+         the AutoRepair #business node in index.html (see c0fe318). -->
+    <section class="section" aria-labelledby="bmw-reviews-heading">
       <div class="container">
-        <div class="svc-quote">
-          <figure class="review-card">
-            <span class="review-stars" role="img" aria-label="5 out of 5 stars">
-              <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
-            </span>
-            <blockquote>“I had a great experience working with Jaan. I originally brought my BMW X6 in with an air suspension issue, and he took the time to explain everything clearly and make sure it was handled properly. He was honest, professional, and very communicative throughout the entire process. Highly recommend.”</blockquote>
-            <figcaption>Akash Kygo <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
-          </figure>
+        <div class="section-header">
+          <p class="section-label">Reviews</p>
+          <h2 id="bmw-reviews-heading">What BMW Owners Say</h2>
+        </div>
+        <div class="reviews-carousel">
+          <div class="reviews-track" id="bmw-reviews-track" tabindex="0" aria-label="Reviews from BMW owners, swipe or scroll to see more">
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“Going to this gem of an Import Auto shop many years and they never disappoint. Abdullah just did an excellent job getting both my BMW timing chain and valvetronic motor replaced. Really tough jobs. Their ability to repair as well as source OEM parts while saving me large as opposed to the dealer has been off the charts.”</blockquote>
+              <figcaption>TheSun <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“I had a great experience working with Jaan. I originally brought my BMW X6 in with an air suspension issue, and he took the time to explain everything clearly and make sure it was handled properly. He was honest, professional, and very communicative throughout the entire process. Highly recommend.”</blockquote>
+              <figcaption>Akash Kygo <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“Jaan and his team are fantastic!!! Professional, knowledgeable, and very customer service oriented!! Have had 2 bmw's serviced by them now with the most recent having a very serious electrical malfunction. Jaan and his crew turned it around in amazing time and for that I couldn't be more appreciative!!”</blockquote>
+              <figcaption>Ryan B <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
