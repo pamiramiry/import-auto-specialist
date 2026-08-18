@@ -13,7 +13,7 @@ Plain static site — semantic **HTML5**, modern **CSS3**, and vanilla **JavaScr
 
 ```
 index.html                              # homepage
-<service>-scarborough.html              # 13 service pages (see below)
+<service>-scarborough.html              # 15 service pages (see below)
 privacy.html  404.html
 _service-template.html                  # scaffold for new service pages (not deployed)
 styles.css                              # @font-face + design tokens + all styles
@@ -26,9 +26,10 @@ robots.txt  sitemap.xml  vercel.json
 
 ### Service pages
 
-Thirteen, each targeting a service or brand + city query:
+Fifteen, each targeting a service or brand + city query:
 
-`vehicle-diagnostics` · `mercedes-benz-repair` · `bmw-repair` · `brake-repair` ·
+`vehicle-diagnostics` · `mercedes-benz-repair` · `bmw-repair` · `volkswagen-audi-repair` ·
+`tesla-repair` · `brake-repair` ·
 `engine-repair` · `suspension-repair` · `electrical-diagnostics` · `heating-air-conditioning` ·
 `auto-body-repair` · `oil-change` · `tire-alignment` · `safety-certificate` ·
 `pre-purchase-inspection` — all suffixed `-scarborough`.
@@ -87,8 +88,8 @@ certifications, email) is invented.
 
 ### Brand pages — what each one may claim
 
-Both brand pages exist because they lead with a *confirmed, specific* capability. Neither may be
-softened into a generic "we also fix this brand" page, and neither may borrow the other's claims.
+All four brand pages exist because each leads with a *confirmed, specific* capability. None may be
+softened into a generic "we also fix this brand" page, and none may borrow another's claims.
 
 **Mercedes-Benz** — the shop runs **XENTRY / STAR Diagnosis**, and the technician has completed
 **Mercedes-Benz engine training through the WORLDPAC Technical Training Institute**. That is
@@ -100,5 +101,22 @@ certified", "authorised", or "factory-trained by Mercedes-Benz".
 evidenced by a real customer review. Never say "BMW certified", "authorised", or "factory-trained by
 BMW". Coding is **not** performance tuning or ECU remapping — do not imply it.
 
-The WORLDPAC credential is Mercedes-specific and must not appear on the BMW page; XENTRY and ISTA are
-each single-brand tools and must not be described as covering the other.
+**Volkswagen & Audi** — the shop runs **ODIS** (factory VW/Audi software) *and* **VCDS** (Ross-Tech),
+and does module coding, adaptations and basic settings. Never say "VW/Audi certified" or "authorised".
+Do **not** claim walnut-blasting / carbon cleaning or DSG mechatronic rebuilds — neither is confirmed;
+the page only says carbon buildup is checked for during diagnosis, and that DSG fluid/filter service
+and mechatronic fault-code reading are done.
+
+**Tesla** — the shop runs **Toolbox 3** (Tesla's own diagnostic software) and takes on **high-voltage
+battery and drive unit work**. Never say "Tesla certified", "authorised", or "Tesla-approved body
+shop" — approved-shop status is a specific certification and is not claimed. The page's strongest
+original angle is that regenerative braking leaves friction brakes to corrode and seize in a salt
+climate, which is a real local issue and not a generic EV talking point.
+
+> **HV caveat for whoever maintains this:** the high-voltage claim was confirmed by the owner. If the
+> technician holding the HV training ever leaves, or insurance coverage for HV work lapses, the
+> high-voltage sections of `tesla-repair-scarborough` must come down — the rest of that page (brakes,
+> tires, suspension, 12V, body) stands on its own without them.
+
+The WORLDPAC credential is Mercedes-specific and must not appear on the BMW page; XENTRY, ISTA, ODIS and
+Toolbox 3 are each single-brand tools and must never be described as covering another brand.
