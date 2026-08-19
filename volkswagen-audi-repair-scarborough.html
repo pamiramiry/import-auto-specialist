@@ -270,6 +270,7 @@
           <h2>Independent Rates, Factory-Level Tools</h2>
           <p>Once a VW or Audi is out of factory coverage, most owners start weighing dealer pricing against the alternatives, and the usual worry is that an independent will lack the software to do the job properly and will replace parts by elimination.</p>
           <p>Running ODIS and VCDS is the answer to that. You get factory-level diagnostic depth and the coding capability, without a franchised dealership's overhead, and mechanical and body work happen in the same building. Every job starts with a diagnosis and a clear estimate before any work begins.</p>
+          <p>Waiting is the other cost people forget. A dealer service department booking two weeks out is a long time to drive a car with a warning light on, and being charged just to have it looked at on top of that is a poor start. We order parts ahead where the diagnosis is clear, and straightforward jobs often go back the same day. On parts we source OEM where the job calls for it — buying them independently is usually where a meaningful part of the saving against dealer pricing comes from.</p>
         </div>
       </div>
     </section>
@@ -292,17 +293,48 @@
       </div>
     </section>
 
-    <!-- ======================= TESTIMONIAL ======================= -->
-    <section class="section" aria-label="Customer review">
+    <!-- ======================= REVIEWS ======================= -->
+    <!-- Real reviews from Volkswagen and Audi owners, excerpted from Import Auto Specialist's
+         public Google Business Profile. Same editorial policy as the homepage, Mercedes and BMW
+         rails: clearly-positive reviews only, trimmed with an ellipsis for length, wording within
+         kept segments verbatim. One single-word misspelling corrected ("value" -> "valve").
+         Reviewer names for shop staff are left exactly as written — reviewers variously write
+         "Jaan" and "John"; see README before normalising these.
+         Reuses the homepage .reviews-carousel component — swipeable on mobile, 3-col grid at
+         >=901px. Track id is NOT "reviews-track": script.js binds the homepage dot navigation to
+         that id plus "reviews-dots", and this rail is CSS-only.
+         NOTE: no Review/aggregateRating JSON-LD here by design — the rating lives once, on the
+         AutoRepair #business node in index.html (see c0fe318). -->
+    <section class="section" aria-labelledby="vw-reviews-heading">
       <div class="container">
-        <div class="svc-quote">
-          <figure class="review-card">
-            <span class="review-stars" role="img" aria-label="5 out of 5 stars">
-              <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
-            </span>
-            <blockquote>“If you're looking for a top-tier mechanic for your import vehicle, look no further than Import Auto Specialist. … They took the time to explain exactly what my vehicle needed, without pushing unnecessary services. … Whether you drive a German, Japanese, or any other import, this is the place to trust.”</blockquote>
-            <figcaption>Christina Gitzias <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
-          </figure>
+        <div class="section-header">
+          <p class="section-label">Reviews</p>
+          <h2 id="vw-reviews-heading">What VW &amp; Audi Owners Say</h2>
+        </div>
+        <div class="reviews-carousel">
+          <div class="reviews-track" id="vw-reviews-track" tabindex="0" aria-label="Reviews from Volkswagen and Audi owners, swipe or scroll to see more">
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“Very prompt service for my Audi Q7 (Engine check and traction warning light). Dealership couldn’t see me for 2 weeks and wanted to charge for checking. John gave me a great deal, ordered ahead the parts and had the car back to me the same day.”</blockquote>
+              <figcaption>Milan (Mimi) <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“Jaan is a very honest mechanic. I got my engine oil coolant bypass valve fixed for few low price than Audi dealership with OEM parts. Highly recommend him.”</blockquote>
+              <figcaption>Dinesh Kumar <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+            <figure class="review-card">
+              <span class="review-stars" role="img" aria-label="5 out of 5 stars">
+                <svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg><svg width="16" height="16" aria-hidden="true"><use href="#star-icon"/></svg>
+              </span>
+              <blockquote>“If you’re looking for a top-tier mechanic for your import vehicle, look no further than Import Auto Specialist. … They took the time to explain exactly what my vehicle needed, without pushing unnecessary services. … Whether you drive a German, Japanese, or any other import, this is the place to trust.”</blockquote>
+              <figcaption>Christina Gitzias <span class="review-source"><svg class="verified-check" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.2 3 3 6-6.4"/></svg>Verified Google Review</span></figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
