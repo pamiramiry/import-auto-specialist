@@ -1173,7 +1173,7 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   border-radius: 8px;
 }
 .mobile-bar-btn svg { color: var(--blue); }               /* all three icons: blue */
-/* Estimate tile matches Call/Directions exactly: no filled blue tile, no blue label — just the
+/* Inspection tile matches Call/Directions exactly: no filled blue tile, no blue label — just the
    neutral label (inherited above) + a blue icon. Keeps the hero Call button the single solid blue. */
 .mobile-bar-primary { background: transparent; }
 

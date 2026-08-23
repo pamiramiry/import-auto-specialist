@@ -34,7 +34,8 @@ shared markup block + CSS class, not a JS component.
    (rule 39). The `.status-pill--stack` / `.status-note` CSS and the `data-request-note` JS branch
    are gone. Do not re-add a second line to the pill.
 0d. **Sticky bar:** all three labels are the **same** near-white (`.mobile-bar-btn{color:#EDF0F4}`),
-   all three icons blue; the third item is **"Estimate"** (message-bubble icon, → `#estimate`) with
+   all three icons blue; the third item is **"Inspection"** (message-bubble icon, → `#estimate`;
+   relabelled 2026-08-23, rule 58) with
    **no** filled tile and **no** blue label (`.mobile-bar-primary` only clears the background).
 
 ## Hero — mobile (≤640px)
@@ -73,15 +74,17 @@ shared markup block + CSS class, not a JS component.
    import vehicles" phrase; scope is still covered by the H1 ("for Every Vehicle"), the header
    tagline ("Complete Auto Service"), and the "Domestic & Import" trust card (rule 38) — so it does
    NOT imply import-only. Do not re-narrow.
-7. **Hero CTAs: primary "Get a Free Estimate" everywhere + secondary GHOST "Call" on DESKTOP/TABLET
-   only (updated 2026-07-29, rule 55).** `.hero-cta-row` holds the primary solid-blue **"Get a Free
-   Estimate"** → `#estimate` and a secondary **"Call (416) 913-2394"** (`.btn-hero-call`, ghost — see
-   rule 46, `tel:`). Buttons are a ROW ≥1024, STACKED full-width 641–1023. **≤640 the Call button is
+7. **Hero CTAs: primary "Request an Inspection" everywhere + secondary GHOST "Call" on DESKTOP/TABLET
+   only (updated 2026-07-29, rule 55; label changed 2026-08-23, rule 58).** `.hero-cta-row` holds the
+   primary solid-blue **"Request an Inspection"** → `#estimate` and a secondary **"Call (416) 913-2394"**
+   (`.btn-hero-call`, ghost — see rule 46, `tel:`). Buttons are a ROW ≥1024, STACKED full-width
+   641–1023. **≤640 the Call button is
    HIDDEN** (`.btn-hero-call{display:none}`) — calling is already covered by the mobile header phone and
-   the sticky bottom bar, so the hero shows only the Estimate button. (This re-establishes the original
+   the sticky bottom bar, so the hero shows only the Inspection button. (This re-establishes the original
    ≤640 hide; the brief 2026-07-31 reversal is itself now reversed.) Beneath the CTA row is ONE muted
    **trust line** (rule 51). The old separate `.hero-microcopy` "Free estimates · Most repairs same day"
-   line is GONE — folded into the single trust line. See rules 45–46, 51, 53.
+   line is GONE — folded into the single trust line, and the "Free estimates" half must never return
+   (rule 58). See rules 45–46, 51, 53, 58.
 
 ## GoogleRating (shared component)
 
@@ -108,9 +111,10 @@ shared markup block + CSS class, not a JS component.
 
 ## Colour / the "single blue" rule
 
-11. **The hero "Get a Free Estimate" button is the only solid blue on screen** (updated 2026-07-29 —
-    it was the Call button). The sticky bar's **Estimate** tile is neutral dark like Call/Directions,
-    with a **blue icon only** (not a filled blue block). Keep it that way.
+11. **The hero "Request an Inspection" button is the only solid blue on screen** (updated 2026-07-29 —
+    it was the Call button; label changed 2026-08-23, rule 58). The sticky bar's **Inspection** tile is
+    neutral dark like Call/Directions, with a **blue icon only** (not a filled blue block). Keep it
+    that way.
 
 ## Header
 
@@ -258,23 +262,32 @@ shared markup block + CSS class, not a JS component.
     flex-shrink:0; margin-left:4px }` — fixed size, never affects the text baseline. Verified: all
     five items measure identical top/height at 1440 and 1920, so the active underline never shifts.
 
-## No online booking — estimate-request framing only (2026-07-28) — LOCKED
+## No online booking — inspection-request framing only (2026-07-28; relabelled 2026-08-23) — LOCKED
 
 35. **There is NO online booking / scheduling system.** The shop takes requests by phone or via a
-    simple estimate-request form. NEVER reintroduce booking, scheduling, calendars, date/time
+    simple inspection-request form. NEVER reintroduce booking, scheduling, calendars, date/time
     pickers, availability, or appointment-slot language anywhere on the site (homepage, service
     pages, 404, template, privacy, JSON-LD, meta). This is a business fact, not a style choice.
-36. **All CTAs are Call or estimate-request only.** Every non-Call CTA points to the estimate form
-    at **`#estimate`** (the `.contact-form-wrap`) and reads **"Get a Free Estimate"** (desktop nav
-    `btn-sm`, Why/About sections, service-page CTAs) or **"Estimate"** (mobile sticky bar). The form
-    heading is "Get a Free Estimate", sub "Tell us what's going on and we'll call you back with a
-    price.", fields = name, phone, vehicle (year/make/model), issue description; submit = **"Request
-    Estimate"**. No email/date/service-select fields. `#estimate-form` + `.estimate-form` in markup
-    and `script.js` (validates name/phone/vehicle/message).
+    This is also why the CTA verb is **"Request"**, never "Book" — nothing is actually booked until
+    the shop calls back, so "Book" would be a false promise (see rule 58).
+36. **All CTAs are Call or inspection-request only** (rewritten 2026-08-23, rule 58). Every non-Call
+    CTA points to the form at **`#estimate`** (the `.contact-form-wrap`) and reads **"Request an
+    Inspection"** (hero, desktop nav `btn-sm`, Why/About sections, service-page CTAs) or
+    **"Inspection"** (mobile sticky bar). One label everywhere — no per-page variants. The form
+    heading is "Request an Inspection", lead **"Tell us what your vehicle's doing. We'll look it
+    over and explain what it needs — nothing gets done until you approve it."**; fields = name,
+    phone, vehicle (year/make/model), issue description; submit = **"Request Inspection"**. No
+    email/date/service-select fields. The `#estimate` anchor and the `#estimate-form` /
+    `.estimate-form` identifiers **keep their historical names on purpose** — they are referenced
+    ~54 times across 18 pages and from `script.js`, are invisible to visitors, and renaming them
+    would break external deep links for no user benefit. Do not "tidy" them.
 37. **Terminology: "estimate", never "quote"** in our own copy (marketing, FAQs, meta, feature
     lists, CTA bands). The ONLY allowed "quote" is inside a **verbatim customer review** — never
-    reword a real review to fit the rule (that would be dishonest). "Free estimates" microcopy under
-    the hero Call button sets the tone; keep everything consistent with it.
+    reword a real review to fit the rule (that would be dishonest). **Amended 2026-08-23:**
+    "estimate" is now a **process** word only — what the shop gives you *after* looking at the
+    vehicle and *before* any work starts. It is NEVER an offer, a CTA label, or a form heading.
+    "We give you a clear estimate before any work begins" = correct and should stay everywhere it
+    appears. "Get a Free Estimate" = banned (rule 58).
 
 ## Scope: domestic AND import (2026-07-29) — LOCKED
 
@@ -316,7 +329,7 @@ shared markup block + CSS class, not a JS component.
     `.status-pill--stack` + `.status-note` "Send a request anytime" is removed; the estimate
     affordance is the hero button (rule 39). No `data-request-note` in markup or JS.
 42. **Desktop nav phone is interactive and secondary.** `.header-phone` is weight **500** (lighter
-    than the `600` filled Estimate button so the button stays primary), colour `#E8EDF3`, and on
+    than the `600` filled Inspection button so the button stays primary), colour `#E8EDF3`, and on
     hover/focus gets **underline + colour shift to `#FFFFFF`** (icon shifts blue→`#8FB6E6`). It must
     read as a link, not static text, but must not out-weight the button.
 
@@ -394,7 +407,8 @@ shared markup block + CSS class, not a JS component.
     **"Licensed technicians · Warranty on parts and labour · Most repairs same day."** The third item is
     wrapped in `.hero-proof-last`, hidden ≤640 so **mobile shows two items and wraps cleanly (no dangling
     "·")** — this fixes the mobile truncation bug. "Serving Scarborough" (already in the subhead) and
-    "Free estimates" (already the button label) were removed to kill repetition. The separate
+    "Free estimates" were removed to kill repetition — the latter is now permanently banned (rule 58:
+    the shop offers no free/sight-unseen pricing), so never restore it. The separate
     `.hero-microcopy` element is deleted. UPDATE 2026-08-04: line now reads **"310S Licensed · Import &
     domestic · Most repairs same day"** (warranty item removed per rule 56; cert confirmed per rule 57 —
     the cert TODO is resolved and its comment removed).
@@ -465,3 +479,30 @@ shared markup block + CSS class, not a JS component.
       `FAQPage` JSON-LD stays mirrored word-for-word without schema edits.
     - New markup: `.about-creds` block reusing the existing `.check-list` component; new CSS
       `.about-creds` / `.about-creds-title` only.
+
+## No free / sight-unseen price promises — the offer is approval-before-work (2026-08-23) — LOCKED
+58. **The site must never promise a free estimate, a free inspection, or any price given without
+    seeing the vehicle.** Owner's explicit instruction: **he does not offer free quotes.** He cannot
+    price a repair from a web form without the car in front of him, so the old "Get a Free Estimate"
+    funnel was promising something the business does not deliver — it burned trust on the first
+    phone call and attracted price-shoppers. This is a business fact, not a style choice.
+    - **Removed 2026-08-23:** all 35 "Get a Free Estimate" CTAs across 18 pages, the sticky-bar
+      "Estimate" label, the form heading + sub ("…we'll call you back with a price"), the confirmation
+      message's "with a price", the contact section-sub "request a free estimate below", and the
+      homepage FAQ "How do I get an estimate?" (visible **and** its `FAQPage` JSON-LD twin).
+    - **"Free inspection" is NOT an approved fallback.** It was considered and rejected: asked
+      directly whether he inspects for free and charges only for work done, the owner answered the
+      other questions and left that one alone. Silence is not confirmation, and the realistic answer
+      is "depends" (a look on the hoist costs nothing; scan-tool time on an intermittent fault is
+      billable). Do NOT add "free" to any inspection wording unless the owner confirms it explicitly
+      — and if he ever does, it is a one-word find-and-replace, nothing else moves.
+    - **The standing offer is approval-before-work, not a discount.** What stops someone calling a
+      mechanic is fear of a bill they never agreed to, so the promise is control: *"nothing gets
+      done until you approve it."* True in every scenario, costs the owner nothing, and already
+      binding on him under Ontario's Consumer Protection Act.
+    - **Compatible with rule 37:** post-inspection "estimate" language stays sitewide and is the
+      backbone of this message. Only the free/sight-unseen *offer* is banned.
+    - **Do not label any inspection free** — `pre-purchase-inspection-scarborough.html` and
+      `safety-certificate-scarborough.html` are **paid** services (a safety certificate is a
+      regulated provincial inspection). A blanket "Free Inspection" CTA would have implied those
+      were free too; keeping the one neutral label avoids the problem entirely.
