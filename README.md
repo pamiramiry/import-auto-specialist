@@ -44,9 +44,17 @@ dropped sitewide.
 
 - **Header parity is locked** — the nav, mobile menu, and footer Services column must be identical on
   every page. They are generated from one list; if you add a service, update all pages together.
-- **Canonical service naming** — the card `<h3>`, nav label, page `<h1>`, `<title>`, `og:title`, and
-  the `hasOfferCatalog` entry must agree. `<title>` = `<h1>` + ` | Import Auto Specialist`, and
-  `og:title` is byte-identical to `<title>`. The brand is never shortened to "Import Auto".
+- **Canonical service naming** — `<title>` = `<h1>` + ` | Import Auto Specialist`, and `og:title` /
+  `twitter:title` are byte-identical to `<title>`. The brand is never shortened to "Import Auto".
+  The nav label, homepage card `<h3>`, breadcrumb and `hasOfferCatalog` entry use the **short service
+  name**, which may be a shorter form of the `<h1>` — e.g. nav "Suspension & Steering" vs H1
+  "Suspension & Steering Repair in Scarborough", and nav "Mercedes-Benz Repair" / "BMW Repair" vs H1
+  "Mercedes-Benz Mechanic & Repair in Scarborough" / "BMW Mechanic & Repair in Scarborough". This is
+  intentional: the H1/title carry the search phrasing, the nav carries the short label. Do not
+  "fix" the divergence.
+- **Descriptive link text** — anchors name their destination; there is no "Learn more" anywhere on
+  the site. Only the highest-value destinations append "in Scarborough", and destinations linked from
+  many pages cycle through 2-3 phrasings so no anchor string repeats verbatim across the site.
 - **No warranty language anywhere** — owner's rule, see `DESIGN-RULES.md`.
 - **No invented claims** — see Notes below.
 
