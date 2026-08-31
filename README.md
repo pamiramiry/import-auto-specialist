@@ -128,3 +128,37 @@ climate, which is a real local issue and not a generic EV talking point.
 
 The WORLDPAC credential is Mercedes-specific and must not appear on the BMW page; XENTRY, ISTA, ODIS and
 Toolbox 3 are each single-brand tools and must never be described as covering another brand.
+
+### European makes — two separate claims, do not merge them
+
+**Makes serviced (owner-confirmed, Aug 2026):** the shop works on *every mainstream European make* —
+Mercedes-Benz, BMW, MINI, Audi, Volkswagen, Porsche, Volvo, Land Rover / Range Rover and Jaguar.
+`european-car-repair-scarborough` states this.
+
+**Factory diagnostic software held:** Mercedes (XENTRY/STAR), BMW (ISTA) and VW/Audi (ODIS + VCDS)
+**only**. These are single-brand packages — XENTRY does not read a Volvo. The European page keeps
+these as two distinct sections for exactly this reason, and the build script aborts if any of
+Porsche, Volvo, Jaguar, Land Rover or MINI appears inside the factory-software block.
+
+Servicing a make and holding its factory software are different claims.
+
+**Factory software held, by brand page** (owner-confirmed). Each package is single-brand — never
+describe one as covering another, and never write "certified", "authorised" or "factory-trained by":
+
+| Page | Factory software |
+|---|---|
+| `mercedes-benz-repair` | XENTRY / STAR Diagnosis |
+| `bmw-repair` | ISTA (formerly Rheingold) |
+| `volkswagen-audi-repair` | ODIS + VCDS |
+| `porsche-repair` | PIWIS |
+| `volvo-repair` | VIDA |
+| `land-rover-range-rover-repair` | JLR SDD / Pathfinder (also covers Jaguar) |
+| `tesla-repair` | Toolbox 3 |
+| `subaru-repair` | **none — do not add one** |
+
+**Subaru is the exception, twice over.** It is *Japanese*, so it must never appear in the European
+hub's makes list. And no Subaru factory software was confirmed, so that page deliberately makes no
+tooling claim — it stands on AWD tire matching, CVT service and boxer-engine specifics instead.
+The page generator asserts all of this: it aborts if any page names a tool belonging to another
+brand, or if Subaru names one at all.
+

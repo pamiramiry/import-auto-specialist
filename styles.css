@@ -886,6 +886,9 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
     scroll-snap-type: none;
   }
   .reviews-track .review-card { scroll-snap-align: none; }
+  /* A rail carrying only two reviews: two equal columns, rather than two thirds
+     of a three-column grid with an empty cell on the end. */
+  .reviews-track--two { grid-template-columns: repeat(2, 1fr); }
   .reviews-dots { display: none; }
 }
 
