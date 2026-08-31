@@ -155,6 +155,17 @@ describe one as covering another, and never write "certified", "authorised" or "
 | `land-rover-range-rover-repair` | JLR SDD / Pathfinder (also covers Jaguar) |
 | `tesla-repair` | Toolbox 3 |
 | `subaru-repair` | **none — do not add one** |
+| `japanese-car-repair` (hub) | Techstream (Toyota/Lexus), HDS (Honda/Acura), CONSULT (Nissan/Infiniti) |
+
+**Two hubs, two worlds.** `european-car-repair` and `japanese-car-repair` must never name each
+other's makes or tools. The European hub carries XENTRY / ISTA / ODIS+VCDS / PIWIS / VIDA /
+JLR SDD; the Japanese hub carries Techstream / HDS / CONSULT. Each generator aborts if a tool
+from the other side appears.
+
+> **HV caveat, same as Tesla:** the Japanese hub claims **full hybrid work including the
+> high-voltage battery**. If the HV training behind that or its insurance ever lapses, the
+> "Hybrid and High-Voltage Work" section comes down — the rest of the page (makes, factory
+> software, maintenance, corrosion) stands on its own without it.
 
 **Subaru is the exception, twice over.** It is *Japanese*, so it must never appear in the European
 hub's makes list. And no Subaru factory software was confirmed, so that page deliberately makes no
