@@ -433,17 +433,6 @@ body.menu-open .site-header {
 .mobile-link:hover, .mobile-link:focus-visible { color: var(--white); }
 .mobile-menu-cta { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 
-/* ---------------- Placeholder / media images ---------------- */
-/* Stand-in stock photos fill these slots until real shop photos replace them — see images/README.md.
-   Reserved aspect ratios prevent layout shift either way. */
-.about-media img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-}
-
 /* ---------------- Hero (split layout: copy + photo side by side) ---------------- */
 /* Full-bleed photo hero on ALL viewports (unified 2026-07-29 — desktop no longer a two-column split).
    Three layers: .hero-media (z-0 background photo + scrim) · .hero-copy (z-2 content). The content
@@ -693,11 +682,10 @@ a.cred-card:hover .cred-link-cue, a.cred-card:focus-visible .cred-link-cue { col
 /* ---------------- About ---------------- */
 .about { background: var(--grey-light); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--space-5); row-gap: 26px; align-items: start; }
-/* Left column spans both rows; photo + credentials stack in the right column so the two columns
-   balance in height (keeps the About section compact). Reset to auto when stacked (≤900, below). */
-.about-text  { grid-column: 1; grid-row: 1 / span 2; }
-.about-media { grid-column: 2; grid-row: 1; }
-.about-creds { grid-column: 2; grid-row: 2; margin-top: 0; }
+/* Text on the left, credentials on the right. Reset to auto when stacked (≤900, below). */
+.about-text  { grid-column: 1; grid-row: 1; }
+.about-creds { grid-column: 2; grid-row: 1; margin-top: 0; padding-top: 4px; }
+.about-creds .check-list { grid-template-columns: 1fr; }
 .about-text .section-label { text-align: left; }
 .about-text h2 { margin-bottom: 18px; }
 .about-text p { color: var(--grey-text); margin-bottom: 16px; }
@@ -1267,10 +1255,8 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   .main-nav, .header-cta { display: none; }
   .hamburger { display: flex; }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-4); }
-  /* Clear the desktop row/column placement so items flow in one column; photo first, then text,
-     then credentials at the bottom. */
-  .about-text, .about-media, .about-creds { grid-column: auto; grid-row: auto; }
-  .about-media { order: -1; }
+  /* Clear the desktop row/column placement so items flow in one column: text, then credentials. */
+  .about-text, .about-creds { grid-column: auto; grid-row: auto; }
   /* .cred-grid stays 3-col here (base rule); it stacks to 1 column at ≤640 (see below). */
   /* Solid charcoal (= the hero overlay's top colour) so the header→hero seam reads as one band,
      rather than looking lighter than the hero because its translucency reveals the white body. */

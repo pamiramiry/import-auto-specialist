@@ -79,9 +79,8 @@ npx serve .
 
 ## Still outstanding
 
-- **Photos:** `images/technician-diagnostic.jpg` is a CC-licensed stand-in and the footer credit line
-  that attributed it has been removed — either restore attribution or replace it with a real shop
-  photo (see `images/README.md`). Service pages currently carry no images at all.
+- **Photos:** the only photo on the site is the hero (the shop's own). All stock photos were removed.
+  Only add photos the shop owns (see `images/README.md`).
 - **Email address and social profiles:** none confirmed, so `schema.org` `email` is omitted and
   `sameAs` has a single entry (the Google Maps CID).
 - **MVIS licence number:** the shop is a licensed Motor Vehicle Inspection Station (confirmed by the
