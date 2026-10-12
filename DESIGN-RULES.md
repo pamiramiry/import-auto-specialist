@@ -539,3 +539,8 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     Scarborough for grinding, squealing or a soft pedal.") and keeps the hook after it. When a title
     already ranks, change the H1/lede to match it, never the title. AC page phrase is "Car AC Repair
     & Heating" everywhere (keeps the searched words "AC repair" together).
+67. **Homepage targets "mechanic" too** (2026-10-12, supersedes rule 59's wording): title "Mechanic &
+    Auto Repair in Scarborough | Import Auto Specialist", H1 "Mechanic & Auto Repair in Scarborough
+    Since 2004", first sentence "Mechanic and auto repair in Scarborough for import and domestic
+    vehicles…". "Mechanic" is NOT added to generic service-page titles (nobody searches "brake
+    mechanic"); brand pages already carry "Mechanic & Repair".
