@@ -544,3 +544,14 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     Since 2004", first sentence "Mechanic and auto repair in Scarborough for import and domestic
     vehicles…". "Mechanic" is NOT added to generic service-page titles (nobody searches "brake
     mechanic"); brand pages already carry "Mechanic & Repair".
+
+## Dealer tools + OEM parts (owner-confirmed 2026-10-12) — LOCKED
+68. **Jaan confirmed: the shop uses dealer tools, and USUALLY fits OEM parts ("depends").** Approved
+    phrasings ONLY: "Dealer tools, independent rates" / "dealer-level diagnostic tools" / "usually OEM
+    parts, depending on the job". Placements: hero trust line (2nd item, survives mobile), glance tile,
+    Why #2, homepage FAQs "Do you use dealer diagnostic tools?" + "Do you use OEM parts?".
+    - NEVER: "always OEM", "genuine/factory parts", "cheaper than the dealer", any % or $ saving, or
+      anything implying a warranty (rule 56). Price comparisons come only from verbatim reviews.
+    - He confirmed dealer tools in general, not tool by tool: if he says any named tool (ISTA, XENTRY,
+      ODIS, PIWIS, VIDA, JLR, Techstream, HDS, CONSULT, Toolbox 3) isn't in the shop, remove it.
+    - Homepage FAQPage JSON-LD answers are now word-for-word copies of the visible answers.
