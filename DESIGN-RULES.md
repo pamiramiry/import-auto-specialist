@@ -534,3 +534,8 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     were removed (they now live in the glance row).
 65. **Zero em dashes in anything a visitor can read** (copy, meta, alt/aria, placeholders, JSON-LD).
     Use a colon, comma, parentheses or a full stop. HTML comments are exempt.
+66. **Every page: title keyword = H1 = opening words of the first sentence** (extends rule 59 to all
+    pages, 2026-10-12). The lede's first sentence STARTS with the H1 phrase (e.g. "Brake repair in
+    Scarborough for grinding, squealing or a soft pedal.") and keeps the hook after it. When a title
+    already ranks, change the H1/lede to match it, never the title. AC page phrase is "Car AC Repair
+    & Heating" everywhere (keeps the searched words "AC repair" together).
