@@ -572,3 +572,9 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     specialists with dealer tools". Named exotics are owner-confirmed (Mercedes-Benz, BMW, McLaren);
     Lamborghini is NOT. Always keep "domestic too" alongside (rule 38). OEM wording: "OEM parts
     available" / "usually fitted as standard", never "always".
+73. **The approval promise appears in exactly 3 places** (2026-10-12): hero subhead, process step 4
+    ("You Approve, We Fix It"), and the inspection form intro. It's Ontario law, so repeating it ~50x
+    read as boilerplate. Replacements: homepage glance "No upselling / What our reviews keep saying";
+    Why #1 "No upselling, no pressure" backed by Cindy/Lisa/Christina's reviews; service-page glance
+    tile 3 = "310S licensed / Ontario-licensed technician"; footer blurb leads with import specialists,
+    dealer tools, OEM parts available. Do not re-add the promise to CTA bands, footers or tiles.
