@@ -555,3 +555,14 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     - He confirmed dealer tools in general, not tool by tool: if he says any named tool (ISTA, XENTRY,
       ODIS, PIWIS, VIDA, JLR, Techstream, HDS, CONSULT, Toolbox 3) isn't in the shop, remove it.
     - Homepage FAQPage JSON-LD answers are now word-for-word copies of the visible answers.
+
+## Service-page "At a glance" + conversion tracking (2026-10-12)
+69. **Every service page has a 4-tile `.glance.glance--svc` row directly under its hero** (reuses the
+    homepage glance tiles). Tile 1 = what we fix, tile 2 = how (the page's tool/method), tile 3 = "Your
+    OK first", tile 4 = 777 Warden Ave. directions. Tiles 1–2 may ONLY restate facts already on that
+    page. Row is capped to the 780px reading column so left edges align; 2x2 at ≤1080.
+70. **GA4 events:** `phone_call_click` (existing), `generate_lead` (fires ONLY when Web3Forms confirms
+    the send), `get_directions` (any google.com/maps/dir link, with `button_location`). Mark all three
+    as Key events in GA4. Bump `?v=` on styles.css / script.js whenever they change.
+71. Rule 56 also covers the car maker's warranty: "out of warranty" was reworded on the Japanese and
+    Tesla pages. No form of the word "warranty" anywhere visible.

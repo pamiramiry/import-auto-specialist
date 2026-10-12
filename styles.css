@@ -1341,3 +1341,16 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 .hub-group .related-card p { flex-grow: 1; }
 .site-footer .footer-all { font-weight: 600; color: #8FB6E6; }
 .site-footer .footer-all:hover { color: var(--white); }
+
+/* ---------------- Service-page "At a glance" (reuses the homepage .glance tiles) ---------------- */
+.glance--svc { padding: 0 0 36px; background: var(--charcoal); }
+/* Same width as the .svc-col reading column (780px incl. its 24px gutters) so the left edges line up. */
+.glance--svc .glance-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 780px; margin-inline: auto; padding-left: 24px; padding-right: 24px; }
+.glance--svc .glance-item:not(.glance-item--link), .glance--svc .glance-item--link > a { padding: 16px 14px 18px; }
+.glance--svc .glance-title { font-size: 1.08rem; }
+.glance--svc .glance-label { font-size: .86rem; }
+@media (max-width: 1080px) { .glance--svc .glance-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) {
+  .glance--svc { padding-bottom: 26px; }
+  .glance--svc .glance-item--link { grid-column: auto; }   /* 4 tiles = clean 2x2, no spanning */
+}

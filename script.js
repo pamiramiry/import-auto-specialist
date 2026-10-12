@@ -422,7 +422,14 @@
       })
         .then(function (res) { return res.json().catch(function () { return {}; }); })
         .then(function (data) {
-          if (data && data.success) { showConfirm(); }
+          if (data && data.success) {
+            showConfirm();
+            // GA4 key event: counted only when Web3Forms confirms delivery (not on validation
+            // errors, send failures, or the no-access-key local fallback above).
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'generate_lead', { form_name: 'inspection_request' });
+            }
+          }
           else { showError(); }
         })
         .catch(function () { showError(); })
@@ -469,5 +476,18 @@
     window.gtag('event', 'phone_call_click', {
       button_location: phoneClickLocation(link)
     });
+  }, true);
+
+  /* ---------------- Directions-click analytics (GA4) ----------------
+     Same delegated pattern as phone clicks: any Google Maps directions link sends a
+     `get_directions` event tagged with where it was clicked. Opens in a new tab, so the
+     hit is never lost to navigation. */
+  document.addEventListener('click', function (e) {
+    if (!e.target || typeof e.target.closest !== 'function') return;
+    var link = e.target.closest('a[href*="google.com/maps/dir"]');
+    if (!link) return;
+    if (typeof window.gtag !== 'function') return;
+    var where = link.closest('.glance') ? 'glance' : phoneClickLocation(link);
+    window.gtag('event', 'get_directions', { button_location: where });
   }, true);
 })();
