@@ -506,3 +506,31 @@ shared markup block + CSS class, not a JS component.
       `safety-certificate-scarborough.html` are **paid** services (a safety certificate is a
       regulated provincial inspection). A blanket "Free Inspection" CTA would have implied those
       were free too; keeping the one neutral label avoids the problem entirely.
+
+## Homepage restructure for differentiation + SEO (2026-10-12) — LOCKED
+Prompted by an outside SEO review ("nothing says why THIS mechanic", "sea of links", "title/H1/first
+sentence don't match", "reads like AI") weighed against Search Console data. **Supersedes rules 4, 21
+(H1), 22–25 (credibility strip) and 51's location in the flow.**
+
+59. **Title, H1 and first sentence say the same thing, keyword first.** Title = "Auto Repair in
+    Scarborough | Import Auto Specialist" (brand LAST). H1 = "Auto Repair in Scarborough Since 2004".
+    Subhead opens "Import and domestic auto repair at 777 Warden Ave." and ends on the approval promise.
+60. **"At a glance" row replaces the credibility strip** (`.glance`, dark, directly under the hero):
+    Since 2004 · Your OK first · Factory software · Mechanical + body · 777 Warden Ave. (directions
+    link). 5 cols desktop, 3 at ≤1080, 2 at ≤640 with the directions tile spanning. Facts only.
+61. **"Why choose us" section (`#why`, white) = the differentiators.** Four reasons, each a confirmed
+    fact AND each backed by one verbatim Google review quote: approval-before-work (Cindy),
+    dealer software at an independent shop (Bill), mechanical + collision under one roof (Cherry),
+    same people year after year (JK). Name Jaan only as the reviews do ("Jaan and his team"); do NOT
+    call him the owner until confirmed.
+62. **Homepage services = 6 cards + brand chips + one "Also:" line + "See all services" → /services.**
+    The full list of every service page lives on **/services** (`services.html`, grouped Repairs /
+    Maintenance / Brands, BreadcrumbList + ItemList JSON-LD). Never re-grow the homepage grid.
+63. **Site chrome:** mobile menu "Services" → /services with NO sub-links; footer Services column =
+    the 6 core services + "All services →"; desktop dropdown keeps the full list, "All Services →"
+    → /services. Footer blurb leads with the facts (since 2004, approval-before-work).
+64. **Section order:** hero → glance → why → services → process → reviews → about → CTA → FAQ →
+    contact. About sits AFTER the social proof and is white (reviews are grey). About stat tiles
+    were removed (they now live in the glance row).
+65. **Zero em dashes in anything a visitor can read** (copy, meta, alt/aria, placeholders, JSON-LD).
+    Use a colon, comma, parentheses or a full stop. HTML comments are exempt.
