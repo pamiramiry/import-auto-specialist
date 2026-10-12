@@ -574,7 +574,7 @@ a.google-rating:hover .gr-count, a.google-rating:focus-visible .gr-count { text-
 
 /* ---------------- At a glance (five facts directly under the hero) ---------------- */
 .glance { background: var(--charcoal); padding: 26px 0 40px; }
-.glance-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.glance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 1040px; margin-inline: auto; }   /* 6 tiles = 2 rows of 3 */
 .glance-item, .glance-item--link > a {
   display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
   padding: 18px 18px 20px;
@@ -1183,13 +1183,13 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 .js .reveal.in-view { opacity: 1; transform: none; }
 
 /* Gentle per-row stagger for grid children (JS observer untouched) */
-.js .glance-grid > .reveal:nth-child(5n+2),
+.js .glance-grid > .reveal:nth-child(3n+2),
 .js .services-grid > .reveal:nth-child(4n+2),
 .js .process-grid > .reveal:nth-child(4n+2) { transition-delay: .06s; }
-.js .glance-grid > .reveal:nth-child(5n+3),
+.js .glance-grid > .reveal:nth-child(3n+3),
 .js .services-grid > .reveal:nth-child(4n+3),
 .js .process-grid > .reveal:nth-child(4n+3) { transition-delay: .12s; }
-.js .glance-grid > .reveal:nth-child(5n+4),
+.js .glance-grid > .reveal:nth-child(3n+4),
 .js .services-grid > .reveal:nth-child(4n+4),
 .js .process-grid > .reveal:nth-child(4n+4) { transition-delay: .18s; }
 
@@ -1292,7 +1292,7 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   /* Glance row sits immediately below the hero: two columns, the directions tile spans both. */
   .glance { padding: 22px 0 28px; }
   .glance-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-  .glance-item--link { grid-column: 1 / -1; }
+  .glance-item--link { grid-column: auto; }   /* 6 tiles = clean 2x3 */
   .glance-item:not(.glance-item--link), .glance-item--link > a { padding: 14px 14px 16px; }
   .glance-title { font-size: 1.1rem; }
   .why-grid { grid-template-columns: 1fr; }

@@ -567,7 +567,8 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
 71. Rule 56 also covers the car maker's warranty: "out of warranty" was reworded on the Japanese and
     Tesla pages. No form of the word "warranty" anywhere visible.
 72. **Import-specialist positioning (2026-10-12):** glance tile 1 = "Import specialists / Mercedes, BMW,
-    McLaren & more. Domestic too." (replaced "Since 2004", which the H1 already says). Why #2 = "Import
+    McLaren & more. Domestic too.", tile 2 = "Since 2004" (user: how long matters, keep it). 6 tiles =
+    3x2 desktop, 2x3 mobile. Why #2 = "Import
     specialists with dealer tools". Named exotics are owner-confirmed (Mercedes-Benz, BMW, McLaren);
     Lamborghini is NOT. Always keep "domestic too" alongside (rule 38). OEM wording: "OEM parts
     available" / "usually fitted as standard", never "always".
