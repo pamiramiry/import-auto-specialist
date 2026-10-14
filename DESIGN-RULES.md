@@ -581,5 +581,6 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
 74. **Dealer vs independent comparison table** (`#compare`, homepage, white, between Services and
     Process; 2026-10-13). Real `<table>` with row/col headers. Rows: diagnostic software, parts, rates,
     makes serviced, collision. Dealer column states nothing unverified ("Varies" where it depends).
-    A "who you deal with" row (dealer: service advisor / us: Jaan and the team) waits for Jaan's OK.
+    Row 1 "Who you talk to": "A service advisor" vs "Jaan and the team who work on your car, here since
+    2004" (added 2026-10-13 at the user's request). Never "passionate" or "corporate" (hype / reads as a dig).
     Never add prices, percentages or "cheaper than" to the table.
