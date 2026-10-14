@@ -578,3 +578,8 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     Why #1 "No upselling, no pressure" backed by Cindy/Lisa/Christina's reviews; service-page glance
     tile 3 = "310S licensed / Ontario-licensed technician"; footer blurb leads with import specialists,
     dealer tools, OEM parts available. Do not re-add the promise to CTA bands, footers or tiles.
+74. **Dealer vs independent comparison table** (`#compare`, homepage, white, between Services and
+    Process; 2026-10-13). Real `<table>` with row/col headers. Rows: diagnostic software, parts, rates,
+    makes serviced, collision. Dealer column states nothing unverified ("Varies" where it depends).
+    A "who you deal with" row (dealer: service advisor / us: Jaan and the team) waits for Jaan's OK.
+    Never add prices, percentages or "cheaper than" to the table.
