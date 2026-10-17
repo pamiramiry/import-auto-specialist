@@ -98,10 +98,10 @@ certifications, email) is invented.
 All four brand pages exist because each leads with a *confirmed, specific* capability. None may be
 softened into a generic "we also fix this brand" page, and none may borrow another's claims.
 
-**Mercedes-Benz** — the shop runs **XENTRY / STAR Diagnosis**, and the technician has completed
-**Mercedes-Benz engine training through the WORLDPAC Technical Training Institute**. That is
-aftermarket training, *not* Mercedes-Benz accreditation — the page must never say "Mercedes-Benz
-certified", "authorised", or "factory-trained by Mercedes-Benz".
+**Mercedes-Benz** — the shop runs **XENTRY / STAR Diagnosis**. The page must never say "Mercedes-Benz
+certified", "authorised", or "factory-trained by Mercedes-Benz". The WORLDPAC Mercedes-Benz engine
+training was **removed from the whole site (Oct 2026)** because no certificate for it could be
+verified on the shop's credentials wall — do not re-add it unless the owner provides the document.
 
 **BMW** — the shop runs **ISTA** (formerly Rheingold), BMW's factory diagnostic software, and does
 **module coding, retrofits and battery registration**. Air suspension work on the X-series is
@@ -114,18 +114,16 @@ Do **not** claim walnut-blasting / carbon cleaning or DSG mechatronic rebuilds �
 the page only says carbon buildup is checked for during diagnosis, and that DSG fluid/filter service
 and mechatronic fault-code reading are done.
 
-**Tesla** — the shop runs **Toolbox 3** (Tesla's own diagnostic software) and takes on **high-voltage
-battery and drive unit work**. Never say "Tesla certified", "authorised", or "Tesla-approved body
+**Tesla** — the shop runs **Toolbox 3** (Tesla's own diagnostic software). Never say "Tesla certified", "authorised", or "Tesla-approved body
 shop" — approved-shop status is a specific certification and is not claimed. The page's strongest
 original angle is that regenerative braking leaves friction brakes to corrode and seize in a salt
 climate, which is a real local issue and not a generic EV talking point.
 
-> **HV caveat for whoever maintains this:** the high-voltage claim was confirmed by the owner. If the
-> technician holding the HV training ever leaves, or insurance coverage for HV work lapses, the
-> high-voltage sections of `tesla-repair-scarborough` must come down — the rest of that page (brakes,
-> tires, suspension, 12V, body) stands on its own without them.
+> **High-voltage work removed (Oct 2026):** the Tesla page no longer claims high-voltage battery or
+> drive unit work (liability risk). Do not re-add it without the owner's sign-off on HV training and
+> insurance coverage.
 
-The WORLDPAC credential is Mercedes-specific and must not appear on the BMW page; XENTRY, ISTA, ODIS and
+XENTRY, ISTA, ODIS and
 Toolbox 3 are each single-brand tools and must never be described as covering another brand.
 
 ### European makes — two separate claims, do not merge them

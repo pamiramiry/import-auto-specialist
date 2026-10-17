@@ -467,10 +467,11 @@ shared markup block + CSS class, not a JS component.
       **"310S Licensed"** (replaced generic "Licensed technicians"; the rule-51 cert TODO is now
       RESOLVED) + first item in the About `.about-creds` check-list.
     - **Centennial College apprenticeship, 2003** → About credentials list (backs "since 2004 / 20+ yrs").
-    - **Mercedes-Benz engine training (WORLDPAC Technical Training Institute)** → About list + engine-repair
-      body prose.
+    - ~~Mercedes-Benz engine training (WORLDPAC Technical Training Institute)~~ → **REMOVED site-wide
+      2026-10-17**: not verifiable on the shop's credentials wall. Do not re-add without the document.
     - **HRAI-certified refrigerant handling** → About list + heating-air-conditioning body prose.
-    - **Ontario Vehicle Storage Certificate + Toronto Municipal Licensing** → About list + auto-body body prose.
+    - ~~Ontario Vehicle Storage Certificate + Toronto Municipal Licensing~~ → **REMOVED site-wide
+      2026-10-17**: not verifiable on the shop's credentials wall. Do not re-add without the documents.
     - **First Aid & CPR Level C** → intentionally OMITTED (not a repair-competence signal; user's call).
     - **PHRASING GUARDRAIL (LOCKED):** the Benz item is always **"Mercedes-Benz engine training"** — NEVER
       "Mercedes-Benz certified / factory-authorized / dealer." WORLDPAC training ≠ factory certification;
