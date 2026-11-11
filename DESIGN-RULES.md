@@ -603,3 +603,17 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     their owners, not affiliated with or authorised by any manufacturer). Add it to any new page.
 78. **Privacy policy** names Web3Forms, says data may be stored outside Canada, and lists all tracked
     events (phone tap, directions tap, form sent). Update it if tracking changes.
+
+## Six-page content pass (2026-11-10)
+79. **Land Rover, engine, auto body, Volvo, European and BMW pages** gained: a "Models We Commonly See"
+    list (brand pages only; general-knowledge issues, wrench icon, never the warning-triangle icon) and
+    2 extra FAQs mirrored word-for-word in FAQPage JSON-LD. Owner confirmed all listed
+    models are serviced (2026-11-10); no placeholders remain.
+    - A six-step "What Happens When You Bring It In" section was built and then REMOVED the same day:
+      it described what every Ontario shop must do anyway (CPA estimate rules) and repeated as
+      boilerplate across pages. The 4-step process stays on the homepage only. Do not re-add it to
+      service pages; each page already states its own diagnostic method in the body copy.
+80. **Homepage AutoRepair JSON-LD no longer has `aggregateRating` or `review`** (Google review markup is
+    not allowed). Visible reviews stay. HTML comments on brand pages that say "the rating lives once on
+    the #business node" are now out of date: do not re-add the markup.
+81. `.faq-answer p a` is styled like `.svc-prose p a`, so FAQ answers may carry in-text links.

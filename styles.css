@@ -1379,3 +1379,7 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 
 /* Sitewide trademark / non-affiliation line (2026-11-10): full-width row under the copyright line. */
 .footer-disclaimer { flex-basis: 100%; margin: 0; font-size: .78rem; line-height: 1.5; color: #8A93A3; }
+
+/* In-text links inside FAQ answers: same treatment as .svc-prose p a (2026-11-10). */
+.faq-answer p a { color: var(--blue); font-weight: 600; }
+.faq-answer p a:hover { text-decoration: underline; }
