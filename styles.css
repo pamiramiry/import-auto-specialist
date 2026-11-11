@@ -1376,3 +1376,6 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
   .cmp-check { width: 15px; height: 15px; }
   .cmp-cta .btn { width: 100%; }
 }
+
+/* Sitewide trademark / non-affiliation line (2026-11-10): full-width row under the copyright line. */
+.footer-disclaimer { flex-basis: 100%; margin: 0; font-size: .78rem; line-height: 1.5; color: #8A93A3; }

@@ -585,3 +585,21 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     Row 1 "Who you talk to": "A service advisor" vs "Jaan and the team who work on your car, here since
     2004" (added 2026-10-13 at the user's request). Never "passionate" or "corporate" (hype / reads as a dig).
     Never add prices, percentages or "cheaper than" to the table.
+
+## Legal-risk cleanup (2026-11-10): LOCKED
+75. **Removed pending proof; do not re-add without the owner's written confirmation:**
+    - **WORLDPAC / Mercedes-Benz engine training**: removed from About creds, engine page, Mercedes page
+      (prose, glance tile, lede, meta, FAQ + JSON-LD) and services card. Re-add only with a copy of the
+      certificate on file. Supersedes the WORLDPAC parts of rule 57 and the README brand notes.
+    - **"Most repairs same day"**: never owner-confirmed. Hero trust line is now two items.
+    - **All high-voltage work** (Tesla HV battery/drive unit, Japanese hybrid HV battery/inverter): sections,
+      FAQs + JSON-LD, included-list items, ledes, meta and services cards removed. Routine hybrid/Tesla
+      servicing, Toolbox 3 and Techstream diagnostics stay.
+    - **Homepage no longer names diagnostic packages**: "dealer-level diagnostic software" only. Brand pages
+      still name their tool; confirm each subscription is still active before relaunching.
+76. **Reviews:** label is "Google review" (never "Verified", no check icon: Google does not verify them).
+    Reviewer names are first name + last initial (or the public username), in cards and JSON-LD.
+77. **Every page footer carries `.footer-disclaimer`** (independent shop, brand names are trademarks of
+    their owners, not affiliated with or authorised by any manufacturer). Add it to any new page.
+78. **Privacy policy** names Web3Forms, says data may be stored outside Canada, and lists all tracked
+    events (phone tap, directions tap, form sent). Update it if tracking changes.
