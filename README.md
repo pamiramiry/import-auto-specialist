@@ -93,7 +93,9 @@ Structured data (JSON-LD) uses only confirmed business facts — the 4.5★ / 11
 address, real hours, and coordinates from the shop's Google Maps listing. Nothing (awards, prices,
 certifications, email) is invented.
 
-### Brand pages — what each one may claim
+### Brand pages: what each one may claim
+
+> **Superseded 2026-11-13 (DESIGN-RULES 85):** no software is named on the site any more; every page says "dealer-level diagnostic software". The tool names below are history only.
 
 All four brand pages exist because each leads with a *confirmed, specific* capability. None may be
 softened into a generic "we also fix this brand" page, and none may borrow another's claims.

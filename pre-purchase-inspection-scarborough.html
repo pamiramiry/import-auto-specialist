@@ -5,12 +5,9 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <title>Pre-Purchase Inspection in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Pre-purchase car inspection in Scarborough. Independent assessment of a used vehicle before you buy, including import and European makes. Call (416) 913-2394.">
@@ -38,7 +35,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 
   <!-- ============ STRUCTURED DATA: Breadcrumb ============ -->
   <script type="application/ld+json">
@@ -92,7 +89,7 @@
       {
         "@type": "Question",
         "name": "Can you inspect European and import vehicles?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes, and this is where an inspection is most worth doing. We work on European and Japanese makes daily and run dealer-level diagnostic equipment, including factory Mercedes-Benz XENTRY software, so we can read manufacturer-specific modules rather than generic powertrain codes alone." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, and this is where an inspection is most worth doing. We work on European and Japanese makes daily and run dealer-level diagnostic equipment, so we can read manufacturer-specific modules rather than generic powertrain codes alone." }
       }
     ]
   }
@@ -277,7 +274,7 @@
 
           <h2>Buying an Import or European Car</h2>
           <p>Imports are where a pre-purchase inspection earns its keep most reliably, because the gap between a well-maintained example and a neglected one is expressed in much larger numbers. Deferred maintenance on a European car does not stay proportionally cheap the way it might on a base-model commuter, and an appealing price on a luxury vehicle is often appealing for a reason that shows up on the hoist.</p>
-          <p>We work on European and Japanese vehicles daily and run dealer-level diagnostic equipment, including factory <a href="/mercedes-benz-repair-scarborough">Mercedes-Benz XENTRY</a> software. Reading the manufacturer-specific modules matters here, because a seller can clear a dash light before you arrive, and stored or pending codes frequently survive that.</p>
+          <p>We work on European and Japanese vehicles daily and run dealer-level diagnostic equipment. Reading the manufacturer-specific modules matters here, because a seller can clear a dash light before you arrive, and stored or pending codes frequently survive that.</p>
 
           <h2>Booking an Inspection</h2>
           <p>Arrange with the seller to bring the vehicle to us at 777 Warden Ave. during business hours. A seller unwilling to allow an independent inspection has told you something useful for free. Call (416) 913-2394 to arrange a time, and let us know the year, make, and model so we know what to expect.</p>
@@ -348,7 +345,7 @@
           <details class="faq-item" name="faq">
             <summary><h3 class="faq-question">Can you inspect European and import vehicles? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
             <div class="faq-answer">
-              <p>Yes, and this is where an inspection is most worth doing. We work on European and Japanese makes daily and run dealer-level diagnostic equipment, including factory Mercedes-Benz XENTRY software, so we can read manufacturer-specific modules rather than generic powertrain codes alone.</p>
+              <p>Yes, and this is where an inspection is most worth doing. We work on European and Japanese makes daily and run dealer-level diagnostic equipment, so we can read manufacturer-specific modules rather than generic powertrain codes alone.</p>
             </div>
           </details>
         </div>
@@ -447,7 +444,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -476,6 +477,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

@@ -1383,3 +1383,56 @@ section[aria-label="Customer review"] > .container { padding-left: 0; padding-ri
 /* In-text links inside FAQ answers: same treatment as .svc-prose p a (2026-11-10). */
 .faq-answer p a { color: var(--blue); font-weight: 600; }
 .faq-answer p a:hover { text-decoration: underline; }
+
+/* ---------------- Analytics notice + opt-out toggle (2026-11-13) ----------------
+   Notice-and-opt-out bar built by ga-init.js. Fixed bottom on desktop; on phones it sits just above
+   the sticky Call / Directions / Inspection bar so it never covers it, and it steps aside while
+   the visitor is typing in the inspection form. */
+.link-button {
+  background: none; border: 0; padding: 0; margin: 0;
+  font: inherit; color: inherit; text-decoration: underline; cursor: pointer;
+}
+.footer-legal .link-button { color: #B7BEC9; }
+.footer-legal .link-button:hover { color: var(--white); }
+.analytics-notice {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 880;
+  max-width: 760px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+  background: var(--charcoal); color: #DCE0E7;
+  border: 1px solid var(--charcoal-line); border-radius: var(--radius);
+  padding: 12px 14px 12px 18px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  font-size: .9rem; line-height: 1.45;
+}
+.analytics-notice-text { margin: 0; flex: 1; }
+.analytics-notice a, .analytics-notice .link-button { color: #FFFFFF; text-decoration: underline; }
+.analytics-notice :focus-visible { outline-color: #8FB6E6; }
+.analytics-notice-ok { padding: 8px 20px; min-height: 40px; flex-shrink: 0; }
+body.has-analytics-notice { padding-bottom: 96px; }
+body.has-analytics-notice .back-to-top { bottom: 96px; }
+@media (max-width: 640px) {
+  .analytics-notice {
+    left: 10px; right: 10px; bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+    padding: 10px 10px 10px 14px; gap: 10px; font-size: .84rem;
+  }
+  body.has-analytics-notice { padding-bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  body.has-analytics-notice .back-to-top { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  body:has(#estimate-form :focus) .analytics-notice { display: none; }
+}
+.form-privacy { margin: 12px 0 0; font-size: .88rem; color: var(--grey-text); }
+.form-privacy a { color: var(--blue); font-weight: 600; text-decoration: underline; }
+.legal-inner p a:not(.btn):not(.contact-inline-link), .legal-list a { color: var(--blue); font-weight: 600; text-decoration: underline; }
+.legal-status { margin-left: 12px; color: var(--grey-text); font-size: .92rem; }
+
+/* Review dots: 24x24 tap target (WCAG 2.2 target size) with the same 9px visible dot (2026-11-13). */
+.reviews-dots { gap: 0; }
+.reviews-dots button {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: transparent; display: grid; place-items: center; transform: none;
+}
+.reviews-dots button::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--grey-mid); transition: background var(--trans), transform var(--trans);
+}
+.reviews-dots button[aria-current="true"] { background: transparent; transform: none; }
+.reviews-dots button[aria-current="true"]::before { background: var(--blue); transform: scale(1.3); }

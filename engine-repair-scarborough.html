@@ -5,12 +5,9 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <title>Engine Repair in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Engine, transmission &amp; exhaust repair in Scarborough for import &amp; domestic cars: misfires, leaks, overheating, slipping shifts. Call (416) 913-2394.">
@@ -38,7 +35,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 
   <script type="application/ld+json">
   {
@@ -74,7 +71,7 @@
       {
         "@type": "Question",
         "name": "Is a check engine light serious?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A steady light usually means you should get it checked soon; a flashing light means stop driving and call, since it often signals an active misfire that can damage your catalytic converter. When in doubt, call (416) 913-2394." }
+        "acceptedAnswer": { "@type": "Answer", "text": "A steady light usually means the car has logged a fault worth checking soon. A flashing light usually signals an active misfire, which can damage your catalytic converter, so have it inspected as soon as you can. If you are unsure, call (416) 913-2394." }
       },
       {
         "@type": "Question",
@@ -267,11 +264,11 @@
           <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Hard starting, long cranking, or stalling</span></li>
           <li><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>A drop in power or noticeably worse fuel economy</span></li>
         </ul>
-        <p>A <strong>flashing</strong> check engine light is the one that should not wait. It usually signals an active misfire that can destroy a catalytic converter in a short drive. Pull over when it is safe and <a href="tel:+14169132394">call (416) 913-2394</a>.</p>
+        <p>A <strong>flashing</strong> check engine light should not wait. It usually signals an active misfire, which can damage the catalytic converter. <a href="tel:+14169132394">Call (416) 913-2394</a> and have it inspected as soon as you can.</p>
 
         <h2>Engine Trouble? Start With a Real Diagnosis</h2>
         <p>From rough idle and misfires to oil leaks, overheating, and unfamiliar noises, engine problems are almost always cheaper to fix when they're caught early. We start with a proper diagnosis to find the root cause rather than guessing, then explain what we found and give you a clear estimate before any work begins.</p>
-        <p>We handle a wide range of engine work: diagnostics, leak repair, cooling-system issues, misfire and tune-up work, and more. As an import-focused shop, we use dealer-level tools and quality parts matched to your engine, so European and Japanese vehicles get the attention they need without dealer-level pricing. If you drive a Mercedes, you can read more about working with a <a href="/mercedes-benz-repair-scarborough">Mercedes mechanic in Scarborough</a> who runs factory XENTRY diagnostics. We run the equivalent factory software for other European makes too, so there are separate pages on <a href="/bmw-repair-scarborough">BMW mechanic and repair</a> work and on <a href="/volkswagen-audi-repair-scarborough">Audi and Volkswagen repair</a>.</p>
+        <p>We handle a wide range of engine work: diagnostics, leak repair, cooling-system issues, misfire and tune-up work, and more. As an import-focused shop, we use dealer-level tools and quality parts matched to your engine, so European and Japanese vehicles get the attention they need without dealer-level pricing. If you drive a Mercedes, you can read more about working with a <a href="/mercedes-benz-repair-scarborough">Mercedes mechanic in Scarborough</a> who runs dealer-level diagnostics. We use dealer-level diagnostic software on other European makes too, so there are separate pages on <a href="/bmw-repair-scarborough">BMW mechanic and repair</a> work and on <a href="/volkswagen-audi-repair-scarborough">Audi and Volkswagen repair</a>.</p>
 
         <h2>Why a Small Engine Fault Becomes a Big One</h2>
         <p>Engine problems compound. A single misfiring cylinder pushes unburnt fuel into the exhaust, which overheats the catalytic converter and can turn a spark plug and coil job into a converter replacement costing several times as much. A small oil leak drips onto rubber mounts and belts and degrades them. A slightly weak thermostat runs the engine hot enough to cook the oil early without ever putting the gauge in the red.</p>
@@ -331,7 +328,7 @@
           <details class="faq-item" name="faq">
             <summary><h3 class="faq-question">Is a check engine light serious? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
             <div class="faq-answer">
-              <p>A steady light usually means you should get it checked soon; a flashing light means stop driving and call, since it often signals an active misfire that can damage your catalytic converter. When in doubt, call (416) 913-2394.</p>
+              <p>A steady light usually means the car has logged a fault worth checking soon. A flashing light usually signals an active misfire, which can damage your catalytic converter, so have it inspected as soon as you can. If you are unsure, call (416) 913-2394.</p>
             </div>
           </details>
           <details class="faq-item" name="faq">
@@ -456,7 +453,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -484,6 +485,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

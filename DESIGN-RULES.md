@@ -563,7 +563,7 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     OK first", tile 4 = 777 Warden Ave. directions. Tiles 1–2 may ONLY restate facts already on that
     page. Row is capped to the 780px reading column so left edges align; 2x2 at ≤1080.
 70. **GA4 events:** `phone_call_click` (existing), `generate_lead` (fires ONLY when Web3Forms confirms
-    the send), `get_directions` (any google.com/maps/dir link, with `button_location`). Mark all three
+    the send), `directions_click` (renamed from get_directions 2026-11-13; any google.com/maps/dir link, with `button_location`). Mark all three
     as Key events in GA4. Bump `?v=` on styles.css / script.js whenever they change.
 71. Rule 56 also covers the car maker's warranty: "out of warranty" was reworded on the Japanese and
     Tesla pages. No form of the word "warranty" anywhere visible.
@@ -617,3 +617,26 @@ sentence don't match", "reads like AI") weighed against Search Console data. **S
     not allowed). Visible reviews stay. HTML comments on brand pages that say "the rating lives once on
     the #business node" are now out of date: do not re-add the markup.
 81. `.faq-answer p a` is styled like `.svc-prose p a`, so FAQ answers may carry in-text links.
+
+## Pre-launch privacy + analytics pass (2026-11-13): LOCKED
+82. **GA4 is notice-and-opt-out (AP Analytics Assessment v1).** Everything lives in `ga-init.js`: it
+    injects gtag.js unless localStorage `ias-analytics-off` = "1", sets Signals + ad personalization off,
+    and builds the bottom notice ("OK" only hides it; it is NOT consent). Every `[data-analytics-toggle]`
+    (footer on every page, notice, privacy page) turns analytics off/on and clears _ga cookies. Never add
+    a second GA snippet to a page head.
+    - Events (script.js): phone_call_click, directions_click, email_click, cta_click, navigation_click,
+      generate_lead (only on confirmed Web3Forms success). Params are location buckets and internal
+      paths only: never link text, field values or full URLs.
+    - Mobile: the notice sits above the sticky bar and hides while the form has focus.
+83. **Footer legal line on every page:** Privacy · Terms · Turn off analytics. `/terms` exists.
+    Privacy policy lists exactly what the site sets (_ga, _ga_LSB3NXXYZD, the two localStorage keys);
+    update it if any cookie, provider or event changes. No published retention period (owner default
+    still to confirm).
+84. **No "safe to drive" advice anywhere.** Use "have it inspected" wording (removed from LR, BMW,
+    Mercedes, brake, engine and diagnostics pages).
+85. **No named diagnostic software anywhere (2026-11-13, user decision).** XENTRY/STAR, ISTA, ODIS,
+    VCDS, PIWIS, VIDA, JLR SDD/Pathfinder, Toolbox 3, Techstream, HDS and CONSULT were replaced with
+    "dealer-level diagnostic software" sitewide, because the owner may not report a lapsed
+    subscription. Jaan confirmed dealer tools in general (rule 68), which stays true. Never write
+    "factory software/diagnostics" or "the manufacturer's own software" either. This supersedes the
+    per-brand software tables in README.md.

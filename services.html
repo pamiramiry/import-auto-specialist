@@ -5,12 +5,9 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <title>Auto Repair Services in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Every service at Import Auto Specialist, 777 Warden Ave., Scarborough: diagnostics, brakes, engine, body work, safety certificates and brand repair.">
@@ -38,7 +35,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
   <!-- ============ STRUCTURED DATA: Breadcrumb ============ -->
   <script type="application/ld+json">
   {
@@ -291,47 +288,47 @@
       <div class="container">
         <div class="section-header">
           <h2 id="brands-heading">Brands We Work On</h2>
-          <p class="section-sub">Factory diagnostic software for European and Japanese makes, plus Tesla.</p>
+          <p class="section-sub">Dealer-level diagnostic software for European and Japanese makes, plus Tesla.</p>
         </div>
         <div class="related-grid">
           <a class="related-card" href="/european-car-repair-scarborough">
             <h3>European Car Repair</h3>
-            <p>Factory XENTRY, ISTA, ODIS and VCDS software for Mercedes-Benz, BMW, Audi and Volkswagen.</p>
+            <p>Dealer-level diagnostic software for Mercedes-Benz, BMW, Audi, Volkswagen and more.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/mercedes-benz-repair-scarborough">
             <h3>Mercedes-Benz Repair</h3>
-            <p>Factory XENTRY and STAR diagnostics, plus mechanical and body work under one roof.</p>
+            <p>Dealer-level diagnostics, plus mechanical and body work under one roof.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/bmw-repair-scarborough">
             <h3>BMW Repair</h3>
-            <p>Factory ISTA diagnostics, module coding and retrofits, and air suspension on X5, X6 and 7 Series.</p>
+            <p>Dealer-level diagnostics, module coding and retrofits, and air suspension on X5, X6 and 7 Series.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/volkswagen-audi-repair-scarborough">
             <h3>Volkswagen &amp; Audi Repair</h3>
-            <p>ODIS factory diagnostics and VCDS coding, timing chain and DSG service.</p>
+            <p>Dealer-level diagnostics and coding, timing chain and DSG service.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/porsche-repair-scarborough">
             <h3>Porsche Repair</h3>
-            <p>PIWIS factory diagnostics, servicing, and alignment to factory specification.</p>
+            <p>Dealer-level diagnostics, servicing, and alignment to factory specification.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/volvo-repair-scarborough">
             <h3>Volvo Repair</h3>
-            <p>VIDA factory diagnostics, Volvo servicing, and module configuration after repair.</p>
+            <p>Dealer-level diagnostics, Volvo servicing, and module configuration after repair.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/land-rover-range-rover-repair-scarborough">
             <h3>Land Rover &amp; Range Rover</h3>
-            <p>JLR factory diagnostics, air suspension work, and body repair under one roof.</p>
+            <p>Dealer-level diagnostics, air suspension work, and body repair under one roof.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/japanese-car-repair-scarborough">
             <h3>Japanese Car Repair</h3>
-            <p>Techstream, HDS and CONSULT factory software, plus mechanical and body work in one shop.</p>
+            <p>Dealer-level diagnostic software, plus mechanical and body work in one shop.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
           <a class="related-card" href="/subaru-repair-scarborough">
@@ -341,7 +338,7 @@
           </a>
           <a class="related-card" href="/tesla-repair-scarborough">
             <h3>Tesla Repair</h3>
-            <p>Toolbox 3 diagnostics, brakes, tires, suspension and body repair.</p>
+            <p>Dealer-level diagnostics, brakes, tires, suspension and body repair.</p>
             <span class="card-link">See details <span aria-hidden="true">→</span></span>
           </a>
         </div>
@@ -409,7 +406,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -438,6 +439,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

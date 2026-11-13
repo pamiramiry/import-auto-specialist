@@ -5,15 +5,12 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <title>Privacy Policy | Import Auto Specialist</title>
-  <meta name="description" content="Privacy Policy for Import Auto Specialist: what the inspection request form collects and how that information is used.">
+  <meta name="description" content="How the Import Auto Specialist website handles your information: the inspection request form, Google Analytics, cookies and your choices.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#14171C">
   <link rel="canonical" href="https://importautospecialist.ca/privacy">
@@ -21,14 +18,14 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Privacy Policy | Import Auto Specialist">
-  <meta property="og:description" content="What the inspection request form collects and how that information is used.">
+  <meta property="og:description" content="How the Import Auto Specialist website handles your information and the choices you have.">
   <meta property="og:url" content="https://importautospecialist.ca/privacy">
   <meta property="og:image" content="https://importautospecialist.ca/images/og-image.jpg">
   <meta property="og:locale" content="en_CA">
   <meta property="og:site_name" content="Import Auto Specialist">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy | Import Auto Specialist">
-  <meta name="twitter:description" content="What the inspection request form collects and how that information is used.">
+  <meta name="twitter:description" content="How the Import Auto Specialist website handles your information and the choices you have.">
   <meta name="twitter:image" content="https://importautospecialist.ca/images/og-image.jpg">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -40,7 +37,7 @@
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
 
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 
 <body>
@@ -65,65 +62,108 @@
   <main id="main">
     <section class="section legal">
       <div class="container legal-inner">
-        <p class="section-label">Legal</p>
         <h1>Privacy Policy</h1>
-        <p class="legal-updated">Last updated: November 2026</p>
-
-        <p>Import Auto Specialist ("we", "us") respects your privacy. This page explains, in plain
-          language, what information this website collects and how we use it. We keep this simple
-          because our website is simple: it is an informational site with a single inspection
-          request form.</p>
+        <p class="legal-updated">Last updated: November 13, 2026</p>
+        <p>This policy explains what information the Import Auto Specialist website collects, why, who
+          receives it, and the choices you have. Import Auto Specialist is an auto repair shop at
+          777 Warden Ave., Scarborough, ON M1L 4C2. The website is informational and has one form: the
+          inspection request form.</p>
 
         <h2>What we collect</h2>
-        <p>The only information we collect from you is what you choose to enter in the inspection
-          request form on our website. That may include:</p>
+        <p>If you send an inspection request, we receive what you type into the form:</p>
         <ul class="legal-list">
           <li>Your name</li>
           <li>Your phone number</li>
-          <li>Your vehicle (year, make &amp; model)</li>
-          <li>The description of the issue or service you enter</li>
+          <li>Your vehicle (year, make and model)</li>
+          <li>Your description of the issue or the service you need</li>
         </ul>
-        <p>We do not require you to create an account, and we do not knowingly collect information
-          from anyone else.</p>
+        <p>When you visit the site, some technical information is also collected automatically by the
+          services described below: for example your IP address, browser and device type, the pages you
+          view, the site that referred you, and an approximate location based on your IP address.</p>
+        <p>If you tap our phone number, the call is made by your own phone. The website does not receive
+          your phone number; analytics only records that a phone link was tapped.</p>
 
-        <h2>How we use your information</h2>
-        <p>We use the details you submit for one purpose only: to respond to your inquiry and
-          arrange service for your vehicle. We do not sell, rent, or trade your information, and we
-          do not share it with third parties except as needed to operate the form (for example, the
-          form service, Web3Forms, that delivers your request to us by email) or where required by law.</p>
+        <h2>How we use it</h2>
+        <ul class="legal-list">
+          <li>To respond to your request and arrange service for your vehicle.</li>
+          <li>To understand, in aggregate, how people find and use the site so we can improve it.</li>
+          <li>To deliver the website and keep it working and secure.</li>
+        </ul>
+        <p>We do not sell your information, use it for advertising, or add you to any mailing list.</p>
 
-        <h2>Where your information is stored</h2>
-        <p>The services this site relies on (Web3Forms for the request form, Google Analytics and
-          Google Maps) may store and process information on servers outside Canada, including in the
-          United States. Information stored outside Canada is subject to the laws of that country.</p>
+        <h2>Who receives it</h2>
+        <p>We use a small number of service providers to run the website:</p>
+        <ul class="legal-list">
+          <li><strong>Web3Forms</strong> receives inspection requests and delivers them to our business
+            email inbox. See the <a href="https://web3forms.com/privacy" target="_blank" rel="noopener">Web3Forms privacy policy</a>.</li>
+          <li><strong>Google Analytics</strong> (Google) measures how the site is used. See
+            <a href="#analytics">Analytics</a> below.</li>
+          <li><strong>Google Maps</strong> (Google) shows the map in the Contact section of our home page.
+            When the map loads, Google receives technical information such as your IP address and browser
+            details, and may set its own cookies, under the
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+          <li><strong>Vercel</strong> hosts the website. Like any web host, it processes technical
+            information such as IP addresses in its server logs to deliver and protect the site.</li>
+        </ul>
+        <p>We may also disclose information where the law requires it.</p>
 
-        <h2>Data retention</h2>
-        <p>We keep inspection requests only as long as needed to respond to you and to maintain
-          reasonable records of the service relationship. You may ask us to delete your information
-          at any time by contacting us.</p>
+        <h2>Processing outside Canada</h2>
+        <p>These providers may store or process information in the United States and other countries.
+          Information held outside Canada is subject to the laws of the country where it is held, which
+          may allow authorities there to access it.</p>
 
-        <h2>Cookies &amp; analytics</h2>
-        <p>This site uses <strong>Google Analytics 4</strong> to understand how visitors find and use
-          the site, so we can improve it. Google Analytics sets cookies in your browser and collects
-          information such as the pages you view, how long you spend on them, the approximate region
-          you are browsing from, and the type of device and browser you use. We also record when a
-          visitor taps a phone number or a directions link, and when the request form is sent (that
-          it was sent, not what you wrote), so we can tell which parts of the site actually help
-          people reach us.</p>
-        <p>This information is used only to measure and improve the website. It is not used for
-          advertising, we do not sell it, and it is not linked to the details you submit through the
-          inspection request form. Google processes this data under
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's own privacy policy</a>.</p>
-        <p>You can opt out at any time by installing
-          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's browser opt-out add-on</a>,
-          or by blocking cookies in your browser settings. The site works normally either way.</p>
-        <p>Pages that display a map use an embedded Google Map, which is also subject to Google's
-          own privacy terms.</p>
+        <h2 id="analytics">Analytics</h2>
+        <p>We use <strong>Google Analytics 4</strong> to measure traffic to the site. It uses cookies and an
+          online identifier to collect information such as the pages you view, how long you stay, how far
+          you scroll, the site that referred you, your approximate region, and your device and browser. We
+          also count a few actions: tapping a phone number, email link or directions link, using the main
+          buttons and menus, and successfully sending the inspection request form (that it was sent, not
+          what you wrote).</p>
+        <p>We do not send your name, phone number, email address or form contents to Google Analytics.
+          Google Signals and ad personalization are turned off, we do not use Google Analytics for
+          advertising or remarketing, and we do not use User-ID.</p>
+        <p><strong>Turning analytics off:</strong> use the button below or the "Turn off analytics" link
+          at the bottom of any page. Google Analytics then stops loading on this site in this browser,
+          and its cookies are cleared where your browser allows. Your choice is saved in this browser, so
+          you will need to set it again if you clear your browsing data or use another browser or device.
+          You can turn analytics back on the same way. You can also block cookies in your browser or use
+          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google's opt-out browser add-on</a>.
+          The site works normally either way.</p>
+        <p><button type="button" class="btn btn-blue" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
+          <span class="legal-status" id="analytics-status" role="status"></span></p>
 
-        <h2>Questions</h2>
-        <p>If you have any questions about this Privacy Policy or want to update or remove your
-          information, please call us:</p>
-        <p><a href="tel:+14169132394" class="btn btn-blue">Call (416) 913-2394</a></p>
+        <h2>Cookies and browser storage</h2>
+        <p>This is what the site itself sets in your browser:</p>
+        <ul class="legal-list">
+          <li><strong>_ga</strong> (cookie, Google Analytics): distinguishes visitors. Google lists its
+            lifetime as 2 years; some browsers, including Chrome, cap it at 400 days. Not set when analytics
+            is turned off.</li>
+          <li><strong>_ga_LSB3NXXYZD</strong> (cookie, Google Analytics): keeps track of your session.
+            Same lifetime as _ga. Not set when analytics is turned off.</li>
+          <li><strong>ias-analytics-off</strong> (browser storage): remembers that you turned analytics
+            off. Stays until you turn analytics back on or clear your browsing data.</li>
+          <li><strong>ias-analytics-notice-ok</strong> (browser storage): remembers that you closed the
+            analytics notice. Stays until you clear your browsing data.</li>
+        </ul>
+        <p>The embedded Google Map on the home page may set Google's own cookies when it loads. We do not
+          set any other cookies ourselves.</p>
+
+        <h2>How long we keep information</h2>
+        <p>We keep inspection requests only as long as we need them to respond to you and follow up on
+          your request, and delete them when they are no longer needed.</p>
+
+        <h2>Your choices and rights</h2>
+        <p>You can ask to see the personal information we hold about you, ask us to correct it, or ask us
+          to delete it or stop using it, subject to any legal requirements to keep certain records. To make
+          a request or ask a question about privacy, call us at
+          <a href="tel:+14169132394">(416) 913-2394</a> or write to us at Import Auto Specialist,
+          777 Warden Ave., Scarborough, ON M1L 4C2.</p>
+        <p>If you are not satisfied with our answer, you can contact the
+          <a href="https://www.priv.gc.ca/en/report-a-concern/" target="_blank" rel="noopener">Office of the Privacy Commissioner of Canada</a>.</p>
+
+        <h2>Changes to this policy</h2>
+        <p>We may update this policy when the website or the services we use change. The date at the top
+          shows when it was last updated.</p>
 
         <p class="legal-back"><a href="/" class="contact-inline-link">← Return to Import Auto Specialist home</a></p>
       </div>
@@ -179,7 +219,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -188,6 +232,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

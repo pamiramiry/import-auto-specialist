@@ -7,12 +7,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <!-- ============ PRIMARY SEO ============ -->
   <title>Mechanic &amp; Auto Repair in Scarborough | Import Auto Specialist</title>
@@ -70,7 +67,7 @@
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
 
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 
   <!-- ================= STRUCTURED DATA: AutoRepair (LocalBusiness) ================= -->
   <script type="application/ld+json">
@@ -1023,6 +1020,7 @@
               </div>
 
               <button type="submit" class="btn btn-blue btn-lg btn-block">Request Inspection</button>
+              <p class="form-privacy">We'll only use your info to respond to your request. See our <a href="/privacy">Privacy Policy</a>.</p>
 
               <!-- Confirmation shown by JavaScript after the request is sent successfully -->
               <p class="form-confirm" id="form-confirm" role="status" hidden>
@@ -1032,7 +1030,7 @@
               <p class="form-error" id="form-error" role="alert" hidden>
                 Sorry, something went wrong sending your request. Please call <a href="tel:+14169132394">(416) 913-2394</a> and we'll take care of it.
               </p>
-              <p class="form-note">Fields marked <span aria-hidden="true">*</span> <span class="sr-only">asterisk</span> are required. We'll only use your details to reply about your request.</p>
+              <p class="form-note">Fields marked <span aria-hidden="true">*</span> <span class="sr-only">asterisk</span> are required.</p>
             </form>
           </div>
         </div>
@@ -1089,7 +1087,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -1120,6 +1122,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

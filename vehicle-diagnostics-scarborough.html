@@ -5,12 +5,9 @@
   <script>document.documentElement.classList.replace('no-js', 'js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google tag (gtag.js) — init in ga-init.js to keep CSP script-src strict (no
-       'unsafe-inline'). Both are non-blocking: gtag.js is async, ga-init.js is
-       deferred, so neither holds up first paint. Deferred scripts run in document
-       order, so ga-init.js still executes before script.js. -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LSB3NXXYZD"></script>
-  <script src="ga-init.js?v=2" defer></script>
+  <!-- GA4, notice-and-opt-out: everything lives in ga-init.js (loads gtag.js unless the visitor
+       turned analytics off, and shows the analytics notice). Deferred, runs before script.js. -->
+  <script src="ga-init.js?v=3" defer></script>
 
   <title>Vehicle Diagnostics in Scarborough | Import Auto Specialist</title>
   <meta name="description" content="Check engine light on? Dealer-level vehicle diagnostics in Scarborough for import & domestic cars: real answers, not guesswork. Call (416) 913-2394.">
@@ -38,7 +35,7 @@
 
   <link rel="preload" as="font" type="font/woff2" href="fonts/inter-var.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/barlow-condensed-700.woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 
   <!-- ============ STRUCTURED DATA: Breadcrumb ============ -->
   <script type="application/ld+json">
@@ -77,12 +74,12 @@
       {
         "@type": "Question",
         "name": "What does the diagnostic fee cover?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A diagnostic covers connecting to your vehicle, reading trouble codes, reviewing live sensor data, and testing to confirm the real cause, so you leave with an answer, not a guess. Call (416) 913-2394 to ask about the current diagnostic fee for your vehicle." }
+        "acceptedAnswer": { "@type": "Answer", "text": "A diagnostic covers connecting to your vehicle, reading trouble codes, reviewing live sensor data, and testing to confirm the real cause, so you leave with an answer, not a guess." }
       },
       {
         "@type": "Question",
-        "name": "Is it safe to drive with the check engine light on?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A steady light usually means you should get it checked soon. A flashing light means you should stop driving and call, because it often signals a misfire that can damage your catalytic converter. When in doubt, call (416) 913-2394." }
+        "name": "What should I do if my check engine light comes on?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A steady light usually means the car has logged a fault worth checking soon. A flashing light usually signals a misfire that can damage your catalytic converter, so have it inspected as soon as you can. We can't assess a car over the phone, but call (416) 913-2394 and we will help you arrange a time." }
       },
       {
         "@type": "Question",
@@ -324,9 +321,9 @@
             </div>
           </details>
           <details class="faq-item" name="faq">
-            <summary><h3 class="faq-question">Is it safe to drive with the check engine light on? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
+            <summary><h3 class="faq-question">What should I do if my check engine light comes on? <svg class="faq-chevron" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg></h3></summary>
             <div class="faq-answer">
-              <p>A steady light usually means you should get it checked soon. A flashing light means you should stop driving and call, because it often signals a misfire that can damage your catalytic converter. When in doubt, call (416) 913-2394.</p>
+              <p>A steady light usually means the car has logged a fault worth checking soon. A flashing light usually signals a misfire that can damage your catalytic converter, so have it inspected as soon as you can. We can't assess a car over the phone, but call (416) 913-2394 and we will help you arrange a time.</p>
             </div>
           </details>
           <details class="faq-item" name="faq">
@@ -437,7 +434,11 @@
       <div class="container footer-bottom-inner">
         <p>&copy; <span id="year">2026</span> Import Auto Specialist. All rights reserved.</p>
         <p class="footer-legal">
-          <a href="/privacy">Privacy Policy</a>
+          <a href="/privacy">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms">Terms</a>
+          <span aria-hidden="true">·</span>
+          <button type="button" class="link-button" data-analytics-toggle aria-pressed="false">Turn off analytics</button>
           <span aria-hidden="true">·</span>
           Auto repair &amp; maintenance in Scarborough, ON near Warden Avenue.
         </p>
@@ -466,6 +467,6 @@
     <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m6 15 6-6 6 6"/></svg>
   </button>
 
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>

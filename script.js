@@ -478,16 +478,38 @@
     });
   }, true);
 
-  /* ---------------- Directions-click analytics (GA4) ----------------
-     Same delegated pattern as phone clicks: any Google Maps directions link sends a
-     `get_directions` event tagged with where it was clicked. Opens in a new tab, so the
-     hit is never lost to navigation. */
+  /* ---------------- Other click analytics (GA4) ----------------
+     One delegated listener, one event per click (most specific match wins, so a Call button
+     never also counts as a CTA click). Parameters are a location bucket and, for internal links,
+     the path only: never the link text, field values or full URLs. ga-init.js makes window.gtag
+     a no-op when the visitor has turned analytics off, so nothing is sent then.
+       directions_click   any Google Maps directions link
+       email_click        mailto: links
+       cta_click          other .btn links (e.g. "Request an Inspection")
+       navigation_click   header, mobile menu and footer navigation links */
+  var internalPath = function (link) {
+    try {
+      var u = new URL(link.href, location.href);
+      return u.origin === location.origin ? u.pathname + u.hash : 'external';
+    } catch (err) { return 'other'; }
+  };
+
   document.addEventListener('click', function (e) {
     if (!e.target || typeof e.target.closest !== 'function') return;
-    var link = e.target.closest('a[href*="google.com/maps/dir"]');
-    if (!link) return;
     if (typeof window.gtag !== 'function') return;
+    var link = e.target.closest('a[href]');
+    if (!link || /^tel:/i.test(link.getAttribute('href'))) return;   // phone clicks handled above
+
+    var href = link.getAttribute('href');
     var where = link.closest('.glance') ? 'glance' : phoneClickLocation(link);
-    window.gtag('event', 'get_directions', { button_location: where });
+    if (/google\.com\/maps\/dir/.test(href)) {
+      window.gtag('event', 'directions_click', { button_location: where });
+    } else if (/^mailto:/i.test(href)) {
+      window.gtag('event', 'email_click', { button_location: where });
+    } else if (link.classList.contains('btn') || link.classList.contains('mobile-bar-btn')) {
+      window.gtag('event', 'cta_click', { button_location: where, link_path: internalPath(link) });
+    } else if (link.closest('.site-header, #site-header, .mobile-menu, .site-footer nav')) {
+      window.gtag('event', 'navigation_click', { button_location: link.closest('.site-footer') ? 'footer' : 'header', link_path: internalPath(link) });
+    }
   }, true);
 })();
